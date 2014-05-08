@@ -1,14 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title></title>
-    <description>The musings and work of Ryan Marcus, a graduate student at the Los Alamos National Laboratory.</description>
-    <link></link>
-    <atom:link href="/feed.xml" rel="self" type="application/rss+xml" />
-    
-      <item>
-        <title>Fallthrough Sort: Quickly Sorting Small Sets</title>
-        <description>&lt;p&gt;In many applications, such as a &lt;a href=&quot;http://en.wikipedia.org/wiki/Median_filter&quot;&gt;median filter&lt;/a&gt;, we want to sort a small ([latex]n &amp;lt; 30[/latex]) set of numbers. In the case of the median filter, we are only concerned with sorting sets of one exact size – if this is the case, one can generate an optimal &lt;a href=&quot;http://en.wikipedia.org/wiki/Sorting_network&quot;&gt;sorting network&lt;/a&gt; using a tool like &lt;a href=&quot;http://pages.ripco.net/~jgamble/nw.html&quot;&gt;this one&lt;/a&gt; to create a provably-unbeatable solution.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>RMarcus</title>
+ <link href="http://hyde.getpoole.com/atom.xml" rel="self"/>
+ <link href="http://hyde.getpoole.com/"/>
+ <updated>2014-05-07T19:04:31-07:00</updated>
+ <id>http://hyde.getpoole.com</id>
+ <author>
+   <name>Ryan Marcus</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Fallthrough Sort: Quickly Sorting Small Sets</title>
+   <link href="http://hyde.getpoole.com/2013/07/01/fallthrough-sort.html"/>
+   <updated>2013-07-01T00:00:00-07:00</updated>
+   <id>http://hyde.getpoole.com/2013/07/01/fallthrough-sort</id>
+   <content type="html">&lt;p&gt;In many applications, such as a &lt;a href=&quot;http://en.wikipedia.org/wiki/Median_filter&quot;&gt;median filter&lt;/a&gt;, we want to sort a small ([latex]n &amp;lt; 30[/latex]) set of numbers. In the case of the median filter, we are only concerned with sorting sets of one exact size – if this is the case, one can generate an optimal &lt;a href=&quot;http://en.wikipedia.org/wiki/Sorting_network&quot;&gt;sorting network&lt;/a&gt; using a tool like &lt;a href=&quot;http://pages.ripco.net/~jgamble/nw.html&quot;&gt;this one&lt;/a&gt; to create a provably-unbeatable solution.&lt;/p&gt;
 
 &lt;p&gt;However, often we want to be able to sort sets of varying size that are still small. Perhaps if one wished to implement a 3x3, 5x5, and 7x7 median filter using a single sorting function. Or perhaps when sorting an arbitrary list of files, when there could be very many or very few items.&lt;/p&gt;
 
@@ -103,15 +112,15 @@
 
 &lt;p&gt;Reddit user &lt;a href=&quot;http://www.reddit.com/r/programming/comments/1hilkn/fallthrough_sort_quickly_sorting_small_sets/cauvhhp&quot;&gt;sltkr seems to be getting better results from a simple insertion sort&lt;/a&gt;. This appears to be due to CPU differences, but the discussion is ongoing.&lt;/p&gt;
 
-</description>
-        <pubDate>Mon, 01 Jul 2013 00:00:00 -0700</pubDate>
-        <link>/2013/07/01/fallthrough-sort.html</link>
-        <guid isPermaLink="true">/2013/07/01/fallthrough-sort.html</guid>
-      </item>
-    
-      <item>
-        <title>TopNTree: A merge-sort inspired data structure</title>
-        <description>&lt;p&gt;Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an &lt;a href=&quot;http://en.wikipedia.org/wiki/Tree_traversal#In-order&quot;&gt;in-order traversal&lt;/a&gt; of the tree will produce the list of contacts in alphabetical order, and a &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;balanced binary tree&lt;/a&gt; provides [latex]O(\log n)[/latex] search time. &lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>TopNTree: A merge-sort inspired data structure</title>
+   <link href="http://hyde.getpoole.com/2013/03/09/topntree.html"/>
+   <updated>2013-03-09T00:00:00-07:00</updated>
+   <id>http://hyde.getpoole.com/2013/03/09/topntree</id>
+   <content type="html">&lt;p&gt;Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an &lt;a href=&quot;http://en.wikipedia.org/wiki/Tree_traversal#In-order&quot;&gt;in-order traversal&lt;/a&gt; of the tree will produce the list of contacts in alphabetical order, and a &lt;a href=&quot;http://en.wikipedia.org/wiki/Binary_search_tree&quot;&gt;balanced binary tree&lt;/a&gt; provides [latex]O(\log n)[/latex] search time. &lt;/p&gt;
 
 &lt;p&gt;However, I also needed to be able to query the [latex]k[/latex] most frequently contacted contacts. Since contacts are sorted by their names, finding the [latex]k[/latex] most frequently contacted contacts would require [latex]O(n \log n)[/latex] search time.&lt;/p&gt;
 
@@ -208,11 +217,8 @@
 &lt;p&gt;Obviously, no synthetic beats real-world testing. I hope the TopNTree performs well!&lt;/p&gt;
 
 &lt;p&gt;Reddit user JustSomeBadAdvice &lt;a href=&quot;http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n&quot;&gt;points out&lt;/a&gt; that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.&lt;/p&gt;
-</description>
-        <pubDate>Sat, 09 Mar 2013 00:00:00 -0700</pubDate>
-        <link>/2013/03/09/topntree.html</link>
-        <guid isPermaLink="true">/2013/03/09/topntree.html</guid>
-      </item>
-    
-  </channel>
-</rss>
+</content>
+ </entry>
+ 
+
+</feed>
