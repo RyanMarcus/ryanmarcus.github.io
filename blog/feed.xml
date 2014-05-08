@@ -3,8 +3,8 @@
   <channel>
     <title>RMarcus.info</title>
     <description>The musings and work of Ryan Marcus, a graduate student at the Los Alamos National Laboratory.</description>
-    <link>/blog/</link>
-    <atom:link href="/blog//feed.xml" rel="self" type="application/rss+xml" />
+    <link>/blog</link>
+    <atom:link href="/blog/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
         <title>Fallthrough Sort: Quickly Sorting Small Sets</title>
@@ -105,8 +105,8 @@
 
 </description>
         <pubDate>Mon, 01 Jul 2013 00:00:00 -0700</pubDate>
-        <link>/blog//2013/07/01/fallthrough-sort.html</link>
-        <guid isPermaLink="true">/blog//2013/07/01/fallthrough-sort.html</guid>
+        <link>/blog/2013/07/01/fallthrough-sort.html</link>
+        <guid isPermaLink="true">/blog/2013/07/01/fallthrough-sort.html</guid>
       </item>
     
       <item>
@@ -210,8 +210,8 @@
 &lt;p&gt;Reddit user JustSomeBadAdvice &lt;a href=&quot;http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n&quot;&gt;points out&lt;/a&gt; that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.&lt;/p&gt;
 </description>
         <pubDate>Sat, 09 Mar 2013 00:00:00 -0700</pubDate>
-        <link>/blog//2013/03/09/topntree.html</link>
-        <guid isPermaLink="true">/blog//2013/03/09/topntree.html</guid>
+        <link>/blog/2013/03/09/topntree.html</link>
+        <guid isPermaLink="true">/blog/2013/03/09/topntree.html</guid>
       </item>
     
   </channel>
