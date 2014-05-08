@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Luxer Update! Beta 3</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=29" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=29</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=29#comment-73</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Thu, 15 Dec 2005 13:43:42 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=30#comment-73</guid>
+		<description><![CDATA[Please post all bugs on the &lt;a href=&quot;http://luxerbb.cjb.net&quot; rel=&quot;nofollow&quot;&gt;forums&lt;/a&gt;.]]></description>
+		<content:encoded><![CDATA[<p>Please post all bugs on the <a href="http://luxerbb.cjb.net" rel="nofollow">forums</a>.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Jon~Snowtuber924</title>
+		<link>http://rmarcus.info/?p=29#comment-72</link>
+		<dc:creator><![CDATA[Jon~Snowtuber924]]></dc:creator>
+		<pubDate>Thu, 15 Dec 2005 04:40:44 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=30#comment-72</guid>
+		<description><![CDATA[Negitive-You can only see people that join after you do in the channel.
+Positive-It finally connected for me and now it works]]></description>
+		<content:encoded><![CDATA[<p>Negitive-You can only see people that join after you do in the channel.<br />
+Positive-It finally connected for me and now it works</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

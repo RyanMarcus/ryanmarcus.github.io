@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>June | 2008 | RMarcus.info</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://rmarcus.info/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://rmarcus.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Feed" href="index.html%3Ffeed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Comments Feed" href="index.html%3Ffeed=comments-rss2" />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='wp-content/themes/twentytwelve/style.css%3Fver=3.8.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://rmarcus.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js%3Fver=1.10.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js%3Fver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rmarcus.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8" />
+<link rel="stylesheet" type="text/css" href="wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<link rel="publisher" href="https://plus.google.com/u/0/108417296717615529338" /><style type="text/css">
+/* <![CDATA[ */
+img.latex { 
+vertical-align: middle; 
+border: none;
+box-shadow: 0px 0px 0px #FFFFFF;
+ }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e6e6e6; }
+</style>
+</head>
+
+<body class="archive date custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="index.html" title="RMarcus.info" rel="home">RMarcus.info</a></h1>
+			<h2 class="site-description">It&#039;s all Frank&#039;s fault!</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="index.html%3Fm=200806.html#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li ><a href="index.html">Home</a></li><li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<section id="primary" class="site-content">
+		<div id="content" role="main">
+
+					<header class="archive-header">
+				<h1 class="archive-title">Monthly Archives: <span>June 2008</span></h1>
+			</header><!-- .archive-header -->
+
+			
+	<article id="post-184" class="post-184 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=184.html" rel="bookmark">Linux dual screen gaming&#8230; as easy as Devil&#8217;s Pie.</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=184.html#respond" title="Comment on Linux dual screen gaming&#8230; as easy as Devil&#8217;s Pie."><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>As many of my fellow Linux gamers have noticed, dual screens can be a bitch. Especially with WINE. The solution is actually pretty simple. A package hidden away in the repositories called &#8220;devilspie.&#8221; This guide will help you set up a full screen game on one of your displays. This is only going to work if the game supports the resolution of one of your monitors. (I.E., my main screen runs at 1680&#215;1050.So does CS:S.)</p>
+<p>The issue I am talking about is getting games (in this case WINE games) to run on your main display in fullscreen mode. When I started messing around with this stuff, I had a few goals:</p>
+<ol>
+<li>To not change any of my dual monitor settings</li>
+<li>To be able to use my secondary display while in-game</li>
+<li>To be able to move my mouse from the game onto the secondary display (or to disable that)</li>
+<li>To be able to double click on a game and have it work  without changing my whole system just to play a game.</li>
+</ol>
+<p>A challenge, to be sure, but I found it to be a lot easier then I thought. First things first. Let&#8217;s install the <strong>devilspie</strong> package from the repos.</p>
+<ol>
+<li>Open System -&gt; Administration -&gt; Synaptic Package Manager.</li>
+<li>Click on the &#8220;Search&#8221; toolbar icon.</li>
+<li>Set the &#8220;Look in&#8221; popup to &#8220;Name&#8221;</li>
+<li>Enter &#8220;devilspie&#8221;</li>
+<li>Right click on the &#8220;devilspie&#8221; package and select &#8220;Mark for installation.&#8221;</li>
+<li>Click the green apply toolbar icon.</li>
+</ol>
+<p>Now, let&#8217;s add the devilspie service to our session, so that devilspie runs whenever we start up our computers. To do this:</p>
+<ol>
+<li>Open System -&gt; Preferences -&gt; Sessions</li>
+<li>Click the &#8220;Add&#8221; button.</li>
+<li>After your window looks like the one below, click &#8220;Ok&#8221;</li>
+<li>Close the Sessions Preferences window.</li>
+</ol>
+<p><img class="size-medium wp-image-185 aligncenter" src="http://rmarcus.files.wordpress.com/2008/06/screenshot.png?w=300" alt="A screenshot of my window" width="300" height="125" /></p>
+<p>Next, let&#8217;s install the front-end GUI to Devil&#8217;s Pie so we don&#8217;t have to muck around with config files. To do this, download the .deb file from <a title="gdevilspie download." href="http://code.google.com/p/gdevilspie/downloads/list" target="_blank">here</a>. Get the most recent version. I used release three. Once the file is downloaded:</p>
+<ol>
+<li>Double click the .deb file on your desktop.</li>
+<li>When GDebi loads, click on &#8220;Install.&#8221;</li>
+<li>Once the installation is done, press Alt+F2 and enter: nautilus /usr/share/applications</li>
+<li>In the new nautilus window, type &#8220;gd&#8221; whic should bring you fairly close to gDevilspie.</li>
+<li>You can click and drag this launcher to your panel, your desktop, or your menus (if you open Edit menus.)</li>
+</ol>
+<p>Next, we need to setup our WINE game so that Devil&#8217;s Pie can deal with it. This is pretty easy. First, open winecfg. If you&#8217;ve got a wineprefix setup for your game, you should know how to do this. If not, press Alt+F2 and enter &#8220;winecfg&#8221;.</p>
+<ol>
+<li>Click on the &#8220;Graphics&#8221; tab.</li>
+<li>Check the box labled &#8220;Emulate a virtual desktop&#8221; and enter in the size of your main display.</li>
+</ol>
+<p style="text-align:center;"><a href="http://rmarcus.files.wordpress.com/2008/06/wineconfig.png"><img class="size-medium wp-image-186 aligncenter" src="http://rmarcus.files.wordpress.com/2008/06/wineconfig.png?w=225" alt="An emulated desktop setup" width="225" height="300" /></a></p>
+<p>Now that winecfg is closed, we need to know the name of the window it creates for its emulated desktop. The quickest way to do this is:</p>
+<ol>
+<li>Run winecfg again.</li>
+<li>Winecfg should open in a large emulated desktop window that fills more then your whole primary monitor. If it does not, repeat the steps above to setup wine in a emulated desktop.</li>
+<li>Look at the bottom of your screen at the small tabs that represent windows. If you have removed this bar or moved it, I assume you know how to get it back.</li>
+<li>Look at the tab representing your wine emulated desktop, and take note of its name. Mine was &#8220;Default &#8211; Wine desktop&#8221;</li>
+</ol>
+<p>Now its time for the kicker. Set up the Devil&#8217;s Pie rule.</p>
+<ol>
+<li>Open gdevilspie in the way you set up earlier.</li>
+<li>Click on the &#8220;Add&#8221; button.</li>
+<li>Name your rule whatever you want.</li>
+<li>In the &#8220;Matching&#8221; tab, check the &#8220;window_name&#8221; checkbox.</li>
+<li>In the first field on the left side of the pane, enter the name of the window of your emulated wine desktop.</li>
+<li>Click on the &#8220;Actions&#8221; tab.</li>
+<li>Check the &#8220;fullscreen&#8221; box.</li>
+<li>If you move over to raw tab, you should see something like what I have. If you do, click &#8220;Save.&#8221;<a href="http://rmarcus.files.wordpress.com/2008/06/ruleeditor.png"><br />
+</a><a href="http://rmarcus.files.wordpress.com/2008/06/ruleeditor.png"></a></p>
+<p style="text-align:center;"><img class="size-medium wp-image-187 aligncenter" src="http://rmarcus.files.wordpress.com/2008/06/ruleeditor.png?w=300" alt="The RAW tab of my rule" width="300" height="250" /></p>
+</li>
+</ol>
+<ol>
+<p style="text-align:center;">
+<p style="text-align:left;">Now, restart your computer. When you log back in, your WINE virtual desktop will be fullscreen on your main monitor.</p>
+</ol>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=184.html" title="4:49 pm" rel="bookmark"><time class="entry-date" datetime="2008-06-25T16:49:36+00:00">June 25, 2008</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-3" class="widget widget_text"><h3 class="widget-title">FortranFail Twitter</h3>			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/FortranFail" data-widget-id="347407527333486593">Tweets by @FortranFail</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+		</aside><aside id="pages-3" class="widget widget_pages"><h3 class="widget-title">Pages</h3>		<ul>
+			<li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html%3Fcat=4.html" title="View all posts filed under Android Debate">Android Debate</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="index.html%3Fcat=6.html" title="View all posts filed under Clipboard Historian">Clipboard Historian</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="index.html%3Fcat=7.html" title="View all posts filed under Computer Tips">Computer Tips</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="index.html%3Fcat=9.html" title="The UofA evidence autocutter.">Evidence Auto Cutter</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="index.html%3Fcat=11.html" title="View all posts filed under Luxer, Battle.net Bot">Luxer, Battle.net Bot</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="index.html%3Fcat=13.html" title="View all posts filed under Luxer: Documentation Update">Luxer: Documentation Update</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="index.html%3Fcat=15.html" title="View all posts filed under Personal">Personal</a>
+</li>
+		</ul>
+</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='index.html%3Fm=201307.html'>July 2013</a></li>
+	<li><a href='index.html%3Fm=201303.html'>March 2013</a></li>
+	<li><a href='index.html%3Fm=201206.html'>June 2012</a></li>
+	<li><a href='index.html%3Fm=201205.html'>May 2012</a></li>
+	<li><a href='index.html%3Fm=201104.html'>April 2011</a></li>
+	<li><a href='index.html%3Fm=201103.html'>March 2011</a></li>
+	<li><a href='index.html%3Fm=201008.html'>August 2010</a></li>
+	<li><a href='index.html%3Fm=201003.html'>March 2010</a></li>
+	<li><a href='index.html%3Fm=201001.html'>January 2010</a></li>
+	<li><a href='index.html%3Fm=200912.html'>December 2009</a></li>
+	<li><a href='index.html%3Fm=200903.html'>March 2009</a></li>
+	<li><a href='index.html%3Fm=200902.html'>February 2009</a></li>
+	<li><a href='index.html%3Fm=200901.html'>January 2009</a></li>
+	<li><a href='index.html%3Fm=200811.html'>November 2008</a></li>
+	<li><a href='index.html%3Fm=200808.html'>August 2008</a></li>
+	<li><a href='index.html%3Fm=200807.html'>July 2008</a></li>
+	<li><a href='index.html%3Fm=200806.html'>June 2008</a></li>
+	<li><a href='index.html%3Fm=200802.html'>February 2008</a></li>
+	<li><a href='index.html%3Fm=200712.html'>December 2007</a></li>
+	<li><a href='index.html%3Fm=200704.html'>April 2007</a></li>
+	<li><a href='index.html%3Fm=200701.html'>January 2007</a></li>
+	<li><a href='index.html%3Fm=200612.html'>December 2006</a></li>
+	<li><a href='index.html%3Fm=200610.html'>October 2006</a></li>
+	<li><a href='index.html%3Fm=200609.html'>September 2006</a></li>
+	<li><a href='index.html%3Fm=200608.html'>August 2006</a></li>
+	<li><a href='index.html%3Fm=200607.html'>July 2006</a></li>
+	<li><a href='index.html%3Fm=200606.html'>June 2006</a></li>
+	<li><a href='index.html%3Fm=200605.html'>May 2006</a></li>
+	<li><a href='index.html%3Fm=200604.html'>April 2006</a></li>
+	<li><a href='index.html%3Fm=200512.html'>December 2005</a></li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h3 class="widget-title">Other</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html%3Ffeed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html%3Ffeed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='wp-content/themes/twentytwelve/js/navigation.js%3Fver=1.0'></script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Luxer beta 10 is really working well!</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=111" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=111</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Daniel</title>
+		<link>http://rmarcus.info/?p=111#comment-254</link>
+		<dc:creator><![CDATA[Daniel]]></dc:creator>
+		<pubDate>Tue, 20 Jun 2006 01:33:58 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=123#comment-254</guid>
+		<description><![CDATA[Im rdy to test it out, I like the feature on the MainBot Java, where i can load multiple bots, It needs Proxy support. But thanks god for access on the bot I have been needing that. Lets see some more Mac support =p Make us a proxy scanner, key tester, Account maker, just giving some ideas on some more goodies since it looks like the bot project will be over soon. =p
+
+Thanks,
+Daniel]]></description>
+		<content:encoded><![CDATA[<p>Im rdy to test it out, I like the feature on the MainBot Java, where i can load multiple bots, It needs Proxy support. But thanks god for access on the bot I have been needing that. Lets see some more Mac support =p Make us a proxy scanner, key tester, Account maker, just giving some ideas on some more goodies since it looks like the bot project will be over soon. =p</p>
+<p>Thanks,<br />
+Daniel</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

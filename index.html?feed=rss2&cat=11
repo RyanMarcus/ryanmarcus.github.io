@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>RMarcus.info &#187; Luxer, Battle.net Bot</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;cat=11" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Sun, 27 Oct 2013 08:46:08 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>Luxer 2 Beta Information</title>
+		<link>http://rmarcus.info/?p=192</link>
+		<comments>http://rmarcus.info/?p=192#comments</comments>
+		<pubDate>Thu, 03 Jul 2008 18:34:00 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=192</guid>
+		<description><![CDATA[I know I&#8217;ve been slacking off with Luxer updates/releases, so I&#8217;d figure I would drop all of you a bit of knowledge. As per the screenshot posted earlier, Luxer 2 is coming along quite nicely. I have not spent much time on it, but during the time I&#8217;ve spent on it I&#8217;ve been doing right, [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I know I&#8217;ve been slacking off with Luxer updates/releases, so I&#8217;d  figure I would drop all of you a bit of knowledge.</p>
+<p>As per the screenshot posted earlier, Luxer 2 is coming along quite nicely. I have not spent much time on it, but during the time I&#8217;ve spent on it I&#8217;ve been doing right, which means you&#8217;ll have a very functional, very feature-full bot when 2.0 rolls out.</p>
+<p>As for releases, I&#8217;m going to try to put out a beta release before I go on vacation. I&#8217;ll post more on Luxer 2.0 later, after I do some more work on it.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=192</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Luxer 2 Preview</title>
+		<link>http://rmarcus.info/?p=176</link>
+		<comments>http://rmarcus.info/?p=176#comments</comments>
+		<pubDate>Sat, 09 Feb 2008 23:58:03 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=197</guid>
+		<description><![CDATA[Like a Star Wars sequel, I know it has taken long enough. Here is your first free sample of what will become Luxer 2. I&#8217;ll write more on this later, but I figure you&#8217;d all rather have me be writing code.]]></description>
+				<content:encoded><![CDATA[<p>Like a Star Wars sequel, I know it has taken long enough. Here is your first free sample of what will become Luxer 2.</p>
+<p><img src="http://marcusfamily.info/~ryan/luxer/Luxer2Preview.png" width="432"></p>
+<p>I&#8217;ll write more on this later, but I figure you&#8217;d all rather have me be writing code.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=176</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>More Luxer 1.0 Information</title>
+		<link>http://rmarcus.info/?p=165</link>
+		<comments>http://rmarcus.info/?p=165#comments</comments>
+		<pubDate>Thu, 26 Apr 2007 17:34:57 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=184</guid>
+		<description><![CDATA[I&#8217;ve decided that Luxer really needs a lot of under-the-hood work. A lot of the classes that I wrote two years ago are not written very well, and my connection style to JavaOp is a bit lacking. Also, I&#8217;ve decided to start supporting Luxer on Windows as well as Mac, as I am starting to [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve decided that Luxer really needs a lot of under-the-hood work. A lot of the classes that I wrote two years ago are not written very well, and my connection style to JavaOp is a bit lacking.</p>
+<p>Also, I&#8217;ve decided to start supporting Luxer on Windows as well as Mac, as I am starting to think it may be one of the better bots out there.</p>
+<p>And thus, my current game plan:</p>
+<ol>
+<li><strong>Step 1:</strong> Go through all the code in my Java – REALbasic interface and make it optimized.</li>
+<li><strong>Step 2:</strong> Add support to enable / disable debug mode from a menu item instead of having to move plugin files around.</li>
+<li><strong>Step 3:</strong> Create classes and an interface to modify what BNLS servers are used, and create some kind of method to always obtain a working one.</li>
+<li><strong>Step 4:</strong> Redesign the user structure. Flags should not be letters, but check boxes. Luxer is an application, not a hack. This will require redoing the entire user database structure.</li>
+<li><strong>Step 5:</strong> Re-add commands in a secure and less-lengthy fashion. Only send back error messages if something actually went wrong.
+</li>
+<li><strong>Step 6:</strong> Redo wildcard kicking and banning. We need a faster way, possibly with RegEx, to do this.
+<p>Once this is done, I&#8217;ll take a look at new features. I think that a new and better bot core will lead to an easier way to add more to Luxer.</li>
+</ol>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=165</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+		</item>
+		<item>
+		<title>Luxer Update</title>
+		<link>http://rmarcus.info/?p=155</link>
+		<comments>http://rmarcus.info/?p=155#comments</comments>
+		<pubDate>Mon, 29 Jan 2007 14:52:46 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=174</guid>
+		<description><![CDATA[Sorry for not being a little more active guys, debate has been a bigger time suck then World of Warcraft&#8230; Anyhow, I&#8217;m going to write the next version of Luxer to use local hashing, which several people have told me works. Just hold tight for a while, should not be too much longer.]]></description>
+				<content:encoded><![CDATA[<p>Sorry for not being a little more active guys, debate has been a bigger time suck then World of Warcraft&#8230;</p>
+<p>Anyhow, I&#8217;m going to write the next version of Luxer to use local hashing, which several people have told me works. Just hold tight for a while, should not be too much longer.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=155</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+		</item>
+		<item>
+		<title>Luxer 1.0 Release Info and Luxer 2.0 Plan</title>
+		<link>http://rmarcus.info/?p=154</link>
+		<comments>http://rmarcus.info/?p=154#comments</comments>
+		<pubDate>Wed, 20 Dec 2006 14:12:13 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=173</guid>
+		<description><![CDATA[Luxer 1.0 is officially done! The only thing preventing me from releasing is the small things I need to do (document, clean forums, get site up, etc.), then, you will all have a working WAR3 bot! Anyhow, I&#8217;d like to announce the official game plan for the next version of Luxer&#8230; 2! Completely redone UI [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Luxer 1.0 is officially done!</p>
+<p>The only thing preventing me from releasing is the small things I need to do (document, clean forums, get site up, etc.), then, you will all have a working WAR3 bot!</p>
+<p>Anyhow, I&#8217;d like to announce the official game plan for the next version of Luxer&#8230; 2!</p>
+<ul>
+<li><strong>Completely redone UI and code</strong></li>
+<p>No more sloppy code, no more sloppy UI. The final Luxer is going to be a shining jewel of the Macintosh, as well as Linux.</p>
+<li><strong>Unity</strong></li>
+<p>Like all great applications, it is time to add some UNITY to Luxer. My plan is to write a server (called &#8220;UNITY&#8221;) that will allow Luxer users to communicate and share, as well as download trivia questions and upload Chuck Norris jokes. <img src="http://rmarcus.info/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley" /> </p>
+<li><strong>Custom-Command Access</strong></li>
+<p>The main reason I could not get this feature in version 1.0 is because of my own sloppy code. However, in 2, this will not be a problem.</p>
+<li><strong>Web Interface&#8230; Batlle.net clans + UNITY = a better battle.net</strong></li>
+<p>As a part of UNITY, you will be able to do amazing things with Luxer. A quick brainstorming proposes these features:</p>
+<ol>
+<li><em>Web-based Chat</em></li>
+<p>Get a free hosted, web-based chat room with optional password for your channel.</p>
+<li><em>Forum Signatures</em></li>
+<p>Now, how is that for sweet? Put your battle.net name, access level, clan channel, and maybe a brief chat history in an image that could become your forum signature.
+</ol>
+</ul>
+<p>There is bound to be tons new in the next version of Luxer, but I will keep it at that for the moment.</p>
+<p>There is a small problem with UNITY&#8230; I need somebody to host it. It will be as simple as opening two ports to a computer and running a REALbasic program, but if I could get a Mac or Linux user who is willing to do that, it will save a lot of time. In order for me to use my own server for this, I will have to write the server in Java, which will take, shall we say, years.</p>
+<p>So, if you&#8217;ve been too lazy to donate to Luxer, perhaps this is your chance to contribute to the project.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=154</wfw:commentRss>
+		<slash:comments>19</slash:comments>
+		</item>
+		<item>
+		<title>Luxer 1.0 Screenshot</title>
+		<link>http://rmarcus.info/?p=153</link>
+		<comments>http://rmarcus.info/?p=153#comments</comments>
+		<pubDate>Sun, 17 Dec 2006 20:17:51 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=172</guid>
+		<description><![CDATA[Hey, I just took a screenshot and stitched together of every single Luxer window in dual-screen goodness. (yes, all the windows take up two entire screens!) Anyhow, check it out: Click here.]]></description>
+				<content:encoded><![CDATA[<p>Hey, I just took a screenshot and stitched together of every single Luxer window in dual-screen goodness. (yes, all the windows take up two entire screens!)</p>
+<p>Anyhow, check it out:</p>
+<p><a href="http://marcusfamily.info/~ryan/luxer/1point0beta.jpg">Click here.</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=153</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+		</item>
+		<item>
+		<title>Luxer Version 1.0 Update</title>
+		<link>http://rmarcus.info/?p=145</link>
+		<comments>http://rmarcus.info/?p=145#comments</comments>
+		<pubDate>Mon, 16 Oct 2006 17:13:54 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=164</guid>
+		<description><![CDATA[I&#8217;ve done a bit of work on all 9 of the features that I&#8217;ve promised for Luxer 1.0. Easy install. Download and double click, as it should be. I&#8217;ve figured out how to run the shell install script from a REALbasic application. Should not be long now! More iTunes commands I&#8217;m planning on adding the [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve done a bit of work on all 9 of the features that I&#8217;ve promised for Luxer 1.0.</p>
+<ul>
+<li><strong>Easy install. Download and double click, as it should be.</strong><br />
+I&#8217;ve figured out how to run the shell install script from a REALbasic application. Should not be long now!</li>
+<li><strong>More iTunes commands</strong><br />
+I&#8217;m planning on adding the following iTunes features:</p>
+<ol>
+<li><strong>PlayRating RATING(1-5)</strong>: Skips forward until a song of RATING is found.</li>
+<li><strong>Notification</strong>: Sends you a whisper with song information as the song changes</li>
+<li><strong>openitunes and quititunes</strong>: Commands to open and quit iTunes</li>
+</ol>
+</li>
+<li><strong>Remember CDKeys for different clients</strong><br />
+Finished.</li>
+<li><strong>Phrasebans</strong><br />
+I&#8217;ve finished this feature 100%. You can look at the documentation forum and check it out.</li>
+<li><strong>Vote</strong><br />
+Have not done much on this yet, still brainstorming about the best way to do it.</li>
+<li><strong>Chat window</strong><br />
+Almost complete. A few bugs to work out, and we got it!</li>
+<li><strong>Be able to change the access level required for commands</strong><br />
+Have not even touched it. This one will be a pain.</li>
+<li><strong>Make custom commands easier</strong><br />
+Done! You can now double click a command in the custom commands window to edit it, which is faster then remaking the command everytime&#8230; <img src="http://rmarcus.info/wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley" />  </li>
+<li><strong>Implement Mail</strong><br />
+This was a lot easier then it sounded. I created a mail database, and you can use the mail and inbox commands just like most other bots. Any person can have an unlimited number of messages sent to them, and when they join the channel they will be notified of their new mail.</li>
+</ul>
+<p>I&#8217;ve also added a few extra goodies:</p>
+<ul>
+<li><strong>Faster connection</strong>: I optimized the code Luxer uses to connect. It will be faster.</li>
+<li><strong>APM</strong>: You can now use the commands apm START apm STOP and apm RESULTS to see and measure your actions per minute.</li>
+<p>Demember 14th, here we come!</ul>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=145</wfw:commentRss>
+		<slash:comments>15</slash:comments>
+		</item>
+		<item>
+		<title>Luxer Version 1.0 Game Plan</title>
+		<link>http://rmarcus.info/?p=138</link>
+		<comments>http://rmarcus.info/?p=138#comments</comments>
+		<pubDate>Tue, 19 Sep 2006 18:10:33 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=155</guid>
+		<description><![CDATA[I&#8217;ve gone thourgh the forums and have created a list of features I will definitly be adding to the first offical release of Luxer. Easy install. Download and double click, as it should be. More iTunes commands Remember CDKeys for different clients Phrasebans Vote Chat window Be able to change the access level required for [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;ve gone thourgh the forums and have created a list of features I will definitly be adding to the first offical release of Luxer.</p>
+<ol>
+<li>Easy install. Download and double click, as it should be.</li>
+<li>More iTunes commands</li>
+<li>Remember CDKeys for different clients</li>
+<li>Phrasebans</li>
+<li>Vote</li>
+<li>Chat window</li>
+<li>Be able to change the access level required for commands</li>
+<li>Make custom commands easier</li>
+<li>Implement Mail</li>
+</ol>
+<p>I&#8217;m sorry if your feature did not make the short list. I don&#8217;t know if I am even going to have time to implement these.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=138</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+		</item>
+		<item>
+		<title>Luxer 1.0 and 1 year Anniversary Coming Up!</title>
+		<link>http://rmarcus.info/?p=137</link>
+		<comments>http://rmarcus.info/?p=137#comments</comments>
+		<pubDate>Sun, 17 Sep 2006 13:42:41 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=154</guid>
+		<description><![CDATA[It&#8217;s a pleasure to announce that I&#8217;m almost ready to release version 1.0 of Luxer! On December 14th, the one year anniversary of Luxer, I will be releasing the first official version of Luxer, Luxer 1.0! I&#8217;d first like to thank the people who made this possible. Without iago, who wrote JavaOp, this would not [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>It&#8217;s a pleasure to announce that I&#8217;m almost ready to release version 1.0 of Luxer!</p>
+<p>On <strong>December 14th</strong>, the <strong>one year anniversary of Luxer</strong>, I will be releasing the first official version of Luxer, <strong>Luxer 1.0!</strong></p>
+<p>I&#8217;d first like to thank the people who made this possible. Without iago, who wrote <a href="http://javaop.com">JavaOp</a>, this would not have been possible. I&#8217;d like to thank Joe of <a href="http://x86labs.org">x86 labs</a> for helping me write the Java plugin that allowed Luxer to connect to JavaOp. I&#8217;d like to thank Frank of <a href="http://fsandoval.net">FSandoval.net</a> for providing me with free and fast web hosting for more then two years, and for helping me with the graphical aspects of Luxer. I&#8217;d like to thank Sujak, for writing  the original command list that I&#8217;m still working off of today.</p>
+<p>Now, to the new stuff!</p>
+<p>I have many features I&#8217;d like to implement for version 1.0. First of all, I need to work with most of the requests in the forums, specifically setting commands to have custom access and an idle.</p>
+<p>I also want to create a real installer, which should not be too hard.</p>
+<p>I will remove the arch1.sit and JavaOp2.jar files in the Luxer folder, and make the application stand 100% alone.</p>
+<p>I will have Frank take one more look at the UI.</p>
+<p>I&#8217;ll also create a website for Luxer, which you can now find here: <a href="http://rmarcus.info/luxer" target="_blank">http://rmarcus.info/luxer</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=137</wfw:commentRss>
+		<slash:comments>6</slash:comments>
+		</item>
+		<item>
+		<title>Luxer Beta 16 Released</title>
+		<link>http://rmarcus.info/?p=135</link>
+		<comments>http://rmarcus.info/?p=135#comments</comments>
+		<pubDate>Sat, 16 Sep 2006 14:58:14 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=152</guid>
+		<description><![CDATA[I released beta 16 today. Changes: &#8211; The No Restrictions flag works correctly now. &#8211; Major chat window changes. Try double clicking on a user! You can download the new version here: http://marcusfamily.info/~ryan/forums/index.php/topic,15.0.html]]></description>
+				<content:encoded><![CDATA[<p>I released beta 16 today.</p>
+<p>Changes:<br />
+&#8211; The No Restrictions flag works correctly now.<br />
+&#8211; Major chat window changes. Try double clicking on a user!</p>
+<p>You can download the new version here: <a href="http://marcusfamily.info/~ryan/forums/index.php/topic,15.0.html">http://marcusfamily.info/~ryan/forums/index.php/topic,15.0.html</a></p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=135</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

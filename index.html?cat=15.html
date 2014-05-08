@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Personal | RMarcus.info</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://rmarcus.info/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://rmarcus.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Feed" href="index.html%3Ffeed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Comments Feed" href="index.html%3Ffeed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Personal Category Feed" href="index.html%3Ffeed=rss2&amp;cat=15" />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='wp-content/themes/twentytwelve/style.css%3Fver=3.8.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://rmarcus.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js%3Fver=1.10.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js%3Fver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rmarcus.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8" />
+<link rel="stylesheet" type="text/css" href="wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<link rel="publisher" href="https://plus.google.com/u/0/108417296717615529338" /><style type="text/css">
+/* <![CDATA[ */
+img.latex { 
+vertical-align: middle; 
+border: none;
+box-shadow: 0px 0px 0px #FFFFFF;
+ }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e6e6e6; }
+</style>
+</head>
+
+<body class="archive category category-personal category-15 custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="index.html" title="RMarcus.info" rel="home">RMarcus.info</a></h1>
+			<h2 class="site-description">It&#039;s all Frank&#039;s fault!</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="index.html%3Fcat=15.html#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li ><a href="index.html">Home</a></li><li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<section id="primary" class="site-content">
+		<div id="content" role="main">
+
+					<header class="archive-header">
+				<h1 class="archive-title">Category Archives: <span>Personal</span></h1>
+
+						</header><!-- .archive-header -->
+
+			
+	<article id="post-314" class="post-314 post type-post status-publish format-standard hentry category-computer-tips category-personal">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=314.html" rel="bookmark">Lyapunov Fractals in Python: Performance and Pretty Pictures</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=314.html#respond" title="Comment on Lyapunov Fractals in Python: Performance and Pretty Pictures"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I spent some time earlier this week playing around with <a href="http://en.wikipedia.org/wiki/Lyapunov_fractal">Lyapunov fractals</a> in Python. While normally I wouldn&#8217;t consider Python to be a performance-packing language, the ease-of-use (programmer cycles vs. machine cycles) inherent in Python has always been attractive. However, I was able to speed up my Python code substantially using <a href="http://psyco.sourceforge.net/">Psyco</a>, the Python <a href="http://docs.python.org/library/multiprocessing.html">multiprocessing module</a>, and a fast implementation of Python called <a href="http://pypy.org/">PyPy</a>.</p>
+<p>Lyapunov fractals are generated from a specific binary sequence, generally denoted with A&#8217;s and B&#8217;s. For example, the sequence &#8220;ABA&#8221; produces a different fractal than the sequence &#8220;BBAA.&#8221; An algorithm for generating these fractals is described by the Wolfram folk <a href="http://demonstrations.wolfram.com/LyapunovFractals/">here</a>.</p>
+<p>Lyapunov fractals are formed by associating an exponent (which, from what I can determine, is generally between -2.0 and 2.0) with a color. Each point on a 4.0&#215;4.0 plane gets an exponent. A visual representation of the fractal is then formed by associating each exponent with a color.</p>
+<p>Because of the computationally intense aspects of calculating an exponent, I decided to create one program to calculate all the exponent data, saving it to a file*, and another program to create an image from it. My source is available at the end of the post.</p>
+<p>After I&#8217;d written my code, I felt the wraith of Python in the form of slowness. After some trivial optimizations, I found Pysco and the Python multiprocessing module.</p>
+<p>Psyco is pretty straightforward: it does a bunch of JIT-style compilation (read: magic) on vanilla python to speed it up. It is pretty easy to use:<br />
+<code><br />
+import psyco<br />
+psyco.full()<br />
+</code></p>
+<p>Or, if you are slightly more error-cautious:</p>
+<p><code><br />
+try:<br />
+&nbsp;&nbsp;&nbsp;import psyco<br />
+&nbsp;&nbsp;&nbsp;psyco.full()<br />
+&nbsp;&nbsp;&nbsp;print "Psyco'd!"<br />
+except ImportError:<br />
+&nbsp;&nbsp;&nbsp;print "No psyco"<br />
+&nbsp;&nbsp;&nbsp;pass<br />
+</code></p>
+<p>The Python multiprocessing library is a real gem. It provides a parallel version of the <a href="http://docs.python.org/library/functions.html#map">&#8220;map&#8221; function</a>. This is pretty awesome &#8212; since each exponent calculation depends only upon a point (embarrassingly parallel), it is easy to create a function that takes in a point and spits out an exponent.</p>
+<p>Of course, all the concerns of parallel programming still apply. You can&#8217;t have any <a href="http://en.wikipedia.org/wiki/Race_condition">race conditions</a>, and your code needs to be conceptually parallel. Python takes care of all the messy bits (semaphores, join/fork management, etc.) for you.</p>
+<p>If you were using the map() function like this:<br />
+<code><br />
+a = map (function, list)<br />
+</code></p>
+<p>&#8230; you can simply replace that line with:</p>
+<p><code><br />
+try:<br />
+&nbsp;&nbsp;&nbsp;from multiprocessing import Pool<br />
+&nbsp;&nbsp;&nbsp;pool = Pool(8)<br />
+&nbsp;&nbsp;&nbsp;print "Parallel!"<br />
+&nbsp;&nbsp;&nbsp;a = pool.map(function, list)<br />
+except ImportError:<br />
+&nbsp;&nbsp;&nbsp;print "Not parallel"<br />
+&nbsp;&nbsp;&nbsp;a = map(function, list)<br />
+</code></p>
+<p>This will preform the map function in parallel (if the multiprocessing module is available) using 8 workers (which is pretty optimal for an i7 920).</p>
+<p>I also discovered an alternative flavor of Python called <a href="http://pypy.org/">PyPy</a>, which is a performance-driven Python that uses technology similar to Psyco. Sadly, PyPy doesn&#8217;t have an implementation of the multiprocessing module, so I was forced to choose between PyPy and traditional Python with multiprocessing and Psyco. I was incredibly doubtful that PyPy&#8217;s speed would be able to make up for parallelism and Psyco. I&#8217;ll let the numbers talk for me.</p>
+<p>The test system contains an un-overclocked i7 920 and 3GB of DDR3 RAM. These numbers are from generating a 1000&#215;1000 fractal worth of data with the sequence &#8220;AB&#8221; to a depth of 500 (iterations). I run Ubuntu 10.10 32-bit.</p>
+<p>Time in seconds. Smaller is better.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"chartType":"ColumnChart","chartName":"Python Accelerator Comparison","dataSourceUrl":"//spreadsheets.google.com/a/rmarcus.info/tq?key=0AmQWGSF3o-iidEt0bUNnYnAxay1naENJVGtBcUdHMEE&#038;transpose=0&#038;headers=1&#038;range=A1%3AF5&#038;gid=0&#038;pub=1","options":{"reverseCategories":false,"fontColor":"#fff","midColor":"#36c","pointSize":"0","headerColor":"#3d85c6","vAxis":{"format":"#0.###############"},"headerHeight":40,"is3D":false,"logScale":false,"hAxis":{"maxAlternation":1},"wmode":"opaque","title":"Python Accelerator Comparison","mapType":"hybrid","isStacked":false,"showTip":true,"displayAnnotations":true,"titleY":"Time","dataMode":"markers","colors":["#3366CC","#DC3912","#FF9900","#109618","#990099","#0099C6","#DD4477","#66AA00","#B82E2E","#316395"],"smoothLine":false,"maxColor":"#222","lineWidth":"2","labelPosition":"right","fontSize":"14px","hasLabelsColumn":true,"maxDepth":2,"legend":"right","allowCollapse":true,"cht":"bhg","minColor":"#ccc","reverseAxis":false,"width":600,"height":371},"refreshInterval":5} </script></p>
+<table>
+<tr>
+<th>Trial</th>
+<th>Python with Psyco and MP</th>
+<th>Python with Pysco</th>
+<th>Python with MP</th>
+<th>Python</th>
+<th>PyPy</th>
+</tr>
+<tr>
+<td>Trial 1</td>
+<td>36.4</td>
+<td>273</td>
+<td>253
+<td>2041
+<td>71</td>
+</tr>
+<tr>
+<td>Trial 2</td>
+<td>36.3</td>
+<td>268</td>
+<td>258</td>
+<td>2042</td>
+<td>66</td>
+</tr>
+<tr>
+<td>Trial 3</td>
+<td>35.2</td>
+<td>269</td>
+<td>255</td>
+<td>2058</td>
+<td>71</td>
+</tr>
+<tr>
+<td>Average</td>
+<td>35.966667</td>
+<td>270</td>
+<td>255.333333</td>
+<td>2047</td>
+<td>69.33333333</td>
+</tr>
+</table>
+<p>Clearly, Python on its own is pretty darn slow. Psyco provides nearly a 10x speedup, and if you can write your code to take advantage of the multiprocessing library, you can go really fast.</p>
+<p>The PyPy results, compared to the Pysco results, are quite impressive. If PyPy had an implementation of the multiprocessing library (which I&#8217;m fairly certain it doesn&#8217;t &#8212; feel free to correct me), it would probably dominate.</p>
+<p>The multiprocessing results for this test aren&#8217;t completely fair &#8212; generating fractals is an <a href="http://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a> problem. But, of course, if you can break your problem up into parallel pieces, you can expect a relatively big speed bump.</p>
+<p>Conclusion: Python doesn&#8217;t have to be as slow as Python normally is. Drop-in replacements like Psyco can greatly accelerate code. if your code is vanilla enough to not require many external libraries (like PIL) then PyPy can probably give you quite the boost as well.</p>
+<p>You can download my source <a href="http://debateresearchnet.fatcow.com/downloads/FractalPython.zip">here</a>.</p>
+<p>Here&#8217;s some pretty pictures:<br />
+
+		<style type='text/css'>
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-1' class='gallery galleryid-314 gallery-columns-2 gallery-size-thumbnail'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output.png'><img width="150" height="150" src="http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output-150x150.png" class="attachment-thumbnail" alt="output" /></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output2.png'><img width="150" height="150" src="http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output2-150x150.png" class="attachment-thumbnail" alt="output2" /></a>
+			</dt></dl><br style="clear: both" />
+			<br style='clear: both;' />
+		</div>
+</p>
+<p>* A note about pickle: I realize that many Python developers would&#8217;ve decided to use pickle (or the faster cPickle) to save their exponent data to a file. I found cPickle to be far, far slower than just writing out comma separated values.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a>, <a href="index.html%3Fcat=15.html" title="View all posts in Personal" rel="category">Personal</a> on <a href="index.html%3Fp=314.html" title="3:54 am" rel="bookmark"><time class="entry-date" datetime="2011-04-15T03:54:48+00:00">April 15, 2011</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-129" class="post-129 post type-post status-publish format-standard hentry category-personal">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=129.html" rel="bookmark">10 reasons to date a programmer</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=129.html#comments" title="Comment on 10 reasons to date a programmer">1 Reply</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Created by yours truly.</p>
+<ol>
+<li>We are used to working in the dark.</li>
+<li>Strong finger muscles.</li>
+<li>We don&#8217;t mind reading manuals.</li>
+<li>We can quickly adapt to any interface.</li>
+<li>We can work all night without food.</li>
+<li>Precision hand accuracy.</li>
+<li>We understand inheritances, so you don&#8217;t have to worry about anything &#8220;strange.&#8221;</li>
+<li>We&#8217;re object oriented&#8230; in more ways then one!</li>
+<li>Our connections have high upload rates.</li>
+<li>We know all the uses of a microphone.</li>
+</ol>
+<p>Feel free to use it if you give me credit. Also, comment any more you can think of.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=15.html" title="View all posts in Personal" rel="category">Personal</a> on <a href="index.html%3Fp=129.html" title="6:14 am" rel="bookmark"><time class="entry-date" datetime="2006-08-23T06:14:37+00:00">August 23, 2006</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-3" class="widget widget_text"><h3 class="widget-title">FortranFail Twitter</h3>			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/FortranFail" data-widget-id="347407527333486593">Tweets by @FortranFail</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+		</aside><aside id="pages-3" class="widget widget_pages"><h3 class="widget-title">Pages</h3>		<ul>
+			<li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html%3Fcat=4.html" title="View all posts filed under Android Debate">Android Debate</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="index.html%3Fcat=6.html" title="View all posts filed under Clipboard Historian">Clipboard Historian</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="index.html%3Fcat=7.html" title="View all posts filed under Computer Tips">Computer Tips</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="index.html%3Fcat=9.html" title="The UofA evidence autocutter.">Evidence Auto Cutter</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="index.html%3Fcat=11.html" title="View all posts filed under Luxer, Battle.net Bot">Luxer, Battle.net Bot</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="index.html%3Fcat=13.html" title="View all posts filed under Luxer: Documentation Update">Luxer: Documentation Update</a>
+</li>
+	<li class="cat-item cat-item-15 current-cat"><a href="index.html%3Fcat=15.html" title="View all posts filed under Personal">Personal</a>
+</li>
+		</ul>
+</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='index.html%3Fm=201307.html'>July 2013</a></li>
+	<li><a href='index.html%3Fm=201303.html'>March 2013</a></li>
+	<li><a href='index.html%3Fm=201206.html'>June 2012</a></li>
+	<li><a href='index.html%3Fm=201205.html'>May 2012</a></li>
+	<li><a href='index.html%3Fm=201104.html'>April 2011</a></li>
+	<li><a href='index.html%3Fm=201103.html'>March 2011</a></li>
+	<li><a href='index.html%3Fm=201008.html'>August 2010</a></li>
+	<li><a href='index.html%3Fm=201003.html'>March 2010</a></li>
+	<li><a href='index.html%3Fm=201001.html'>January 2010</a></li>
+	<li><a href='index.html%3Fm=200912.html'>December 2009</a></li>
+	<li><a href='index.html%3Fm=200903.html'>March 2009</a></li>
+	<li><a href='index.html%3Fm=200902.html'>February 2009</a></li>
+	<li><a href='index.html%3Fm=200901.html'>January 2009</a></li>
+	<li><a href='index.html%3Fm=200811.html'>November 2008</a></li>
+	<li><a href='index.html%3Fm=200808.html'>August 2008</a></li>
+	<li><a href='index.html%3Fm=200807.html'>July 2008</a></li>
+	<li><a href='index.html%3Fm=200806.html'>June 2008</a></li>
+	<li><a href='index.html%3Fm=200802.html'>February 2008</a></li>
+	<li><a href='index.html%3Fm=200712.html'>December 2007</a></li>
+	<li><a href='index.html%3Fm=200704.html'>April 2007</a></li>
+	<li><a href='index.html%3Fm=200701.html'>January 2007</a></li>
+	<li><a href='index.html%3Fm=200612.html'>December 2006</a></li>
+	<li><a href='index.html%3Fm=200610.html'>October 2006</a></li>
+	<li><a href='index.html%3Fm=200609.html'>September 2006</a></li>
+	<li><a href='index.html%3Fm=200608.html'>August 2006</a></li>
+	<li><a href='index.html%3Fm=200607.html'>July 2006</a></li>
+	<li><a href='index.html%3Fm=200606.html'>June 2006</a></li>
+	<li><a href='index.html%3Fm=200605.html'>May 2006</a></li>
+	<li><a href='index.html%3Fm=200604.html'>April 2006</a></li>
+	<li><a href='index.html%3Fm=200512.html'>December 2005</a></li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h3 class="widget-title">Other</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html%3Ffeed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html%3Ffeed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='wp-content/themes/twentytwelve/js/navigation.js%3Fver=1.0'></script>
+</body>
+</html>

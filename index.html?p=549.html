@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>TopNTree &#8212; A merge-sort inspired data structure | RMarcus.info</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://rmarcus.info/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://rmarcus.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Feed" href="index.html%3Ffeed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Comments Feed" href="index.html%3Ffeed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; TopNTree &#8212; A merge-sort inspired data structure Comments Feed" href="index.html%3Ffeed=rss2&amp;p=549" />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='wp-content/themes/twentytwelve/style.css%3Fver=3.8.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://rmarcus.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js%3Fver=1.10.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js%3Fver=1.2.1'></script>
+<script type='text/javascript' src='wp-includes/js/comment-reply.min.js%3Fver=3.8'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rmarcus.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Objective C v C Speed / Benchmarks' href='index.html%3Fp=488.html' />
+<link rel='next' title='Fallthrough Sort: Quickly Sorting Small Sets' href='index.html%3Fp=641.html' />
+<meta name="generator" content="WordPress 3.8" />
+<link rel='canonical' href='index.html%3Fp=549.html' />
+<link rel='shortlink' href='index.html%3Fp=549.html' />
+<link rel="stylesheet" type="text/css" href="wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { 
+vertical-align: middle; 
+border: none;
+box-shadow: 0px 0px 0px #FFFFFF;
+ }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e6e6e6; }
+</style>
+</head>
+
+<body class="single single-post postid-549 single-format-standard custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="index.html" title="RMarcus.info" rel="home">RMarcus.info</a></h1>
+			<h2 class="site-description">It&#039;s all Frank&#039;s fault!</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="index.html%3Fp=549.html#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li ><a href="index.html">Home</a></li><li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-549" class="post-549 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">TopNTree &#8212; A merge-sort inspired data structure</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=549.html#respond" title="Comment on TopNTree &#8212; A merge-sort inspired data structure"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree -- an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides <img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /> search time. </p>
+<p>However, I also needed to be able to query the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> most frequently contacted contacts. Since contacts are sorted by their names, finding the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> most frequently contacted contacts would require <img src='http://s.wordpress.com/latex.php?latex=O%28n%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n \log n)' title='O(n \log n)' class='latex' /> search time.</p>
+<p>To solve this problem, I created an <a href="http://www.cs.arizona.edu/classes/cs545/fall09/Augmented-DS.prn.pdf">augmented binary tree</a> which provides an insertion time of <img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' />, a search time of <img src='http://s.wordpress.com/latex.php?latex=O%28%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O( \log n)' title='O( \log n)' class='latex' />, and can find the top <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> contacts in <img src='http://s.wordpress.com/latex.php?latex=O%281%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(1)' title='O(1)' class='latex' />. You can view a Java implementation of the code <a href="https://bitbucket.org/RyanMarcus/topntree/overview">here</a>. The code is license free, and ought to be considered public domain.</p>
+<p>In order to accomplish this, each node is augmented with an array of size <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> that stores, in sorted order, the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> largest keys in it's left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value. </p>
+<p>When a node <img src='http://s.wordpress.com/latex.php?latex=%5Calpha&#038;bg=T&#038;fg=000000&#038;s=0' alt='\alpha' title='\alpha' class='latex' /> is inserted and becomes the left or right child of <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />, <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />'s array is merged with <img src='http://s.wordpress.com/latex.php?latex=%5Calpha&#038;bg=T&#038;fg=000000&#038;s=0' alt='\alpha' title='\alpha' class='latex' />'s array, with the result stored into <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />'s array. This merging can be done in <a href="http://en.wikipedia.org/wiki/Merge_sort">linear time</a>, since both arrays are already sorted. After this, <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />'s parent is updated, and then the parent's parent, all the way up to the root of the tree.</p>
+<p>Pictures are great. Consider a tree with one node, for a contact Dave who has been contacted 10 times.</p>
+<p><a href="wp-content/uploads/2013/03/r11.png"><img src="wp-content/uploads/2013/03/r11.png" alt="One node" width="303" height="89" class="aligncenter size-full wp-image-568" /></a></p>
+<p>Then, we add another node for Betsy, who has been contacted 4 times.</p>
+<p><a href="wp-content/uploads/2013/03/r2.png"><img src="wp-content/uploads/2013/03/r2.png" alt="Two nodes" width="320" height="247" class="aligncenter size-full wp-image-571" /></a></p>
+<p>The array stored in the node representing Betsy gets merged with the parent node, Dave. Inserting another node:</p>
+<p><a href="wp-content/uploads/2013/03/r3.png"><img src="wp-content/uploads/2013/03/r3.png" alt="Three nodes" width="407" height="221" class="aligncenter size-full wp-image-574" /></a></p>
+<p>Once again, new nodes start out with only themselves in their array, and arrays are merged upwards from the node inserted.</p>
+<p><a href="wp-content/uploads/2013/03/r4.png"><img src="wp-content/uploads/2013/03/r4.png" alt="Four nodes" width="547" height="378" class="aligncenter size-full wp-image-572" /></a></p>
+<p>Another node:<br />
+<a href="wp-content/uploads/2013/03/r5.png"><img src="wp-content/uploads/2013/03/r5.png" alt="Five nodes" width="696" height="392" class="aligncenter size-full wp-image-573" /></a></p>
+<p>From here, fetching the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> most contacted contacts can be done in constant time, because it simply requires the retrieval of the array from the root node.</p>
+<p>Note that in order to maintain <img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' /> time, the tree must be kept balanced. In my implementation, I use an <a href="http://en.wikipedia.org/wiki/AVL_tree">AVL tree</a>. For others seeking to use an AVL tree, make sure that, after any rotation, you properly update each node rotated. The simplest solution is to clear the arrays of merged nodes, and recalculate them by merging their immediate children.</p>
+<p>In case the similarity to merge sort is not clear, here is some pseudo-code for the merging:</p>
+<pre class="wp-code-highlight prettyprint">
+function merge(ParentArray a, ChildArray b) {
+   int myPos = a.size - 1;
+   int theirPos = b.size - 1;
+                
+   Entry[] newObjs = new Entry[];
+   for (int i = size - 1; i &gt;= 0; i--) {
+        if (a[myPos] &gt; b[theirPos]) {
+             newObjs[i] = a[myPos];
+             myPos--;
+        } else if (a[myPos] == b[theirPos]) {
+             newObjs[i] = a[myPos];
+             myPos--;
+             theirPos--;
+        } else {
+             newObjs[i] = b[theirPos];
+             theirPos--;
+        }
+   }
+}
+</pre>
+<p>This process, ran on arrays of size 5, is depicted below. Initially, the new array is empty.<br />
+<a href="wp-content/uploads/2013/03/m1.png"><img src="wp-content/uploads/2013/03/m1.png" alt="m1" width="656" height="234" class="aligncenter size-full wp-image-580" /></a></p>
+<p>The largest value from both the parent's old array and the child's array are selected on each iteration, ensuring that the new array is properly ordered.<br />
+<a href="wp-content/uploads/2013/03/m2.png"><img src="wp-content/uploads/2013/03/m2.png" alt="m2" width="656" height="244" class="aligncenter size-full wp-image-581" /></a></p>
+<p>Note that the pointer variable (represented by the diamond) moves every time for the top array, but only moves for one of the bottom arrays or the other, except in the case where both bottom arrays have an equal value.</p>
+<p><a href="wp-content/uploads/2013/03/m3.png"><img src="wp-content/uploads/2013/03/m3.png" alt="m3" width="667" height="236" class="aligncenter size-full wp-image-582" /></a></p>
+<p>In each iteration, the value to be placed in the top array at the diamond is determined in constant time by simply picking the larger of the two values pointed to in the lower arrays. This means that the merge operation runs in <img src='http://s.wordpress.com/latex.php?latex=O%28k%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k)' title='O(k)' class='latex' /> time.</p>
+<p><a href="wp-content/uploads/2013/03/m4.png"><img src="wp-content/uploads/2013/03/m4.png" alt="m4" width="656" height="239" class="aligncenter size-full wp-image-578" /></a></p>
+<p>Unlike in a traditional merge sort, the merge process can be halted when the top array is full, because we only care about the largest <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> entries.</p>
+<p><a href="wp-content/uploads/2013/03/m5.png"><img src="wp-content/uploads/2013/03/m5.png" alt="m5" width="656" height="246" class="aligncenter size-full wp-image-579" /></a></p>
+<p>While the TopNTree provides, in my opinion, a clean solution to this particular problem, there are other possible solutions. The first thing I thought of was to simply maintain a tree of contacts sorted by name and a heap of the contacts sorted by how frequently they are contacted. In the case where the most frequently contacted contacts only needs to be calculated once, this might save some time, but if a contact's frequency must be updated (a common event in a communication application), one would have to iterate over the entire heap. The following table shows the differences in upper bounds for different techniques. Note that in all cases <img src='http://s.wordpress.com/latex.php?latex=k%20%5Cleq%20n&#038;bg=T&#038;fg=000000&#038;s=0' alt='k \leq n' title='k \leq n' class='latex' /> and in most cases <img src='http://s.wordpress.com/latex.php?latex=k%20%3C%20n&#038;bg=T&#038;fg=000000&#038;s=0' alt='k &lt; n' title='k &lt; n' class='latex' /> and in my case <img src='http://s.wordpress.com/latex.php?latex=k%20%5Cll%20n&#038;bg=T&#038;fg=000000&#038;s=0' alt='k \ll n' title='k \ll n' class='latex' />.</p>
+<table>
+<tr>
+<th>Method</th>
+<th>Insert</th>
+<th>Search</th>
+<th>Getting most contacted</th>
+<th>Update</th>
+</tr>
+<tr>
+<td>TopNTree</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%281%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(1)' title='O(1)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' /></td>
+</tr>
+<tr>
+<td>Tree and heap</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k)' title='O(k)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n)' title='O(n)' class='latex' /></td>
+</tr>
+<tr>
+<td>Tree</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n \log n)' title='O(n \log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n)' title='O(n)' class='latex' /></td>
+</tr>
+<tr>
+<td>Heap</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n)' title='O(n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k)' title='O(k)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+</tr>
+</table>
+<p>For me, the search time of the heap and the "getting most contacted" time of the tree made those solutions impractical, so I compared the TopNTree to a tree and a heap. Since the size of <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> was both constant and very low (5, for my listing of most popular contacts), I decided to use the TopNTree.</p>
+<p>Because big-O analysis, in general, is not to be trusted, I created a synthetic benchmark that emphasized the operations I was concerned with. The results are graphed below.<br />
+<center><br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidDRIMm8yampxcDk4UVBCSS0zV1J6NWc&transpose=0&headers=1&range=A1%3AC6&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time (s)","minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"curveType":"","booleanRole":"certainty","title":"TopNTree v AVL/Heap for k = 5","interpolateNulls":false,"animation":{"duration":0},"domainAxis":{"direction":1},"legend":"in","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Keys (n)","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script><br />
+</center></p>
+<p>Obviously, no synthetic beats real-world testing. I hope the TopNTree performs well!</p>
+<p>Reddit user JustSomeBadAdvice <a href="http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n">points out</a> that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.</p>
+<p class="updated" itemscope itemtype="http://schema.org/WebPage" itemid="http://rmarcus.info/?p=549">Last updated by <span style="float:none" class="author vcard"><span class="fn"><a rel="author" href="index.html%3Fauthor=1.html" class="authorsure-author-link">Ryan Marcus</a></span></span> at <time itemprop="dateModified" datetime="2013-07-01T22:53:26+00:00">July 1, 2013</time>.</p>					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=549.html" title="11:35 pm" rel="bookmark"><time class="entry-date" datetime="2013-03-09T23:35:05+00:00">March 9, 2013</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="index.html%3Fp=488.html" rel="prev"><span class="meta-nav">&larr;</span> Objective C v C Speed / Benchmarks</a></span>
+					<span class="nav-next"><a href="index.html%3Fp=641.html" rel="next">Fallthrough Sort: Quickly Sorting Small Sets <span class="meta-nav">&rarr;</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html%3Fp=549.html#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://rmarcus.info/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" /></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot; rel=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment" />
+							<input type='hidden' name='comment_post_ID' value='549' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="25714d26c5" /></p>					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-3" class="widget widget_text"><h3 class="widget-title">FortranFail Twitter</h3>			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/FortranFail" data-widget-id="347407527333486593">Tweets by @FortranFail</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+		</aside><aside id="pages-3" class="widget widget_pages"><h3 class="widget-title">Pages</h3>		<ul>
+			<li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html%3Fcat=4.html" title="View all posts filed under Android Debate">Android Debate</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="index.html%3Fcat=6.html" title="View all posts filed under Clipboard Historian">Clipboard Historian</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="index.html%3Fcat=7.html" title="View all posts filed under Computer Tips">Computer Tips</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="index.html%3Fcat=9.html" title="The UofA evidence autocutter.">Evidence Auto Cutter</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="index.html%3Fcat=11.html" title="View all posts filed under Luxer, Battle.net Bot">Luxer, Battle.net Bot</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="index.html%3Fcat=13.html" title="View all posts filed under Luxer: Documentation Update">Luxer: Documentation Update</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="index.html%3Fcat=15.html" title="View all posts filed under Personal">Personal</a>
+</li>
+		</ul>
+</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='index.html%3Fm=201307.html'>July 2013</a></li>
+	<li><a href='index.html%3Fm=201303.html'>March 2013</a></li>
+	<li><a href='index.html%3Fm=201206.html'>June 2012</a></li>
+	<li><a href='index.html%3Fm=201205.html'>May 2012</a></li>
+	<li><a href='index.html%3Fm=201104.html'>April 2011</a></li>
+	<li><a href='index.html%3Fm=201103.html'>March 2011</a></li>
+	<li><a href='index.html%3Fm=201008.html'>August 2010</a></li>
+	<li><a href='index.html%3Fm=201003.html'>March 2010</a></li>
+	<li><a href='index.html%3Fm=201001.html'>January 2010</a></li>
+	<li><a href='index.html%3Fm=200912.html'>December 2009</a></li>
+	<li><a href='index.html%3Fm=200903.html'>March 2009</a></li>
+	<li><a href='index.html%3Fm=200902.html'>February 2009</a></li>
+	<li><a href='index.html%3Fm=200901.html'>January 2009</a></li>
+	<li><a href='index.html%3Fm=200811.html'>November 2008</a></li>
+	<li><a href='index.html%3Fm=200808.html'>August 2008</a></li>
+	<li><a href='index.html%3Fm=200807.html'>July 2008</a></li>
+	<li><a href='index.html%3Fm=200806.html'>June 2008</a></li>
+	<li><a href='index.html%3Fm=200802.html'>February 2008</a></li>
+	<li><a href='index.html%3Fm=200712.html'>December 2007</a></li>
+	<li><a href='index.html%3Fm=200704.html'>April 2007</a></li>
+	<li><a href='index.html%3Fm=200701.html'>January 2007</a></li>
+	<li><a href='index.html%3Fm=200612.html'>December 2006</a></li>
+	<li><a href='index.html%3Fm=200610.html'>October 2006</a></li>
+	<li><a href='index.html%3Fm=200609.html'>September 2006</a></li>
+	<li><a href='index.html%3Fm=200608.html'>August 2006</a></li>
+	<li><a href='index.html%3Fm=200607.html'>July 2006</a></li>
+	<li><a href='index.html%3Fm=200606.html'>June 2006</a></li>
+	<li><a href='index.html%3Fm=200605.html'>May 2006</a></li>
+	<li><a href='index.html%3Fm=200604.html'>April 2006</a></li>
+	<li><a href='index.html%3Fm=200512.html'>December 2005</a></li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h3 class="widget-title">Other</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html%3Ffeed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html%3Ffeed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='wp-content/themes/twentytwelve/js/navigation.js%3Fver=1.0'></script>
+</body>
+</html>

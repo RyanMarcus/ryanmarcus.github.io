@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>RMarcus.info &#187; Clipboard Historian</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;cat=6" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Sun, 27 Oct 2013 08:46:08 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>Clipboard Historian 10.1 Released!</title>
+		<link>http://rmarcus.info/?p=106</link>
+		<comments>http://rmarcus.info/?p=106#comments</comments>
+		<pubDate>Mon, 29 May 2006 22:38:27 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Clipboard Historian]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=118</guid>
+		<description><![CDATA[I released version 10.1 of Clipboard Historian today. Changes: Single quotes now work properly in records. Timestamps now include seconds. Copying pictures that were captured close together now works. You can no longer add blank categories. Database file has been moved to the preferences folder, this means you can run Clipboard Historian from anywhere on [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I released version 10.1 of Clipboard Historian today.</p>
+<p>Changes:</p>
+<ul>
+<li>Single quotes now work properly in records.</li>
+<li>Timestamps now include seconds.</li>
+<li>Copying pictures that were captured close together now works.</li>
+<li>You can no longer add blank categories.</li>
+<li>Database file has been moved to the preferences folder, this means you can run Clipboard Historian from anywhere on your computer.</li>
+<li>Added help in the form of Lamtid! Look under the help menu.</li>
+<p>You can download Clipboard Historian 10.1 from the offical site: <a href="http://rmarcus.info/ch">http://rmarcus.info/ch</a></ul>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=106</wfw:commentRss>
+		<slash:comments>5</slash:comments>
+		</item>
+		<item>
+		<title>Clipboard Historian 10.0 Released!</title>
+		<link>http://rmarcus.info/?p=103</link>
+		<comments>http://rmarcus.info/?p=103#comments</comments>
+		<pubDate>Wed, 24 May 2006 02:01:02 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Clipboard Historian]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=114</guid>
+		<description><![CDATA[Check out the Clipboard Historian website: http://rmarcus.info/ch/, and leave a review on MacUpdate when the new version shows up.]]></description>
+				<content:encoded><![CDATA[<p>Check out the Clipboard Historian website: <a href="http://rmarcus.info/ch" target="_blank">http://rmarcus.info/ch/</a>, and leave a review on <a href="http://macupdate.com">MacUpdate</a> when the new version shows up.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=103</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Further Clipboard Historian Issues</title>
+		<link>http://rmarcus.info/?p=102</link>
+		<comments>http://rmarcus.info/?p=102#comments</comments>
+		<pubDate>Mon, 22 May 2006 15:26:27 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Clipboard Historian]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=113</guid>
+		<description><![CDATA[I&#8217;m about an inch away from rewriting Clipboard Historian in Java because of the problems I&#8217;m having with REALbasic. As you may know, Clipboard Historian has support for picture clippings.. in previous versions, these pictures were stored with the text clippings in a text file, which was really, really, slow. So I start migrating my [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m about an inch away from rewriting Clipboard Historian in Java because of the problems I&#8217;m having with REALbasic.</p>
+<p>As you may know, Clipboard Historian has support for picture clippings.. in previous versions, these pictures were stored with the text clippings in a text file, which was really, really, slow.</p>
+<p>So I start migrating my text clipping storage to a REALSQLdatabase, and everything works fine. Now, time to deal with pictures.</p>
+<p>I have it working (at the moment) to, every single time you open and close Clipboard Historian, write every picture out to a file using f.SaveAsJPEG and then read it back in using f.OpenAsPicture. This works OK if you have one or two pictures, but once you get into 10 or 20, launching and quitting Clipboard Historian starts taking several seconds&#8230; which is way to long for me.</p>
+<p>So I have a new plan. I have a record table, which contains a picture ID. Then, in the picture table, I am storing three things, picture ID, thumbnail, and the actual picture. Using a small script I wrote (I will post it later), I can change pictures into text and back again, but it is a slow process. When you copy a picture onto the clipboard, a thumbnail of the image is instantly created and displayed. The larger image is stored in the database&#8230; once. When you double click on an image, it is queried out of the database and rendered. This way, the larger picture only needs to be read when you first copy it (which might take half a second) and when you double click on it to view or copy it.</p>
+<p>Problem solved, but wouldn&#8217;t it be nice if the features I paid for actually worked?</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=102</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Clipboard Historian Update</title>
+		<link>http://rmarcus.info/?p=95</link>
+		<comments>http://rmarcus.info/?p=95#comments</comments>
+		<pubDate>Mon, 08 May 2006 15:01:37 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Clipboard Historian]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=106</guid>
+		<description><![CDATA[Just wanted to let everybody know that I am still developing Clipboard Historian. It has just been a little low on my priority list recently. Plans for Clipboard Historian 10 include: Record SQL database. Much faster and accurate loading and saving times. Password protected. Protect certain records or all of Clipboard Historian. Better picture management. [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>Just wanted to let everybody know that I am still developing Clipboard Historian. It has just been a little low on my priority list recently.</p>
+<p>Plans for Clipboard Historian 10 include:</p>
+<ul>
+<li>Record SQL database. Much faster and accurate loading and saving times.</li>
+<li>Password protected. Protect certain records or all of Clipboard Historian.</li>
+<li>Better picture management. No more cut corners.</li>
+</ul>
+<p>Expected beta release date: <i>May 29</i><br />
+Expected full release date: <i>June 20</i></p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=95</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

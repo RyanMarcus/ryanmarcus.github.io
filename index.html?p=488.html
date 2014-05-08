@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Objective C v C Speed / Benchmarks | RMarcus.info</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://rmarcus.info/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://rmarcus.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Feed" href="index.html%3Ffeed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Comments Feed" href="index.html%3Ffeed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Objective C v C Speed / Benchmarks Comments Feed" href="index.html%3Ffeed=rss2&amp;p=488" />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='wp-content/themes/twentytwelve/style.css%3Fver=3.8.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://rmarcus.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js%3Fver=1.10.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js%3Fver=1.2.1'></script>
+<script type='text/javascript' src='wp-includes/js/comment-reply.min.js%3Fver=3.8'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rmarcus.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Android Debate v0.6 Released' href='index.html%3Fp=480.html' />
+<link rel='next' title='TopNTree &#8212; A merge-sort inspired data structure' href='index.html%3Fp=549.html' />
+<meta name="generator" content="WordPress 3.8" />
+<link rel='canonical' href='index.html%3Fp=488.html' />
+<link rel='shortlink' href='index.html%3Fp=488.html' />
+<link rel="stylesheet" type="text/css" href="wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<style type="text/css">
+/* <![CDATA[ */
+img.latex { 
+vertical-align: middle; 
+border: none;
+box-shadow: 0px 0px 0px #FFFFFF;
+ }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e6e6e6; }
+</style>
+</head>
+
+<body class="single single-post postid-488 single-format-standard custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="index.html" title="RMarcus.info" rel="home">RMarcus.info</a></h1>
+			<h2 class="site-description">It&#039;s all Frank&#039;s fault!</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="index.html%3Fp=488.html#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li ><a href="index.html">Home</a></li><li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-488" class="post-488 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">Objective C v C Speed / Benchmarks</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=488.html#respond" title="Comment on Objective C v C Speed / Benchmarks"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I've been becoming increasingly interested in Objective C recently (as an alternative to C++). It is a much cleaner object-oriented extension to C that dodges a lot of of the pitfalls present in C++.</p>
+<p>One of the "complaints" about Objective C is that message passing (Objective C's method of communicating with objects) is slower than C++ and C. <a href="http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocObjectsClasses.html">Because of the nature of Objective C,</a> this is likely true. I set out to discover just how much Objective C's dynamic messages would cost me.</p>
+<p><a href="http://it.toolbox.com/blogs/macsploitation/bypassing-objectivecs-message-passing-mechanism-for-speed-24946">A blog post by Jonathan Hohle</a> showed some interesting numbers for a recursive Fibonacci calculator. Hohle's post showed that Objective C's message passing costs pushed the runtime of the Objective C version of the code up to nearly triple that of the C version. Using a few hacks (storing a function pointer to the result of a message) reduced the difference to double.</p>
+<p>Hohle's results left me skeptical and wanting a bit more, so I created my own little benchmark with an Objective C and a C implementation of a <a href="http://en.wikipedia.org/wiki/Linked_list">linked list</a>. I tried to keep the codes as close to each other as possible, only introducing differences when an Objective C construct should be used (objects, most notably).</p>
+<p>The code for the linked list implementations is exactly what you'd expect it to be, but it is available for download (as well as scripts to run the benchmark yourself) at the bottom of this post.</p>
+<p>Before anyone jumps to any long-shot conclusions, obviously these benchmarks aren't perfect: not even close. I don't have access to the wide range of machines that would be needed to sufficiently gauge what is going on. I'm also aware that only testing a linked list implementation is not exhaustive. I was interested in the speed of various data structures like a linked list, so that's what I tested. Take everything below with a handful of salt.</p>
+<p>The actual benchmark code (that utilized the linked list) looks like this:</p>
+<p>C:</p>
+<pre class="wp-code-highlight prettyprint">
+#include &quot;linked_list_c.h&quot;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+
+int main(int argc, char** argv) {
+	int SIZE = atoi(argv[1]);
+
+	// make a new linked list
+	struct linked_list* ll = ll_create();
+	
+	int* d = calloc(SIZE, sizeof(int));
+	int i;
+	for (i=0; i &lt; SIZE; i++) {
+		d[i] = i;
+		ll_add(&amp;(d[i]), ll);
+	}
+	
+	printf(&quot;Size of list: %d\n&quot;, ll_length(ll));
+	int sum = 0;
+	while (ll_length(ll) != 0) {
+		sum +=  *(int*)ll_pop(ll);
+		struct linked_list* lli = ll_create();
+		for (i=0; i &lt; sum; i++) {
+			ll_add(&amp;(d[1]), lli);
+		}
+
+		while (ll_length(lli) != 0) {
+			sum -= *(int*)ll_pop(lli);
+		}
+		free(lli);
+	}
+	printf(&quot;Sum: %d\n&quot;, sum);
+	
+	
+	free(d);
+	free(ll);
+	return 0;
+}
+</pre>
+<p>And its Objective C counterpart:</p>
+<pre class="wp-code-highlight prettyprint">
+#include &quot;linked_list.h&quot;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+
+
+int main(int argc, char** argv) {
+	int SIZE = atoi(argv[1]);
+	
+	// make a new linked list
+	LinkedList* ll = [[LinkedList alloc] init];
+	
+	int* d = calloc(SIZE, sizeof(int));
+	int i;
+	for (i=0; i &lt; SIZE; i++) {
+		d[i] = i;
+		[ll add: &amp;(d[i])];
+	}
+	
+	printf(&quot;Size of list: %d\n&quot;, [ll length]);
+	int sum = 0;
+	while ([ll length] != 0) {
+		sum +=  *(int*)[ll pop];
+		LinkedList* lli = [[LinkedList alloc] init];
+		for (i=0; i &lt; sum; i++) {
+			[lli add: &amp;(d[1])];
+		}
+
+		while ([lli length] != 0) {
+			sum -= *(int*)[lli pop];
+		} 
+
+		[lli release];
+	}
+	printf(&quot;Sum: %d\n&quot;, sum);
+	
+	
+	free(d);
+	[ll release];
+	return 0;
+}
+</pre>
+<p>If you're anything like me, you prefer the look and feel of the Objective C code, but only if the performance costs aren't too high.</p>
+<p>I tested my code on two different systems: an i7 920 Linux box (Debian stable Linux 2.6.32-5-amd64) and a MacBook Air 13" (OS X 10.7.3, Darwin 11.3.0). Since the majority of my development targets Linux, I wanted to test both GCC and Clang on the Linux box. Apple's default compiler was used on the MacBook Air.</p>
+<p>There is quite a bit of test data, and I've made it available in a publicly-accessible Google spreadsheet here: <a href="https://docs.google.com/spreadsheet/ccc?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE">https://docs.google.com/spreadsheet/ccc?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE</a></p>
+<p>The first system/compiler tested is <a href="http://clang.llvm.org/">Clang, an LLVM compiler.</a> The compiler options for both the GCC and Clang tests were provided by the gnustep-config utility.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G10%3AI16&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Linux Clang Obj C/C Times","booleanRole":"certainty","animation":{"duration":500},"domainAxis":{"direction":1},"legend":"in","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 2"} </script></p>
+<p>Clearly, the Objective C version is slower. It might be more helpful to look at a graph of the percent differences between the two implementations:</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G1%3AH7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Seconds","minValue":0,"viewWindowMode":"explicit","viewWindow":{"min":0,"max":1},"maxValue":1},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"curveType":"function","booleanRole":"certainty","title":"Clang C/Obj C Time Difference","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":false,"title":"Size","formatOptions":{"source":"inline"},"minValue":null,"viewWindowMode":"pretty","format":"0.##","viewWindow":{"min":null,"max":null},"logScale":false,"maxValue":null},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 1"} </script></p>
+<p>Despite some strangeness with low data sizes, Clang's compilation of my Objective-C implementation runs around 30% slower than Clang's compilation of my C implementation. The strange behavior at lower ranges is likely due to the initial overhead of the first message passed to an object.</p>
+<p><a href="wp-content/uploads/2012/06/clangobjcc-1.png"><img src="wp-content/uploads/2012/06/clangobjcc-1.png" alt="Clang&#039;s Objective C is about 30% slower than Clang&#039;s C" title="Clang Obj C/C" width="500" height="150" class="aligncenter size-full wp-image-510" /></a></p>
+<p>Similar tests for GCC:<br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G19%3AI25&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Linux GCC Obj C/C Times","booleanRole":"certainty","animation":{"duration":500},"legend":"top","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 3"} </script></p>
+<p>Once again, Objective C is obviously slower, but the gap looks quite a bit smaller. The percent-difference graph is more helpful.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G1%3AG7%2CI1%3AI7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"% Time Difference","minValue":0,"viewWindowMode":"explicit","viewWindow":{"min":0,"max":1},"maxValue":1},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"curveType":"function","booleanRole":"certainty","title":"GCC C/Obj C Time Difference","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Size","viewWindowMode":"pretty","viewWindow":{}},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 4"} </script></p>
+<p>GCC's Objective C binary seems to approach 25% slower than C as opposed to Clang's 30%, possibly due to the maturity of GCC.</p>
+<p><a href="wp-content/uploads/2012/06/gccobjcc.png"><img src="wp-content/uploads/2012/06/gccobjcc.png" alt="GCC&#039;s Objective C is 25% slower than C" title="GCC Obj C/C" width="500" height="150" class="aligncenter size-full wp-image-496" /></a></p>
+<p>Since GCC's C binaries tend to execute faster than Clang's, it is no surprise that GCC's Objective C binaries also execute faster than Clang's Objective C binaries. The difference, however, is not that large.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G10%3AG16%2CI10%3AI16%2CI19%3AI25&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"GCC v Clang Objective C Speed","booleanRole":"certainty","animation":{"duration":500},"legend":"top","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 5"} </script></p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G1%3AG7%2CL1%3AL7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time","minValue":null,"viewWindowMode":"pretty","viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Time % Difference for Clang and GCC Objective C","booleanRole":"certainty","curveType":"function","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 6"} </script></p>
+<p>Generally, GCC's Objective C binary seems to be 4-5% faster than Clang's Objective C binary, although the shape of the graph seems to indicate that the difference may shrink even more as the problem size increases.</p>
+<p><a href="wp-content/uploads/2012/06/gccclangobjc.png"><img src="wp-content/uploads/2012/06/gccclangobjc.png" alt="GCC&#039;s Objective C seems to be 4-5% faster than Clang&#039;s Objective C" title="GCC Clang Obj C" width="500" height="150" class="aligncenter size-full wp-image-498" /></a></p>
+<p>One would imagine that Apple's compiler would be especially good at compiling Objective C, given Apple's large commitment to the language. Benchmarks of the same code ran on a MacBook Air are below.<br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G29%3AI35&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Apple C / Objective C Times","booleanRole":"certainty","animation":{"duration":500},"legend":"top","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 8"} </script></p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G1%3AG7%2CM1%3AM7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"% Slower","minValue":0,"viewWindowMode":"explicit","viewWindow":{"min":0,"max":1},"maxValue":1},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Time % Difference for Apple C / Objective C","booleanRole":"certainty","curveType":"function","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 7"} </script></p>
+<p>It appears as though Apple's Objective C compiler produces binaries that are around 18% slower than Apple's C binaries. The shape of the graph suggests that the percentage may decrease further with an increased problem size.</p>
+<p><a href="wp-content/uploads/2012/06/appleobjcc.png"><img src="wp-content/uploads/2012/06/appleobjcc.png" alt="Apple" title="Apple Objective C/C" width="500" height="150" class="aligncenter size-full wp-image-499" /></a></p>
+<p>In conclusion, Objective C sucks a bit of the performance out of your application if you depend on objects/messages for high-use data structures. While these numbers certainly have their issues (there's no real comparison of the Apple compiler to any other compiler), they do suggest that performance-critical chunks of code ought to remain in C (or, *shutter*, Fortran).</p>
+<p>In the HPC world,<a href="http://en.wikipedia.org/wiki/Greenspun's_tenth_rule">Greenspun's tenth rule</a> seems to hold true: "any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of Common Lisp." Meaning, of course, that certain higher-level constructs (like objects) inevitably become needed. So while Objective C shouldn't be replacing our high-performance data structures yet, it could be used to implement some of the more complex parts of our applications.</p>
+<p>Perhaps in a scenario when I would take advantage of <a href="http://www.gnustep.it/nicola/Tutorials/DistributedObjects/DistributedObjects.html"> distributed objects</a>, I would consider Objective C.</p>
+<p>There's no doubt that Objective C is a well thought-out and elegant language, and it is possible that there are various constructs that, when implemented in Objective C, would actually be faster than their written-by-me C counterpart. Until I run into one, I'll just continue hammering away in C.</p>
+<p>While it is out of the scope of this post (and many others have done a much better job), GCC did seem to produce faster C binaries than Clang.</p>
+<p><a href="ObjCLL.tar.gz">You can grab the code here.</a> <a href="http://www.reddit.com/r/programming/comments/wphaz/how_much_do_objective_c_messages_cost_objective_c/">Reddit comments.</a></p>
+<p class="updated" itemscope itemtype="http://schema.org/WebPage" itemid="http://rmarcus.info/?p=488">Last updated by <span style="float:none" class="author vcard"><span class="fn"><a rel="author" href="index.html%3Fauthor=1.html" class="authorsure-author-link">Ryan Marcus</a></span></span> at <time itemprop="dateModified" datetime="2012-09-10T16:16:36+00:00">September 10, 2012</time>.</p>					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=488.html" title="11:20 pm" rel="bookmark"><time class="entry-date" datetime="2012-06-24T23:20:17+00:00">June 24, 2012</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="index.html%3Fp=480.html" rel="prev"><span class="meta-nav">&larr;</span> Android Debate v0.6 Released</a></span>
+					<span class="nav-next"><a href="index.html%3Fp=549.html" rel="next">TopNTree &#8212; A merge-sort inspired data structure <span class="meta-nav">&rarr;</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="index.html%3Fp=488.html#respond" style="display:none;">Cancel reply</a></small></h3>
+									<form action="http://rmarcus.info/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="text" value="" size="30" aria-required='true' /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="text" value="" size="30" /></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href=&quot;&quot; title=&quot;&quot; rel=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Post Comment" />
+							<input type='hidden' name='comment_post_ID' value='488' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="adc507912d" /></p>					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-3" class="widget widget_text"><h3 class="widget-title">FortranFail Twitter</h3>			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/FortranFail" data-widget-id="347407527333486593">Tweets by @FortranFail</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+		</aside><aside id="pages-3" class="widget widget_pages"><h3 class="widget-title">Pages</h3>		<ul>
+			<li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html%3Fcat=4.html" title="View all posts filed under Android Debate">Android Debate</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="index.html%3Fcat=6.html" title="View all posts filed under Clipboard Historian">Clipboard Historian</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="index.html%3Fcat=7.html" title="View all posts filed under Computer Tips">Computer Tips</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="index.html%3Fcat=9.html" title="The UofA evidence autocutter.">Evidence Auto Cutter</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="index.html%3Fcat=11.html" title="View all posts filed under Luxer, Battle.net Bot">Luxer, Battle.net Bot</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="index.html%3Fcat=13.html" title="View all posts filed under Luxer: Documentation Update">Luxer: Documentation Update</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="index.html%3Fcat=15.html" title="View all posts filed under Personal">Personal</a>
+</li>
+		</ul>
+</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='index.html%3Fm=201307.html'>July 2013</a></li>
+	<li><a href='index.html%3Fm=201303.html'>March 2013</a></li>
+	<li><a href='index.html%3Fm=201206.html'>June 2012</a></li>
+	<li><a href='index.html%3Fm=201205.html'>May 2012</a></li>
+	<li><a href='index.html%3Fm=201104.html'>April 2011</a></li>
+	<li><a href='index.html%3Fm=201103.html'>March 2011</a></li>
+	<li><a href='index.html%3Fm=201008.html'>August 2010</a></li>
+	<li><a href='index.html%3Fm=201003.html'>March 2010</a></li>
+	<li><a href='index.html%3Fm=201001.html'>January 2010</a></li>
+	<li><a href='index.html%3Fm=200912.html'>December 2009</a></li>
+	<li><a href='index.html%3Fm=200903.html'>March 2009</a></li>
+	<li><a href='index.html%3Fm=200902.html'>February 2009</a></li>
+	<li><a href='index.html%3Fm=200901.html'>January 2009</a></li>
+	<li><a href='index.html%3Fm=200811.html'>November 2008</a></li>
+	<li><a href='index.html%3Fm=200808.html'>August 2008</a></li>
+	<li><a href='index.html%3Fm=200807.html'>July 2008</a></li>
+	<li><a href='index.html%3Fm=200806.html'>June 2008</a></li>
+	<li><a href='index.html%3Fm=200802.html'>February 2008</a></li>
+	<li><a href='index.html%3Fm=200712.html'>December 2007</a></li>
+	<li><a href='index.html%3Fm=200704.html'>April 2007</a></li>
+	<li><a href='index.html%3Fm=200701.html'>January 2007</a></li>
+	<li><a href='index.html%3Fm=200612.html'>December 2006</a></li>
+	<li><a href='index.html%3Fm=200610.html'>October 2006</a></li>
+	<li><a href='index.html%3Fm=200609.html'>September 2006</a></li>
+	<li><a href='index.html%3Fm=200608.html'>August 2006</a></li>
+	<li><a href='index.html%3Fm=200607.html'>July 2006</a></li>
+	<li><a href='index.html%3Fm=200606.html'>June 2006</a></li>
+	<li><a href='index.html%3Fm=200605.html'>May 2006</a></li>
+	<li><a href='index.html%3Fm=200604.html'>April 2006</a></li>
+	<li><a href='index.html%3Fm=200512.html'>December 2005</a></li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h3 class="widget-title">Other</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html%3Ffeed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html%3Ffeed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='wp-content/themes/twentytwelve/js/navigation.js%3Fver=1.0'></script>
+</body>
+</html>

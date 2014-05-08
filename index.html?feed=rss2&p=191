@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Starcraft in WINE with a widescreen/dual screen setup on Ubuntu</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=191" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=191</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=191#comment-405</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Wed, 10 Mar 2010 03:46:53 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-405</guid>
+		<description><![CDATA[Looks like you&#039;re having a sound error -- try disabling all your sound devices in winecfg and give it another try.]]></description>
+		<content:encoded><![CDATA[<p>Looks like you&#8217;re having a sound error &#8212; try disabling all your sound devices in winecfg and give it another try.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: toolman</title>
+		<link>http://rmarcus.info/?p=191#comment-404</link>
+		<dc:creator><![CDATA[toolman]]></dc:creator>
+		<pubDate>Wed, 10 Mar 2010 02:40:21 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-404</guid>
+		<description><![CDATA[When you paste the code into the various places, make sure you replace the special quotes with normal double quotes: i.e. ”/home/YOURNAME/.wine_sc/” should be ry &quot;/home/YOURNAME/.wine_sc/&quot; (look closely, there is a difference)
+
+As for me I get the following error:
+fixme:d3d:IWineD3DImpl_FillGLCaps OpenGL implementation supports 32 vertex samplers and 32 total samplers
+fixme:d3d:IWineD3DImpl_FillGLCaps Expected vertex samplers + MAX_TEXTURES(=8) &gt; combined_samplers
+fixme:win:EnumDisplayDevicesW ((null),0,0x32f454,0x00000000), stub!
+fixme:xrandr:X11DRV_XRandR_SetCurrentMode Cannot change screen BPP from 32 to 8
+ALSA lib ../../../src/seq/seq_hw.c:457:(snd_seq_hw_open) open /dev/snd/seq failed: Permission denied]]></description>
+		<content:encoded><![CDATA[<p>When you paste the code into the various places, make sure you replace the special quotes with normal double quotes: i.e. ”/home/YOURNAME/.wine_sc/” should be ry &#8220;/home/YOURNAME/.wine_sc/&#8221; (look closely, there is a difference)</p>
+<p>As for me I get the following error:<br />
+fixme:d3d:IWineD3DImpl_FillGLCaps OpenGL implementation supports 32 vertex samplers and 32 total samplers<br />
+fixme:d3d:IWineD3DImpl_FillGLCaps Expected vertex samplers + MAX_TEXTURES(=8) &gt; combined_samplers<br />
+fixme:win:EnumDisplayDevicesW ((null),0,0x32f454,0&#215;00000000), stub!<br />
+fixme:xrandr:X11DRV_XRandR_SetCurrentMode Cannot change screen BPP from 32 to 8<br />
+ALSA lib ../../../src/seq/seq_hw.c:457:(snd_seq_hw_open) open /dev/snd/seq failed: Permission denied</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=191#comment-403</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Mon, 12 Oct 2009 19:34:49 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-403</guid>
+		<description><![CDATA[Shift, a few questions:
+
+1. If you enable an emulated desktop (you can do this from the graphics tab of the winecfg window) does everything display correctly?
+
+2. Does your screen support 640x480 at all? To find out, open a terminal and type &quot;xrandr&quot; and see what comes up.
+
+3. Can you show me your Xorg?]]></description>
+		<content:encoded><![CDATA[<p>Shift, a few questions:</p>
+<p>1. If you enable an emulated desktop (you can do this from the graphics tab of the winecfg window) does everything display correctly?</p>
+<p>2. Does your screen support 640&#215;480 at all? To find out, open a terminal and type &#8220;xrandr&#8221; and see what comes up.</p>
+<p>3. Can you show me your Xorg?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: shift</title>
+		<link>http://rmarcus.info/?p=191#comment-402</link>
+		<dc:creator><![CDATA[shift]]></dc:creator>
+		<pubDate>Mon, 12 Oct 2009 06:41:57 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-402</guid>
+		<description><![CDATA[Hi, first of all, thanks for all this help.
+
+A few days ago I installed Starcraft under wine normally, and it&#039;d run perfectly fine, besides the fact that I can&#039;t see the last inch or two of the screen at the top, and the bottom would have a black line - bottom line is, the image isn&#039;t adjusted to my screen (1920x1080 resolution, 23&quot;). That wouldn&#039;t annoy me normally, but I can&#039;t see my &quot;score&quot;, heh (minerals, etc).
+
+Anyway, I stumbled upon this page, followed all the steps you carefully explained, ran the script, got pretty excited but...I keep getting the same results : ( Any other ideas?]]></description>
+		<content:encoded><![CDATA[<p>Hi, first of all, thanks for all this help.</p>
+<p>A few days ago I installed Starcraft under wine normally, and it&#8217;d run perfectly fine, besides the fact that I can&#8217;t see the last inch or two of the screen at the top, and the bottom would have a black line &#8211; bottom line is, the image isn&#8217;t adjusted to my screen (1920&#215;1080 resolution, 23&#8243;). That wouldn&#8217;t annoy me normally, but I can&#8217;t see my &#8220;score&#8221;, heh (minerals, etc).</p>
+<p>Anyway, I stumbled upon this page, followed all the steps you carefully explained, ran the script, got pretty excited but&#8230;I keep getting the same results : ( Any other ideas?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Francisco</title>
+		<link>http://rmarcus.info/?p=191#comment-401</link>
+		<dc:creator><![CDATA[Francisco]]></dc:creator>
+		<pubDate>Wed, 16 Sep 2009 18:27:18 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-401</guid>
+		<description><![CDATA[I can&#039;t start X after I aplly changes. So I have to start to original configuration file... this didn&#039;t work for me. (Ubuntu 9.04, nvidia 7200)]]></description>
+		<content:encoded><![CDATA[<p>I can&#8217;t start X after I aplly changes. So I have to start to original configuration file&#8230; this didn&#8217;t work for me. (Ubuntu 9.04, nvidia 7200)</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Kurt</title>
+		<link>http://rmarcus.info/?p=191#comment-400</link>
+		<dc:creator><![CDATA[Kurt]]></dc:creator>
+		<pubDate>Wed, 13 May 2009 17:16:07 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-400</guid>
+		<description><![CDATA[When I do this, my machine comes back up with the alternate layout instead of the default... Is there somewhere I need to specify to use the other ServerLayout by default?]]></description>
+		<content:encoded><![CDATA[<p>When I do this, my machine comes back up with the alternate layout instead of the default&#8230; Is there somewhere I need to specify to use the other ServerLayout by default?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=191#comment-399</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Tue, 28 Apr 2009 14:44:48 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-399</guid>
+		<description><![CDATA[George: canyou post your script and your xorg?]]></description>
+		<content:encoded><![CDATA[<p>George: canyou post your script and your xorg?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: phil</title>
+		<link>http://rmarcus.info/?p=191#comment-398</link>
+		<dc:creator><![CDATA[phil]]></dc:creator>
+		<pubDate>Sun, 26 Apr 2009 05:46:21 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-398</guid>
+		<description><![CDATA[lol wow u guys r smart...I&#039;ll try it when i have the time.  Hope I can do this. lol thnx]]></description>
+		<content:encoded><![CDATA[<p>lol wow u guys r smart&#8230;I&#8217;ll try it when i have the time.  Hope I can do this. lol thnx</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: george</title>
+		<link>http://rmarcus.info/?p=191#comment-397</link>
+		<dc:creator><![CDATA[george]]></dc:creator>
+		<pubDate>Wed, 15 Apr 2009 05:42:33 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-397</guid>
+		<description><![CDATA[I follow these instructions, but when I run /home/USERNAME/.wine_sc/sc.sh I get the error:
+
+(EE) Failed to load module &quot;type1&quot; (module does not exist, 0)
+wine: invalid directory ”/home/george/.wine_sc/” in WINEPREFIX: not an absolute path
+
+any suggestions?]]></description>
+		<content:encoded><![CDATA[<p>I follow these instructions, but when I run /home/USERNAME/.wine_sc/sc.sh I get the error:</p>
+<p>(EE) Failed to load module &#8220;type1&#8243; (module does not exist, 0)<br />
+wine: invalid directory ”/home/george/.wine_sc/” in WINEPREFIX: not an absolute path</p>
+<p>any suggestions?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=191#comment-396</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Tue, 17 Mar 2009 16:25:29 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=191#comment-396</guid>
+		<description><![CDATA[Sc_Guy: Also, is your monitor able to run Starcraft in any other OS, such as Windows? I&#039;m assuming you have the official nvidia graphics drivers installed -- you&#039;re card shouldn&#039;t have any issues running at 640x480, but it is possible. You may want to try downloading the most recent nvidia drivers and installing them. Do your desktop effects work?
+
+Diego: Can you post your xorg.conf file? Check to make sure that all your identifiers line up (&quot;Screen0&quot; is &quot;Screen0&quot; throughout the file.)]]></description>
+		<content:encoded><![CDATA[<p>Sc_Guy: Also, is your monitor able to run Starcraft in any other OS, such as Windows? I&#8217;m assuming you have the official nvidia graphics drivers installed &#8212; you&#8217;re card shouldn&#8217;t have any issues running at 640&#215;480, but it is possible. You may want to try downloading the most recent nvidia drivers and installing them. Do your desktop effects work?</p>
+<p>Diego: Can you post your xorg.conf file? Check to make sure that all your identifiers line up (&#8220;Screen0&#8243; is &#8220;Screen0&#8243; throughout the file.)</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

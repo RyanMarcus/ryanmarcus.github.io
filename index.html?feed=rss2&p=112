@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Luxer Beta 10 Released!</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=112" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=112</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=112#comment-262</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Tue, 27 Jun 2006 03:28:16 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-262</guid>
+		<description><![CDATA[Any questions or problems with Luxer should be taken to the forums. &lt;a href=&quot;http://marcusfamily.info/~ryan/forums/&quot; rel=&quot;nofollow&quot;&gt;Click here.&lt;/a&gt;]]></description>
+		<content:encoded><![CDATA[<p>Any questions or problems with Luxer should be taken to the forums. <a href="http://marcusfamily.info/~ryan/forums/" rel="nofollow">Click here.</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Jakeo</title>
+		<link>http://rmarcus.info/?p=112#comment-261</link>
+		<dc:creator><![CDATA[Jakeo]]></dc:creator>
+		<pubDate>Mon, 26 Jun 2006 18:47:59 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-261</guid>
+		<description><![CDATA[I cant seem to get it to work on mac os x 10.4.6 PPC]]></description>
+		<content:encoded><![CDATA[<p>I cant seem to get it to work on mac os x 10.4.6 PPC</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Daniel</title>
+		<link>http://rmarcus.info/?p=112#comment-260</link>
+		<dc:creator><![CDATA[Daniel]]></dc:creator>
+		<pubDate>Mon, 26 Jun 2006 15:10:18 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-260</guid>
+		<description><![CDATA[Im not sure if its how you got the flood protection setup on it or maybe its me, but the bot seems really slow to respond to commands. But it is awesome it just seemed like Beta 9 lagged your computer alot. This one is really quick to connect and even running itunes off of it is nice. hehe and incase all you mac users didnt know this is also the first bot to be running iTunes instead of caugh**winamp**caugh ;p]]></description>
+		<content:encoded><![CDATA[<p>Im not sure if its how you got the flood protection setup on it or maybe its me, but the bot seems really slow to respond to commands. But it is awesome it just seemed like Beta 9 lagged your computer alot. This one is really quick to connect and even running itunes off of it is nice. hehe and incase all you mac users didnt know this is also the first bot to be running iTunes instead of caugh**winamp**caugh ;p</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=112#comment-259</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Mon, 26 Jun 2006 13:19:41 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-259</guid>
+		<description><![CDATA[Ya, I noticed that too. It will be fixed in beta 11.]]></description>
+		<content:encoded><![CDATA[<p>Ya, I noticed that too. It will be fixed in beta 11.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Daniel</title>
+		<link>http://rmarcus.info/?p=112#comment-258</link>
+		<dc:creator><![CDATA[Daniel]]></dc:creator>
+		<pubDate>Sun, 25 Jun 2006 20:17:55 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-258</guid>
+		<description><![CDATA[I like it its nice and simple, Sometimes it quits for some reason, i guess whenever u give it too many commands at one time. Also it is one line of text off
+ !say test
+  test
+and also when you say more than one word it wont do it
+ !say test test test test
+  test]]></description>
+		<content:encoded><![CDATA[<p>I like it its nice and simple, Sometimes it quits for some reason, i guess whenever u give it too many commands at one time. Also it is one line of text off<br />
+ !say test<br />
+  test<br />
+and also when you say more than one word it wont do it<br />
+ !say test test test test<br />
+  test</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=112#comment-257</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Fri, 23 Jun 2006 16:12:50 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-257</guid>
+		<description><![CDATA[Actualy, the trigger can be any character, as I stated here: http://marcusfamily.info/~ryan/forums/index.php/topic,38.new.html#new]]></description>
+		<content:encoded><![CDATA[<p>Actualy, the trigger can be any character, as I stated here: <a href="http://marcusfamily.info/~ryan/forums/index.php/topic,38.new.html#new" rel="nofollow">http://marcusfamily.info/~ryan/forums/index.php/topic,38.new.html#new</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Daniel</title>
+		<link>http://rmarcus.info/?p=112#comment-256</link>
+		<dc:creator><![CDATA[Daniel]]></dc:creator>
+		<pubDate>Fri, 23 Jun 2006 15:12:07 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-256</guid>
+		<description><![CDATA[and wouldnt you know as soon as I posted that I find out the trigger is !.....]]></description>
+		<content:encoded><![CDATA[<p>and wouldnt you know as soon as I posted that I find out the trigger is !&#8230;..</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Daniel</title>
+		<link>http://rmarcus.info/?p=112#comment-255</link>
+		<dc:creator><![CDATA[Daniel]]></dc:creator>
+		<pubDate>Fri, 23 Jun 2006 15:09:58 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=124#comment-255</guid>
+		<description><![CDATA[So like, I cannot find the trigger to make it do anything hehe.]]></description>
+		<content:encoded><![CDATA[<p>So like, I cannot find the trigger to make it do anything hehe.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

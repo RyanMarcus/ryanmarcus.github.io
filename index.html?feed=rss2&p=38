@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Luxer Update! Beta 6</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=38" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=38</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=38#comment-96</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Fri, 23 Dec 2005 15:53:13 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=39#comment-96</guid>
+		<description><![CDATA[http://bb.rmarcus.vze.com]]></description>
+		<content:encoded><![CDATA[<p><a href="http://bb.rmarcus.vze.com" rel="nofollow">http://bb.rmarcus.vze.com</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: SL4Y3R915</title>
+		<link>http://rmarcus.info/?p=38#comment-95</link>
+		<dc:creator><![CDATA[SL4Y3R915]]></dc:creator>
+		<pubDate>Fri, 23 Dec 2005 15:14:22 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=39#comment-95</guid>
+		<description><![CDATA[eh... &quot;Luxer (Carbon) has disconnected from battle.net&quot; immediately after connecting with Java base.]]></description>
+		<content:encoded><![CDATA[<p>eh&#8230; &#8220;Luxer (Carbon) has disconnected from battle.net&#8221; immediately after connecting with Java base.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=38#comment-94</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Tue, 20 Dec 2005 13:39:28 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=39#comment-94</guid>
+		<description><![CDATA[That&#039;s the plan!]]></description>
+		<content:encoded><![CDATA[<p>That&#8217;s the plan!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Jon~Snowtuber924</title>
+		<link>http://rmarcus.info/?p=38#comment-93</link>
+		<dc:creator><![CDATA[Jon~Snowtuber924]]></dc:creator>
+		<pubDate>Tue, 20 Dec 2005 10:52:48 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=39#comment-93</guid>
+		<description><![CDATA[Getting better every day!]]></description>
+		<content:encoded><![CDATA[<p>Getting better every day!</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

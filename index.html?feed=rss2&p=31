@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Luxer Update! Beta 4</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=31" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=31</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Jon~Snowtuber924</title>
+		<link>http://rmarcus.info/?p=31#comment-78</link>
+		<dc:creator><![CDATA[Jon~Snowtuber924]]></dc:creator>
+		<pubDate>Sun, 18 Dec 2005 18:56:32 +0000</pubDate>
+		<guid isPermaLink="false">http://aero-net1.com/rmarcus/?p=32#comment-78</guid>
+		<description><![CDATA[lol connnect was funnier]]></description>
+		<content:encoded><![CDATA[<p>lol connnect was funnier</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

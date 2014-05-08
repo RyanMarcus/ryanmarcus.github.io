@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: TeamSpeak in Linux with Logitech (or other) USB desktop microphone on Ubuntu</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=188" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=188</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: netflow</title>
+		<link>http://rmarcus.info/?p=188#comment-391</link>
+		<dc:creator><![CDATA[netflow]]></dc:creator>
+		<pubDate>Sun, 19 Apr 2009 19:16:03 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=188#comment-391</guid>
+		<description><![CDATA[It&#039;s interesting that we ran into the same problem and came away with different solutions.  
+
+http://blog.netflowdevelopments.com/2009/02/25/setting-up-a-usb-mic-to-work-with-ubuntu-and-specifically-teamspeak/]]></description>
+		<content:encoded><![CDATA[<p>It&#8217;s interesting that we ran into the same problem and came away with different solutions.  </p>
+<p><a href="http://blog.netflowdevelopments.com/2009/02/25/setting-up-a-usb-mic-to-work-with-ubuntu-and-specifically-teamspeak/" rel="nofollow">http://blog.netflowdevelopments.com/2009/02/25/setting-up-a-usb-mic-to-work-with-ubuntu-and-specifically-teamspeak/</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ivan</title>
+		<link>http://rmarcus.info/?p=188#comment-390</link>
+		<dc:creator><![CDATA[Ivan]]></dc:creator>
+		<pubDate>Sun, 19 Apr 2009 11:56:08 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=188#comment-390</guid>
+		<description><![CDATA[Thanks for the guide. 
+I&#039;d like to make a note here that may help others. I have a Logitech webcam, and use its built in microphone for Skype, and wanted to use the same one for TS. 
+
+I had a problem when using your .asoundrc, TS gave an error when I tried to select the USB Audio wave device. I changed my .asoundrc to look like this:
+
+pcm.headset {
+	type plug
+	slave.pcm &quot;hw:1,0&quot;
+}
+
+Now to find a solution for the pesky push-to-talk problem :P
+
+That had the desired effect (i.e. TS works), but it broke Skype (Problem with audio capture, I am told). I changed my .asoundrc to look like this (adding a new capture device rather than overriding the existing headset):
+
+pcm.headset1 {
+	type plug
+	slave.pcm &quot;hw:1,0&quot;
+}
+
+And made the corresponding change to the registry to point at headset1 instead of headset.]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the guide.<br />
+I&#8217;d like to make a note here that may help others. I have a Logitech webcam, and use its built in microphone for Skype, and wanted to use the same one for TS. </p>
+<p>I had a problem when using your .asoundrc, TS gave an error when I tried to select the USB Audio wave device. I changed my .asoundrc to look like this:</p>
+<p>pcm.headset {<br />
+	type plug<br />
+	slave.pcm &#8220;hw:1,0&#8243;<br />
+}</p>
+<p>Now to find a solution for the pesky push-to-talk problem <img src="http://rmarcus.info/wp-includes/images/smilies/icon_razz.gif" alt=":P" class="wp-smiley" /> </p>
+<p>That had the desired effect (i.e. TS works), but it broke Skype (Problem with audio capture, I am told). I changed my .asoundrc to look like this (adding a new capture device rather than overriding the existing headset):</p>
+<p>pcm.headset1 {<br />
+	type plug<br />
+	slave.pcm &#8220;hw:1,0&#8243;<br />
+}</p>
+<p>And made the corresponding change to the registry to point at headset1 instead of headset.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: rmarcus</title>
+		<link>http://rmarcus.info/?p=188#comment-389</link>
+		<dc:creator><![CDATA[rmarcus]]></dc:creator>
+		<pubDate>Fri, 04 Jul 2008 19:21:09 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=188#comment-389</guid>
+		<description><![CDATA[Ya, that&#039;s a nasty little predicament. This is more of a WINE bug then anything, as the code in TS should look for a key press on a global scale... but it doesn&#039;t.
+
+If you install your games into the same WINE prefix as TS, it should work because you&#039;ll be running both applications using the same input manager. I do not recommend doing this.
+
+You should probably just use voice activation. If that really isn&#039;t an option, you may have to install TS Into all of your game&#039;s WINE prefixes!]]></description>
+		<content:encoded><![CDATA[<p>Ya, that&#8217;s a nasty little predicament. This is more of a WINE bug then anything, as the code in TS should look for a key press on a global scale&#8230; but it doesn&#8217;t.</p>
+<p>If you install your games into the same WINE prefix as TS, it should work because you&#8217;ll be running both applications using the same input manager. I do not recommend doing this.</p>
+<p>You should probably just use voice activation. If that really isn&#8217;t an option, you may have to install TS Into all of your game&#8217;s WINE prefixes!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: ichbinesderelch</title>
+		<link>http://rmarcus.info/?p=188#comment-388</link>
+		<dc:creator><![CDATA[ichbinesderelch]]></dc:creator>
+		<pubDate>Fri, 04 Jul 2008 18:40:32 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=188#comment-388</guid>
+		<description><![CDATA[any ideas howto make the &quot;push to talk&quot; feature working? it only works if the window is fokused!]]></description>
+		<content:encoded><![CDATA[<p>any ideas howto make the &#8220;push to talk&#8221; feature working? it only works if the window is fokused!</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

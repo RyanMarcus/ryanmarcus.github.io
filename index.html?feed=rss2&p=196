@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Ubuntu on a Dell XPS M1530</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=196" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=196</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Daniel Cox</title>
+		<link>http://rmarcus.info/?p=196#comment-407</link>
+		<dc:creator><![CDATA[Daniel Cox]]></dc:creator>
+		<pubDate>Sun, 26 Oct 2008 21:13:26 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=196#comment-407</guid>
+		<description><![CDATA[The best way to do this is to add it to automagic config. Replace the line:
+# defoptions=quiet splash
+with
+# defoptions=quiet splash i8042.nomux=1
+
+Then run update-grub and reboot.
+
+Everything will continue to work, even after a kernel upgrade.]]></description>
+		<content:encoded><![CDATA[<p>The best way to do this is to add it to automagic config. Replace the line:<br />
+# defoptions=quiet splash<br />
+with<br />
+# defoptions=quiet splash i8042.nomux=1</p>
+<p>Then run update-grub and reboot.</p>
+<p>Everything will continue to work, even after a kernel upgrade.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

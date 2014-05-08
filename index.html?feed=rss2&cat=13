@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>RMarcus.info &#187; Luxer: Documentation Update</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;cat=13" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Sun, 27 Oct 2013 08:46:08 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>Luxer is coming back to life!</title>
+		<link>http://rmarcus.info/?p=92</link>
+		<comments>http://rmarcus.info/?p=92#comments</comments>
+		<pubDate>Mon, 01 May 2006 15:42:02 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Luxer, Battle.net Bot]]></category>
+		<category><![CDATA[Luxer: Documentation Update]]></category>
+
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=103</guid>
+		<description><![CDATA[I&#8217;d like to thank everybody who has signed up for the forums and have helped bring back Luxer by posting their problems and feature requests. Thanks for making it feel worth it guys! With Luxer returning, I think I will have to start the docs back up again. I don&#8217;t want to do a wiki [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;d like to thank everybody who has signed up for the <a href="http://marcusfamily.info/~ryan/forums/">forums</a> and have helped bring back Luxer by posting their problems and feature requests. Thanks for making it feel worth it guys!</p>
+<p>With Luxer returning, I think I will have to start the docs back up again. I don&#8217;t want to do a wiki again&#8230; we all know how well that worked.</p>
+<p>I&#8217;m thinking either a dead readme file, written by just me, or a forum with an index (sticked) that has links to articles people have posted. I am leaning towards the readme at the momment.</p>
+<p>I&#8217;d like to hear comments!</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=92</wfw:commentRss>
+		<slash:comments>9</slash:comments>
+		</item>
+	</channel>
+</rss>

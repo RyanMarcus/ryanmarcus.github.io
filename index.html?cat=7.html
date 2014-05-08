@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Computer Tips | RMarcus.info</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://rmarcus.info/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://rmarcus.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Feed" href="index.html%3Ffeed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Comments Feed" href="index.html%3Ffeed=comments-rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Computer Tips Category Feed" href="index.html%3Ffeed=rss2&amp;cat=7" />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='wp-content/themes/twentytwelve/style.css%3Fver=3.8.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://rmarcus.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js%3Fver=1.10.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js%3Fver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rmarcus.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8" />
+<link rel="stylesheet" type="text/css" href="wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<link rel="publisher" href="https://plus.google.com/u/0/108417296717615529338" /><style type="text/css">
+/* <![CDATA[ */
+img.latex { 
+vertical-align: middle; 
+border: none;
+box-shadow: 0px 0px 0px #FFFFFF;
+ }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e6e6e6; }
+</style>
+</head>
+
+<body class="archive category category-computer-tips category-7 custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="index.html" title="RMarcus.info" rel="home">RMarcus.info</a></h1>
+			<h2 class="site-description">It&#039;s all Frank&#039;s fault!</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="index.html%3Fcat=7.html#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li ><a href="index.html">Home</a></li><li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<section id="primary" class="site-content">
+		<div id="content" role="main">
+
+					<header class="archive-header">
+				<h1 class="archive-title">Category Archives: <span>Computer Tips</span></h1>
+
+						</header><!-- .archive-header -->
+
+			
+	<article id="post-641" class="post-641 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=641.html" rel="bookmark">Fallthrough Sort: Quickly Sorting Small Sets</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=641.html#respond" title="Comment on Fallthrough Sort: Quickly Sorting Small Sets"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>In many applications, such as a <a href="http://en.wikipedia.org/wiki/Median_filter">median filter</a>, we want to sort a small (<img src='http://s.wordpress.com/latex.php?latex=n%20%3C%2030&#038;bg=T&#038;fg=000000&#038;s=0' alt='n &lt; 30' title='n &lt; 30' class='latex' />) set of numbers. In the case of the median filter, we are only concerned with sorting sets of one exact size -- if this is the case, one can generate an optimal <a href="http://en.wikipedia.org/wiki/Sorting_network">sorting network</a> using a tool like <a href="http://pages.ripco.net/~jgamble/nw.html">this one</a> to create a provably-unbeatable solution.</p>
+<p>However, often we want to be able to sort sets of varying size that are still small. Perhaps if one wished to implement a 3x3, 5x5, and 7x7 median filter using a single sorting function. Or perhaps when sorting an arbitrary list of files, when there could be very many or very few items.</p>
+<p>In this case, we can utilize a special implementation of <a href="http://en.wikipedia.org/wiki/Bubble_sort">bubble sort</a> that takes advantage of <a href="http://en.wikipedia.org/wiki/Switch_statement#Fallthrough">switch statement fallthrough</a>. To quickly sort sets of size <img src='http://s.wordpress.com/latex.php?latex=n%20%5Cleq%209&#038;bg=T&#038;fg=000000&#038;s=0' alt='n \leq 9' title='n \leq 9' class='latex' />, we could use this C code:</p>
+<pre class="wp-code-highlight prettyprint">
+#include &lt;stdlib.h&gt;
+#define min(a, b) (a &lt; b ? a : b)
+#define max(a, b) (a &gt; b ? a : b)
+#define exch(a, b) temp = a; a = min(temp, b); b = max(temp, b);
+#define exch3(a, b, c) exch(a, b); exch(b, c);
+#define exch4(a,b,c,d) exch3(a,b,c); exch(c,d);
+#define exch5(a,b,c,d,e) exch4(a,b,c,d); exch(d,e);
+#define exch6(a,b,c,d,e,f) exch5(a,b,c,d,e); exch(e,f);
+#define exch7(a,b,c,d,e,f,g) exch6(a,b,c,d,e,f); exch(f,g);
+#define exch8(a,b,c,d,e,f,g,h) exch7(a,b,c,d,e,f,g); exch(g,h);
+#define exch9(a,b,c,d,e,f,g,h,i) exch8(a,b,c,d,e,f,g,h); exch(h,i);
+
+int cmpfunc (const void * a, const void * b) {
+	return ( *(int*)a - *(int*)b );
+}
+// quickly sort an array if size is less than or equal to 9, otherwise use
+// stdlib&#039;s qsort to sort the array.
+void fallthroughSort(int* array, int length) {
+	int temp;
+	switch (length) {
+	case 9:
+		exch9( array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7],array[8] );
+	case 8:
+		exch8( array[0],array[1],array[2],array[3],array[4],array[5],array[6],array[7] );
+	case 7:
+		exch7( array[0],array[1],array[2],array[3],array[4],array[5],array[6] );
+	case 6:
+		exch6( array[0],array[1],array[2],array[3],array[4],array[5] );
+	case 5:
+		exch5( array[0],array[1],array[2],array[3],array[4] );
+	case 4:
+		exch4( array[0],array[1],array[2],array[3] );
+	case 3:
+		exch3( array[0],array[1],array[2] );
+	case 2:
+		exch(array[0], array[1]);
+		break;
+	default:
+		qsort(array, length, sizeof(int), cmpfunc);
+	}
+}
+</pre>
+<p>Each call to <img src='http://s.wordpress.com/latex.php?latex=%5Ctexttt%7Bexch%7DN&#038;bg=T&#038;fg=000000&#038;s=0' alt='\texttt{exch}N' title='\texttt{exch}N' class='latex' /> represents a bubble sort pass from index <img src='http://s.wordpress.com/latex.php?latex=0&#038;bg=T&#038;fg=000000&#038;s=0' alt='0' title='0' class='latex' /> to index <img src='http://s.wordpress.com/latex.php?latex=N&#038;bg=T&#038;fg=000000&#038;s=0' alt='N' title='N' class='latex' />. Any array that is of size <img src='http://s.wordpress.com/latex.php?latex=n%20%5Cleq%209&#038;bg=T&#038;fg=000000&#038;s=0' alt='n \leq 9' title='n \leq 9' class='latex' /> will jump to the proper pass of bubble sort, and execute all the required passes by falling through the switch statement.</p>
+<p>You might be skeptical as to how a <img src='http://s.wordpress.com/latex.php?latex=O%28n%5E2%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n^2)' title='O(n^2)' class='latex' /> algorithm is outperforming a <img src='http://s.wordpress.com/latex.php?latex=O%28n%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n \log n)' title='O(n \log n)' class='latex' /> algorithm, but remember that big-O notation only defines asymptotic behavior. It is often the case that the actual performance of an algorithm depends on the constants hidden by big-O notation, as has been <a href="http://stackoverflow.com/questions/7643377/why-is-insertion-sort-faster-than-quick-sort-and-bubble-sort-for-small-cases">exhaustively discussed</a>.</p>
+<p>Of course, code similar to that above can be generated for any size, and a Python script to do just that is available in this <a href="https://bitbucket.org/RyanMarcus/fallthrough-sort">BitBucket repository</a>. We'll take a look at the performance of this algorithm.</p>
+<p>The following graph shows the performance of fallthrough sort (for <img src='http://s.wordpress.com/latex.php?latex=n%20%5Cleq%209&#038;bg=T&#038;fg=000000&#038;s=0' alt='n \leq 9' title='n \leq 9' class='latex' />) compared to the standard library's qsort function. Both functions sorted <img src='http://s.wordpress.com/latex.php?latex=10%5E7&#038;bg=T&#038;fg=000000&#038;s=0' alt='10^7' title='10^7' class='latex' /> randomly generated lists of size <img src='http://s.wordpress.com/latex.php?latex=n%20%3D%209&#038;bg=T&#038;fg=000000&#038;s=0' alt='n = 9' title='n = 9' class='latex' />.</p>
+<p><center><br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidFlYX1lOWUtVNENMM0lCa05Tbi1VZUE&transpose=0&headers=1&range=A53%3AC61&gid=0&pub=1","options":{"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"series":{"0":{"hasAnnotations":true}},"curveType":"function","animation":{"duration":500},"lineWidth":2,"hAxis":{"title":"Arrays sorted","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"vAxes":[{"title":"Time (s)","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"logScale":false,"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"logScale":false,"maxValue":null}],"title":"n=9 Quicksort vs. Fallthrough Sort","booleanRole":"certainty","legend":"right","annotations":{"domain":{}},"useFirstColumnAsDomain":true,"tooltip":{},"width":451,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script><br />
+</center><br />
+As you can see, fallthrough sort provides a substantial speed boost. Obviously, the difference is negligible if you're only sorting one list.</p>
+<p>This next graph shows the performance of fallthrough sort (for <img src='http://s.wordpress.com/latex.php?latex=n%20%5Cleq%2025&#038;bg=T&#038;fg=000000&#038;s=0' alt='n \leq 25' title='n \leq 25' class='latex' />) compared to the standard library's qsort function when sorting <img src='http://s.wordpress.com/latex.php?latex=10%5E7&#038;bg=T&#038;fg=000000&#038;s=0' alt='10^7' title='10^7' class='latex' /> lists of varying sizes.</p>
+<p><center><br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidFlYX1lOWUtVNENMM0lCa05Tbi1VZUE&transpose=0&headers=1&range=A1%3AC24&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time (s)","minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"booleanRole":"certainty","curveType":"function","title":"10^7 Quicksort vs. Fallthrough Sort","animation":{"duration":500},"legend":"right","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"# of elements","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"tooltip":{},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 2"} </script><br />
+</center></p>
+<p>As the number of elements increases, fallthrough sort seems to slow down and approach the speed of qsort (eventually, qsort will become faster). This is expected, given the asymptotic behavior of each algorithm.</p>
+<p>This last graph shows how many times faster fallthrough sort is compared to qsort.</p>
+<p><center><br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidFlYX1lOWUtVNENMM0lCa05Tbi1VZUE&transpose=0&headers=1&range=A26%3AB49&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Times faster","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"booleanRole":"certainty","curveType":"function","title":"Fallthrough Sort Speed Multiplier","animation":{"duration":500},"legend":"right","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"# of elements","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"tooltip":{},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 3"} </script><br />
+</center></p>
+<p>Here, the asymptotic behavior of both algorithms is extremely clear: qsort scales much better than fallthrough sort.</p>
+<p>One might consider this comparison unfair because qsort evaluates a user-supplied comparison function. However, looking at the output of GCC reveals that when a very standard function (like the one above) is used, the comparison function is inlined.</p>
+<p>One might also consider creating a <a href="http://en.wikipedia.org/wiki/Branch_table">branch table</a> to jump right to the required pass of bubble sort. Once again, looking at optimized GCC output will show that the above switch statement is optimized into a branch table.</p>
+<p>You can view a sample implementation and benchmark code over at <a href="https://bitbucket.org/RyanMarcus/fallthrough-sort">BitBucket</a>.</p>
+<p><a href="https://plus.google.com/u/0/108417296717615529338/posts/45VYfwK5mjU">Google+ comments</a>.</p>
+<p><a href="http://www.reddit.com/r/programming/comments/1hilkn/fallthrough_sort_quickly_sorting_small_sets/">Reddit comments</a>.</p>
+<p>Reddit user <a href="http://www.reddit.com/r/programming/comments/1hilkn/fallthrough_sort_quickly_sorting_small_sets/cauvhhp">sltkr seems to be getting better results from a simple insertion sort</a>. This appears to be due to CPU differences, but the discussion is ongoing.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=641.html" title="11:54 pm" rel="bookmark"><time class="entry-date" datetime="2013-07-01T23:54:14+00:00">July 1, 2013</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-549" class="post-549 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=549.html" rel="bookmark">TopNTree &#8212; A merge-sort inspired data structure</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=549.html#respond" title="Comment on TopNTree &#8212; A merge-sort inspired data structure"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree -- an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides <img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /> search time. </p>
+<p>However, I also needed to be able to query the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> most frequently contacted contacts. Since contacts are sorted by their names, finding the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> most frequently contacted contacts would require <img src='http://s.wordpress.com/latex.php?latex=O%28n%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n \log n)' title='O(n \log n)' class='latex' /> search time.</p>
+<p>To solve this problem, I created an <a href="http://www.cs.arizona.edu/classes/cs545/fall09/Augmented-DS.prn.pdf">augmented binary tree</a> which provides an insertion time of <img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' />, a search time of <img src='http://s.wordpress.com/latex.php?latex=O%28%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O( \log n)' title='O( \log n)' class='latex' />, and can find the top <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> contacts in <img src='http://s.wordpress.com/latex.php?latex=O%281%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(1)' title='O(1)' class='latex' />. You can view a Java implementation of the code <a href="https://bitbucket.org/RyanMarcus/topntree/overview">here</a>. The code is license free, and ought to be considered public domain.</p>
+<p>In order to accomplish this, each node is augmented with an array of size <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> that stores, in sorted order, the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> largest keys in it's left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value. </p>
+<p>When a node <img src='http://s.wordpress.com/latex.php?latex=%5Calpha&#038;bg=T&#038;fg=000000&#038;s=0' alt='\alpha' title='\alpha' class='latex' /> is inserted and becomes the left or right child of <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />, <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />'s array is merged with <img src='http://s.wordpress.com/latex.php?latex=%5Calpha&#038;bg=T&#038;fg=000000&#038;s=0' alt='\alpha' title='\alpha' class='latex' />'s array, with the result stored into <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />'s array. This merging can be done in <a href="http://en.wikipedia.org/wiki/Merge_sort">linear time</a>, since both arrays are already sorted. After this, <img src='http://s.wordpress.com/latex.php?latex=%5Cbeta&#038;bg=T&#038;fg=000000&#038;s=0' alt='\beta' title='\beta' class='latex' />'s parent is updated, and then the parent's parent, all the way up to the root of the tree.</p>
+<p>Pictures are great. Consider a tree with one node, for a contact Dave who has been contacted 10 times.</p>
+<p><a href="wp-content/uploads/2013/03/r11.png"><img src="wp-content/uploads/2013/03/r11.png" alt="One node" width="303" height="89" class="aligncenter size-full wp-image-568" /></a></p>
+<p>Then, we add another node for Betsy, who has been contacted 4 times.</p>
+<p><a href="wp-content/uploads/2013/03/r2.png"><img src="wp-content/uploads/2013/03/r2.png" alt="Two nodes" width="320" height="247" class="aligncenter size-full wp-image-571" /></a></p>
+<p>The array stored in the node representing Betsy gets merged with the parent node, Dave. Inserting another node:</p>
+<p><a href="wp-content/uploads/2013/03/r3.png"><img src="wp-content/uploads/2013/03/r3.png" alt="Three nodes" width="407" height="221" class="aligncenter size-full wp-image-574" /></a></p>
+<p>Once again, new nodes start out with only themselves in their array, and arrays are merged upwards from the node inserted.</p>
+<p><a href="wp-content/uploads/2013/03/r4.png"><img src="wp-content/uploads/2013/03/r4.png" alt="Four nodes" width="547" height="378" class="aligncenter size-full wp-image-572" /></a></p>
+<p>Another node:<br />
+<a href="wp-content/uploads/2013/03/r5.png"><img src="wp-content/uploads/2013/03/r5.png" alt="Five nodes" width="696" height="392" class="aligncenter size-full wp-image-573" /></a></p>
+<p>From here, fetching the <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> most contacted contacts can be done in constant time, because it simply requires the retrieval of the array from the root node.</p>
+<p>Note that in order to maintain <img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' /> time, the tree must be kept balanced. In my implementation, I use an <a href="http://en.wikipedia.org/wiki/AVL_tree">AVL tree</a>. For others seeking to use an AVL tree, make sure that, after any rotation, you properly update each node rotated. The simplest solution is to clear the arrays of merged nodes, and recalculate them by merging their immediate children.</p>
+<p>In case the similarity to merge sort is not clear, here is some pseudo-code for the merging:</p>
+<pre class="wp-code-highlight prettyprint">
+function merge(ParentArray a, ChildArray b) {
+   int myPos = a.size - 1;
+   int theirPos = b.size - 1;
+                
+   Entry[] newObjs = new Entry[];
+   for (int i = size - 1; i &gt;= 0; i--) {
+        if (a[myPos] &gt; b[theirPos]) {
+             newObjs[i] = a[myPos];
+             myPos--;
+        } else if (a[myPos] == b[theirPos]) {
+             newObjs[i] = a[myPos];
+             myPos--;
+             theirPos--;
+        } else {
+             newObjs[i] = b[theirPos];
+             theirPos--;
+        }
+   }
+}
+</pre>
+<p>This process, ran on arrays of size 5, is depicted below. Initially, the new array is empty.<br />
+<a href="wp-content/uploads/2013/03/m1.png"><img src="wp-content/uploads/2013/03/m1.png" alt="m1" width="656" height="234" class="aligncenter size-full wp-image-580" /></a></p>
+<p>The largest value from both the parent's old array and the child's array are selected on each iteration, ensuring that the new array is properly ordered.<br />
+<a href="wp-content/uploads/2013/03/m2.png"><img src="wp-content/uploads/2013/03/m2.png" alt="m2" width="656" height="244" class="aligncenter size-full wp-image-581" /></a></p>
+<p>Note that the pointer variable (represented by the diamond) moves every time for the top array, but only moves for one of the bottom arrays or the other, except in the case where both bottom arrays have an equal value.</p>
+<p><a href="wp-content/uploads/2013/03/m3.png"><img src="wp-content/uploads/2013/03/m3.png" alt="m3" width="667" height="236" class="aligncenter size-full wp-image-582" /></a></p>
+<p>In each iteration, the value to be placed in the top array at the diamond is determined in constant time by simply picking the larger of the two values pointed to in the lower arrays. This means that the merge operation runs in <img src='http://s.wordpress.com/latex.php?latex=O%28k%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k)' title='O(k)' class='latex' /> time.</p>
+<p><a href="wp-content/uploads/2013/03/m4.png"><img src="wp-content/uploads/2013/03/m4.png" alt="m4" width="656" height="239" class="aligncenter size-full wp-image-578" /></a></p>
+<p>Unlike in a traditional merge sort, the merge process can be halted when the top array is full, because we only care about the largest <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> entries.</p>
+<p><a href="wp-content/uploads/2013/03/m5.png"><img src="wp-content/uploads/2013/03/m5.png" alt="m5" width="656" height="246" class="aligncenter size-full wp-image-579" /></a></p>
+<p>While the TopNTree provides, in my opinion, a clean solution to this particular problem, there are other possible solutions. The first thing I thought of was to simply maintain a tree of contacts sorted by name and a heap of the contacts sorted by how frequently they are contacted. In the case where the most frequently contacted contacts only needs to be calculated once, this might save some time, but if a contact's frequency must be updated (a common event in a communication application), one would have to iterate over the entire heap. The following table shows the differences in upper bounds for different techniques. Note that in all cases <img src='http://s.wordpress.com/latex.php?latex=k%20%5Cleq%20n&#038;bg=T&#038;fg=000000&#038;s=0' alt='k \leq n' title='k \leq n' class='latex' /> and in most cases <img src='http://s.wordpress.com/latex.php?latex=k%20%3C%20n&#038;bg=T&#038;fg=000000&#038;s=0' alt='k &lt; n' title='k &lt; n' class='latex' /> and in my case <img src='http://s.wordpress.com/latex.php?latex=k%20%5Cll%20n&#038;bg=T&#038;fg=000000&#038;s=0' alt='k \ll n' title='k \ll n' class='latex' />.</p>
+<table>
+<tr>
+<th>Method</th>
+<th>Insert</th>
+<th>Search</th>
+<th>Getting most contacted</th>
+<th>Update</th>
+</tr>
+<tr>
+<td>TopNTree</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%281%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(1)' title='O(1)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k \log n)' title='O(k \log n)' class='latex' /></td>
+</tr>
+<tr>
+<td>Tree and heap</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k)' title='O(k)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n)' title='O(n)' class='latex' /></td>
+</tr>
+<tr>
+<td>Tree</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%20%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n \log n)' title='O(n \log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n)' title='O(n)' class='latex' /></td>
+</tr>
+<tr>
+<td>Heap</td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(n)' title='O(n)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28k%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(k)' title='O(k)' class='latex' /></td>
+<td><img src='http://s.wordpress.com/latex.php?latex=O%28%5Clog%20n%29&#038;bg=T&#038;fg=000000&#038;s=0' alt='O(\log n)' title='O(\log n)' class='latex' /></td>
+</tr>
+</table>
+<p>For me, the search time of the heap and the "getting most contacted" time of the tree made those solutions impractical, so I compared the TopNTree to a tree and a heap. Since the size of <img src='http://s.wordpress.com/latex.php?latex=k&#038;bg=T&#038;fg=000000&#038;s=0' alt='k' title='k' class='latex' /> was both constant and very low (5, for my listing of most popular contacts), I decided to use the TopNTree.</p>
+<p>Because big-O analysis, in general, is not to be trusted, I created a synthetic benchmark that emphasized the operations I was concerned with. The results are graphed below.<br />
+<center><br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidDRIMm8yampxcDk4UVBCSS0zV1J6NWc&transpose=0&headers=1&range=A1%3AC6&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time (s)","minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"curveType":"","booleanRole":"certainty","title":"TopNTree v AVL/Heap for k = 5","interpolateNulls":false,"animation":{"duration":0},"domainAxis":{"direction":1},"legend":"in","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Keys (n)","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script><br />
+</center></p>
+<p>Obviously, no synthetic beats real-world testing. I hope the TopNTree performs well!</p>
+<p>Reddit user JustSomeBadAdvice <a href="http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n">points out</a> that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=549.html" title="11:35 pm" rel="bookmark"><time class="entry-date" datetime="2013-03-09T23:35:05+00:00">March 9, 2013</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-488" class="post-488 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=488.html" rel="bookmark">Objective C v C Speed / Benchmarks</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=488.html#respond" title="Comment on Objective C v C Speed / Benchmarks"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I've been becoming increasingly interested in Objective C recently (as an alternative to C++). It is a much cleaner object-oriented extension to C that dodges a lot of of the pitfalls present in C++.</p>
+<p>One of the "complaints" about Objective C is that message passing (Objective C's method of communicating with objects) is slower than C++ and C. <a href="http://developer.apple.com/library/ios/#documentation/cocoa/conceptual/objectivec/Chapters/ocObjectsClasses.html">Because of the nature of Objective C,</a> this is likely true. I set out to discover just how much Objective C's dynamic messages would cost me.</p>
+<p><a href="http://it.toolbox.com/blogs/macsploitation/bypassing-objectivecs-message-passing-mechanism-for-speed-24946">A blog post by Jonathan Hohle</a> showed some interesting numbers for a recursive Fibonacci calculator. Hohle's post showed that Objective C's message passing costs pushed the runtime of the Objective C version of the code up to nearly triple that of the C version. Using a few hacks (storing a function pointer to the result of a message) reduced the difference to double.</p>
+<p>Hohle's results left me skeptical and wanting a bit more, so I created my own little benchmark with an Objective C and a C implementation of a <a href="http://en.wikipedia.org/wiki/Linked_list">linked list</a>. I tried to keep the codes as close to each other as possible, only introducing differences when an Objective C construct should be used (objects, most notably).</p>
+<p>The code for the linked list implementations is exactly what you'd expect it to be, but it is available for download (as well as scripts to run the benchmark yourself) at the bottom of this post.</p>
+<p>Before anyone jumps to any long-shot conclusions, obviously these benchmarks aren't perfect: not even close. I don't have access to the wide range of machines that would be needed to sufficiently gauge what is going on. I'm also aware that only testing a linked list implementation is not exhaustive. I was interested in the speed of various data structures like a linked list, so that's what I tested. Take everything below with a handful of salt.</p>
+<p>The actual benchmark code (that utilized the linked list) looks like this:</p>
+<p>C:</p>
+<pre class="wp-code-highlight prettyprint">
+#include &quot;linked_list_c.h&quot;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+
+int main(int argc, char** argv) {
+	int SIZE = atoi(argv[1]);
+
+	// make a new linked list
+	struct linked_list* ll = ll_create();
+	
+	int* d = calloc(SIZE, sizeof(int));
+	int i;
+	for (i=0; i &lt; SIZE; i++) {
+		d[i] = i;
+		ll_add(&amp;(d[i]), ll);
+	}
+	
+	printf(&quot;Size of list: %d\n&quot;, ll_length(ll));
+	int sum = 0;
+	while (ll_length(ll) != 0) {
+		sum +=  *(int*)ll_pop(ll);
+		struct linked_list* lli = ll_create();
+		for (i=0; i &lt; sum; i++) {
+			ll_add(&amp;(d[1]), lli);
+		}
+
+		while (ll_length(lli) != 0) {
+			sum -= *(int*)ll_pop(lli);
+		}
+		free(lli);
+	}
+	printf(&quot;Sum: %d\n&quot;, sum);
+	
+	
+	free(d);
+	free(ll);
+	return 0;
+}
+</pre>
+<p>And its Objective C counterpart:</p>
+<pre class="wp-code-highlight prettyprint">
+#include &quot;linked_list.h&quot;
+#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
+
+
+
+int main(int argc, char** argv) {
+	int SIZE = atoi(argv[1]);
+	
+	// make a new linked list
+	LinkedList* ll = [[LinkedList alloc] init];
+	
+	int* d = calloc(SIZE, sizeof(int));
+	int i;
+	for (i=0; i &lt; SIZE; i++) {
+		d[i] = i;
+		[ll add: &amp;(d[i])];
+	}
+	
+	printf(&quot;Size of list: %d\n&quot;, [ll length]);
+	int sum = 0;
+	while ([ll length] != 0) {
+		sum +=  *(int*)[ll pop];
+		LinkedList* lli = [[LinkedList alloc] init];
+		for (i=0; i &lt; sum; i++) {
+			[lli add: &amp;(d[1])];
+		}
+
+		while ([lli length] != 0) {
+			sum -= *(int*)[lli pop];
+		} 
+
+		[lli release];
+	}
+	printf(&quot;Sum: %d\n&quot;, sum);
+	
+	
+	free(d);
+	[ll release];
+	return 0;
+}
+</pre>
+<p>If you're anything like me, you prefer the look and feel of the Objective C code, but only if the performance costs aren't too high.</p>
+<p>I tested my code on two different systems: an i7 920 Linux box (Debian stable Linux 2.6.32-5-amd64) and a MacBook Air 13" (OS X 10.7.3, Darwin 11.3.0). Since the majority of my development targets Linux, I wanted to test both GCC and Clang on the Linux box. Apple's default compiler was used on the MacBook Air.</p>
+<p>There is quite a bit of test data, and I've made it available in a publicly-accessible Google spreadsheet here: <a href="https://docs.google.com/spreadsheet/ccc?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE">https://docs.google.com/spreadsheet/ccc?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE</a></p>
+<p>The first system/compiler tested is <a href="http://clang.llvm.org/">Clang, an LLVM compiler.</a> The compiler options for both the GCC and Clang tests were provided by the gnustep-config utility.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G10%3AI16&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Linux Clang Obj C/C Times","booleanRole":"certainty","animation":{"duration":500},"domainAxis":{"direction":1},"legend":"in","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 2"} </script></p>
+<p>Clearly, the Objective C version is slower. It might be more helpful to look at a graph of the percent differences between the two implementations:</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G1%3AH7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Seconds","minValue":0,"viewWindowMode":"explicit","viewWindow":{"min":0,"max":1},"maxValue":1},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"curveType":"function","booleanRole":"certainty","title":"Clang C/Obj C Time Difference","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":false,"title":"Size","formatOptions":{"source":"inline"},"minValue":null,"viewWindowMode":"pretty","format":"0.##","viewWindow":{"min":null,"max":null},"logScale":false,"maxValue":null},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 1"} </script></p>
+<p>Despite some strangeness with low data sizes, Clang's compilation of my Objective-C implementation runs around 30% slower than Clang's compilation of my C implementation. The strange behavior at lower ranges is likely due to the initial overhead of the first message passed to an object.</p>
+<p><a href="wp-content/uploads/2012/06/clangobjcc-1.png"><img src="wp-content/uploads/2012/06/clangobjcc-1.png" alt="Clang&#039;s Objective C is about 30% slower than Clang&#039;s C" title="Clang Obj C/C" width="500" height="150" class="aligncenter size-full wp-image-510" /></a></p>
+<p>Similar tests for GCC:<br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G19%3AI25&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Linux GCC Obj C/C Times","booleanRole":"certainty","animation":{"duration":500},"legend":"top","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 3"} </script></p>
+<p>Once again, Objective C is obviously slower, but the gap looks quite a bit smaller. The percent-difference graph is more helpful.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G1%3AG7%2CI1%3AI7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"% Time Difference","minValue":0,"viewWindowMode":"explicit","viewWindow":{"min":0,"max":1},"maxValue":1},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"curveType":"function","booleanRole":"certainty","title":"GCC C/Obj C Time Difference","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Size","viewWindowMode":"pretty","viewWindow":{}},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 4"} </script></p>
+<p>GCC's Objective C binary seems to approach 25% slower than C as opposed to Clang's 30%, possibly due to the maturity of GCC.</p>
+<p><a href="wp-content/uploads/2012/06/gccobjcc.png"><img src="wp-content/uploads/2012/06/gccobjcc.png" alt="GCC&#039;s Objective C is 25% slower than C" title="GCC Obj C/C" width="500" height="150" class="aligncenter size-full wp-image-496" /></a></p>
+<p>Since GCC's C binaries tend to execute faster than Clang's, it is no surprise that GCC's Objective C binaries also execute faster than Clang's Objective C binaries. The difference, however, is not that large.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G10%3AG16%2CI10%3AI16%2CI19%3AI25&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"GCC v Clang Objective C Speed","booleanRole":"certainty","animation":{"duration":500},"legend":"top","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 5"} </script></p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G1%3AG7%2CL1%3AL7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time","minValue":null,"viewWindowMode":"pretty","viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Time % Difference for Clang and GCC Objective C","booleanRole":"certainty","curveType":"function","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 6"} </script></p>
+<p>Generally, GCC's Objective C binary seems to be 4-5% faster than Clang's Objective C binary, although the shape of the graph seems to indicate that the difference may shrink even more as the problem size increases.</p>
+<p><a href="wp-content/uploads/2012/06/gccclangobjc.png"><img src="wp-content/uploads/2012/06/gccclangobjc.png" alt="GCC&#039;s Objective C seems to be 4-5% faster than Clang&#039;s Objective C" title="GCC Clang Obj C" width="500" height="150" class="aligncenter size-full wp-image-498" /></a></p>
+<p>One would imagine that Apple's compiler would be especially good at compiling Objective C, given Apple's large commitment to the language. Benchmarks of the same code ran on a MacBook Air are below.<br />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&range=G29%3AI35&gid=0&pub=1","options":{"vAxes":[{"title":"Time","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Apple C / Objective C Times","booleanRole":"certainty","animation":{"duration":500},"legend":"top","useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"isStacked":false,"width":600,"height":371},"state":{},"view":{"columns":[{"calc":"stringify","type":"string","sourceColumn":0},1,2]},"chartType":"ColumnChart","chartName":"Chart 8"} </script></p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidEtCR2Yxa1lPR2FhUDZRc0wyRXVGckE&transpose=0&headers=1&merge=COLS&range=G1%3AG7%2CM1%3AM7&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"% Slower","minValue":0,"viewWindowMode":"explicit","viewWindow":{"min":0,"max":1},"maxValue":1},{"useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}}],"title":"Time % Difference for Apple C / Objective C","booleanRole":"certainty","curveType":"function","animation":{"duration":500},"legend":"none","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"Size","useFormatFromData":true,"viewWindowMode":"pretty","viewWindow":{}},"width":600,"height":371},"state":{},"chartType":"LineChart","chartName":"Chart 7"} </script></p>
+<p>It appears as though Apple's Objective C compiler produces binaries that are around 18% slower than Apple's C binaries. The shape of the graph suggests that the percentage may decrease further with an increased problem size.</p>
+<p><a href="wp-content/uploads/2012/06/appleobjcc.png"><img src="wp-content/uploads/2012/06/appleobjcc.png" alt="Apple" title="Apple Objective C/C" width="500" height="150" class="aligncenter size-full wp-image-499" /></a></p>
+<p>In conclusion, Objective C sucks a bit of the performance out of your application if you depend on objects/messages for high-use data structures. While these numbers certainly have their issues (there's no real comparison of the Apple compiler to any other compiler), they do suggest that performance-critical chunks of code ought to remain in C (or, *shutter*, Fortran).</p>
+<p>In the HPC world,<a href="http://en.wikipedia.org/wiki/Greenspun's_tenth_rule">Greenspun's tenth rule</a> seems to hold true: "any sufficiently complicated C or Fortran program contains an ad hoc, informally-specified, bug-ridden, slow implementation of half of Common Lisp." Meaning, of course, that certain higher-level constructs (like objects) inevitably become needed. So while Objective C shouldn't be replacing our high-performance data structures yet, it could be used to implement some of the more complex parts of our applications.</p>
+<p>Perhaps in a scenario when I would take advantage of <a href="http://www.gnustep.it/nicola/Tutorials/DistributedObjects/DistributedObjects.html"> distributed objects</a>, I would consider Objective C.</p>
+<p>There's no doubt that Objective C is a well thought-out and elegant language, and it is possible that there are various constructs that, when implemented in Objective C, would actually be faster than their written-by-me C counterpart. Until I run into one, I'll just continue hammering away in C.</p>
+<p>While it is out of the scope of this post (and many others have done a much better job), GCC did seem to produce faster C binaries than Clang.</p>
+<p><a href="ObjCLL.tar.gz">You can grab the code here.</a> <a href="http://www.reddit.com/r/programming/comments/wphaz/how_much_do_objective_c_messages_cost_objective_c/">Reddit comments.</a></p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=488.html" title="11:20 pm" rel="bookmark"><time class="entry-date" datetime="2012-06-24T23:20:17+00:00">June 24, 2012</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-314" class="post-314 post type-post status-publish format-standard hentry category-computer-tips category-personal">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=314.html" rel="bookmark">Lyapunov Fractals in Python: Performance and Pretty Pictures</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=314.html#respond" title="Comment on Lyapunov Fractals in Python: Performance and Pretty Pictures"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I spent some time earlier this week playing around with <a href="http://en.wikipedia.org/wiki/Lyapunov_fractal">Lyapunov fractals</a> in Python. While normally I wouldn&#8217;t consider Python to be a performance-packing language, the ease-of-use (programmer cycles vs. machine cycles) inherent in Python has always been attractive. However, I was able to speed up my Python code substantially using <a href="http://psyco.sourceforge.net/">Psyco</a>, the Python <a href="http://docs.python.org/library/multiprocessing.html">multiprocessing module</a>, and a fast implementation of Python called <a href="http://pypy.org/">PyPy</a>.</p>
+<p>Lyapunov fractals are generated from a specific binary sequence, generally denoted with A&#8217;s and B&#8217;s. For example, the sequence &#8220;ABA&#8221; produces a different fractal than the sequence &#8220;BBAA.&#8221; An algorithm for generating these fractals is described by the Wolfram folk <a href="http://demonstrations.wolfram.com/LyapunovFractals/">here</a>.</p>
+<p>Lyapunov fractals are formed by associating an exponent (which, from what I can determine, is generally between -2.0 and 2.0) with a color. Each point on a 4.0&#215;4.0 plane gets an exponent. A visual representation of the fractal is then formed by associating each exponent with a color.</p>
+<p>Because of the computationally intense aspects of calculating an exponent, I decided to create one program to calculate all the exponent data, saving it to a file*, and another program to create an image from it. My source is available at the end of the post.</p>
+<p>After I&#8217;d written my code, I felt the wraith of Python in the form of slowness. After some trivial optimizations, I found Pysco and the Python multiprocessing module.</p>
+<p>Psyco is pretty straightforward: it does a bunch of JIT-style compilation (read: magic) on vanilla python to speed it up. It is pretty easy to use:<br />
+<code><br />
+import psyco<br />
+psyco.full()<br />
+</code></p>
+<p>Or, if you are slightly more error-cautious:</p>
+<p><code><br />
+try:<br />
+&nbsp;&nbsp;&nbsp;import psyco<br />
+&nbsp;&nbsp;&nbsp;psyco.full()<br />
+&nbsp;&nbsp;&nbsp;print "Psyco'd!"<br />
+except ImportError:<br />
+&nbsp;&nbsp;&nbsp;print "No psyco"<br />
+&nbsp;&nbsp;&nbsp;pass<br />
+</code></p>
+<p>The Python multiprocessing library is a real gem. It provides a parallel version of the <a href="http://docs.python.org/library/functions.html#map">&#8220;map&#8221; function</a>. This is pretty awesome &#8212; since each exponent calculation depends only upon a point (embarrassingly parallel), it is easy to create a function that takes in a point and spits out an exponent.</p>
+<p>Of course, all the concerns of parallel programming still apply. You can&#8217;t have any <a href="http://en.wikipedia.org/wiki/Race_condition">race conditions</a>, and your code needs to be conceptually parallel. Python takes care of all the messy bits (semaphores, join/fork management, etc.) for you.</p>
+<p>If you were using the map() function like this:<br />
+<code><br />
+a = map (function, list)<br />
+</code></p>
+<p>&#8230; you can simply replace that line with:</p>
+<p><code><br />
+try:<br />
+&nbsp;&nbsp;&nbsp;from multiprocessing import Pool<br />
+&nbsp;&nbsp;&nbsp;pool = Pool(8)<br />
+&nbsp;&nbsp;&nbsp;print "Parallel!"<br />
+&nbsp;&nbsp;&nbsp;a = pool.map(function, list)<br />
+except ImportError:<br />
+&nbsp;&nbsp;&nbsp;print "Not parallel"<br />
+&nbsp;&nbsp;&nbsp;a = map(function, list)<br />
+</code></p>
+<p>This will preform the map function in parallel (if the multiprocessing module is available) using 8 workers (which is pretty optimal for an i7 920).</p>
+<p>I also discovered an alternative flavor of Python called <a href="http://pypy.org/">PyPy</a>, which is a performance-driven Python that uses technology similar to Psyco. Sadly, PyPy doesn&#8217;t have an implementation of the multiprocessing module, so I was forced to choose between PyPy and traditional Python with multiprocessing and Psyco. I was incredibly doubtful that PyPy&#8217;s speed would be able to make up for parallelism and Psyco. I&#8217;ll let the numbers talk for me.</p>
+<p>The test system contains an un-overclocked i7 920 and 3GB of DDR3 RAM. These numbers are from generating a 1000&#215;1000 fractal worth of data with the sequence &#8220;AB&#8221; to a depth of 500 (iterations). I run Ubuntu 10.10 32-bit.</p>
+<p>Time in seconds. Smaller is better.</p>
+<p><script type="text/javascript" src="http://ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"chartType":"ColumnChart","chartName":"Python Accelerator Comparison","dataSourceUrl":"//spreadsheets.google.com/a/rmarcus.info/tq?key=0AmQWGSF3o-iidEt0bUNnYnAxay1naENJVGtBcUdHMEE&#038;transpose=0&#038;headers=1&#038;range=A1%3AF5&#038;gid=0&#038;pub=1","options":{"reverseCategories":false,"fontColor":"#fff","midColor":"#36c","pointSize":"0","headerColor":"#3d85c6","vAxis":{"format":"#0.###############"},"headerHeight":40,"is3D":false,"logScale":false,"hAxis":{"maxAlternation":1},"wmode":"opaque","title":"Python Accelerator Comparison","mapType":"hybrid","isStacked":false,"showTip":true,"displayAnnotations":true,"titleY":"Time","dataMode":"markers","colors":["#3366CC","#DC3912","#FF9900","#109618","#990099","#0099C6","#DD4477","#66AA00","#B82E2E","#316395"],"smoothLine":false,"maxColor":"#222","lineWidth":"2","labelPosition":"right","fontSize":"14px","hasLabelsColumn":true,"maxDepth":2,"legend":"right","allowCollapse":true,"cht":"bhg","minColor":"#ccc","reverseAxis":false,"width":600,"height":371},"refreshInterval":5} </script></p>
+<table>
+<tr>
+<th>Trial</th>
+<th>Python with Psyco and MP</th>
+<th>Python with Pysco</th>
+<th>Python with MP</th>
+<th>Python</th>
+<th>PyPy</th>
+</tr>
+<tr>
+<td>Trial 1</td>
+<td>36.4</td>
+<td>273</td>
+<td>253
+<td>2041
+<td>71</td>
+</tr>
+<tr>
+<td>Trial 2</td>
+<td>36.3</td>
+<td>268</td>
+<td>258</td>
+<td>2042</td>
+<td>66</td>
+</tr>
+<tr>
+<td>Trial 3</td>
+<td>35.2</td>
+<td>269</td>
+<td>255</td>
+<td>2058</td>
+<td>71</td>
+</tr>
+<tr>
+<td>Average</td>
+<td>35.966667</td>
+<td>270</td>
+<td>255.333333</td>
+<td>2047</td>
+<td>69.33333333</td>
+</tr>
+</table>
+<p>Clearly, Python on its own is pretty darn slow. Psyco provides nearly a 10x speedup, and if you can write your code to take advantage of the multiprocessing library, you can go really fast.</p>
+<p>The PyPy results, compared to the Pysco results, are quite impressive. If PyPy had an implementation of the multiprocessing library (which I&#8217;m fairly certain it doesn&#8217;t &#8212; feel free to correct me), it would probably dominate.</p>
+<p>The multiprocessing results for this test aren&#8217;t completely fair &#8212; generating fractals is an <a href="http://en.wikipedia.org/wiki/Embarrassingly_parallel">embarrassingly parallel</a> problem. But, of course, if you can break your problem up into parallel pieces, you can expect a relatively big speed bump.</p>
+<p>Conclusion: Python doesn&#8217;t have to be as slow as Python normally is. Drop-in replacements like Psyco can greatly accelerate code. if your code is vanilla enough to not require many external libraries (like PIL) then PyPy can probably give you quite the boost as well.</p>
+<p>You can download my source <a href="http://debateresearchnet.fatcow.com/downloads/FractalPython.zip">here</a>.</p>
+<p>Here&#8217;s some pretty pictures:<br />
+
+		<style type='text/css'>
+			#gallery-1 {
+				margin: auto;
+			}
+			#gallery-1 .gallery-item {
+				float: left;
+				margin-top: 10px;
+				text-align: center;
+				width: 50%;
+			}
+			#gallery-1 img {
+				border: 2px solid #cfcfcf;
+			}
+			#gallery-1 .gallery-caption {
+				margin-left: 0;
+			}
+			/* see gallery_shortcode() in wp-includes/media.php */
+		</style>
+		<div id='gallery-1' class='gallery galleryid-314 gallery-columns-2 gallery-size-thumbnail'><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output.png'><img width="150" height="150" src="http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output-150x150.png" class="attachment-thumbnail" alt="output" /></a>
+			</dt></dl><dl class='gallery-item'>
+			<dt class='gallery-icon landscape'>
+				<a href='http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output2.png'><img width="150" height="150" src="http://debateresearchnet.fatcow.com/wordpress/wp-content/uploads/2011/04/output2-150x150.png" class="attachment-thumbnail" alt="output2" /></a>
+			</dt></dl><br style="clear: both" />
+			<br style='clear: both;' />
+		</div>
+</p>
+<p>* A note about pickle: I realize that many Python developers would&#8217;ve decided to use pickle (or the faster cPickle) to save their exponent data to a file. I found cPickle to be far, far slower than just writing out comma separated values.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a>, <a href="index.html%3Fcat=15.html" title="View all posts in Personal" rel="category">Personal</a> on <a href="index.html%3Fp=314.html" title="3:54 am" rel="bookmark"><time class="entry-date" datetime="2011-04-15T03:54:48+00:00">April 15, 2011</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-282" class="post-282 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=282.html" rel="bookmark">Browser Wars on MacBook Pro 17&#8243; 2.66 4GB</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=282.html#respond" title="Comment on Browser Wars on MacBook Pro 17&#8243; 2.66 4GB"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>My results:</p>
+<p><img src="http://marcusfamily.info/~ryan/browsers.png"></p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=282.html" title="4:01 pm" rel="bookmark"><time class="entry-date" datetime="2010-01-26T16:01:51+00:00">January 26, 2010</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-267" class="post-267 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=267.html" rel="bookmark">openSUSE wireless installation</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=267.html#respond" title="Comment on openSUSE wireless installation"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Recently, I&#8217;ve been using openSUSE to try to get a grasp on a really powerful Linux distribution. So far, I&#8217;m really enjoying the power and simplicity of YaST and Zyppher. However, when I installed openSUSE on my laptop, I was having some trouble figuring out how to get my wireless card to work.</p>
+<p>I started at this page on the openSUSE forms: <a href="http://forums.opensuse.org/network-internet/wireless/410319-getting-your-wireless-work.html">http://forums.opensuse.org/network-internet/wireless/410319-getting-your-wireless-work.html</a> and from there I dove into log files, and then stumbled upon a very interesting website, <a href="http://wireless.kernel.org">http://wireless.kernel.org</a>, in which I finally found my way to <a href="http://wireless.kernel.org/en/users/Drivers/b43"> this page</a>. From there, I was able to find a very useful command built into openSUSE that fetched the proper firmware for most laptop wireless cards. So, if you are trying to get wifi on openSUSE to work, give this command a shot:</p>
+<blockquote><p>
+<code>sudo /usr/sbin/install_bcm43xx_firmware</code>
+</p></blockquote>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=267.html" title="4:42 pm" rel="bookmark"><time class="entry-date" datetime="2009-12-27T16:42:21+00:00">December 27, 2009</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-235" class="post-235 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=235.html" rel="bookmark">Wine vs. Windows Vista</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=235.html#respond" title="Comment on Wine vs. Windows Vista"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>After reviewing my previous post regarding benchmarks between Wine and Windows, I decided the conclusions needed updating for multiple reasons:</p>
+<ol>
+<li>Wine has evolved quite a bit &#8212; we now have a &#8220;stable&#8221; 1.0 release as well as other new releases.</li>
+<li>Windows has been updated since Windows XP &#8212; namely, Windows Vista.</li>
+<li>Hardware has changed drastically</li>
+</ol>
+<p>The machine I am running these benchmarks on (my machine):</p>
+<ol>
+<li><a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16819115202">Core i7 920</a></li>
+<li>3x<a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16820134657">1GB DDR3 1333 RAM</a></li>
+<li><a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16813130216">MSI X86 Platinum</a></li>
+<li><a href="http://www.newegg.com/Product/Product.aspx?Item=N82E16814150330">XFX GTX 260 Black Edition</a></li>
+</ol>
+<p>Benchmarks were ran on Ubuntu Intrepid and Windows Vista, all with every available (default) updates (including service packs) and no other applications running. I disabled desktop effects in Ubuntu, and I disabled Aero (I set the theme &#8220;Windows Classic&#8221;) in Vista. I used Cinebench R10 in WINE version 1.1.17.</p>
+<p>Results were as follows:</p>
+<table cellpadding="2">
+<tr>
+<th>Test</th>
+<th>Vista</th>
+<th>Ubuntu</th>
+<th>Percent</th>
+</tr>
+<tr>
+<td>Single CPU Rendering</td>
+<td>3190</td>
+<td>3197</td>
+<td>0.2% for Linux</td>
+</tr>
+<tr>
+<td>Multiple CPU Rendering</td>
+<td>13039</td>
+<td>11060</td>
+<td>15.2% for Windows</td>
+</tr>
+<tr>
+<td>OpenGL</td>
+<td>4873</td>
+<td>7634</td>
+<td>36.2% for Linux</td>
+</tr>
+</table>
+<p>A few interesting things to note:</p>
+<ol>
+<li>WINE and Windows have almost exactly the same performance for running processes that only use one CPU (single thread.)</li>
+<li>Windows scales better then WINE scales. WINE will fall behind when running processor-intensive multi-threaded applications, but the application would be far from unusable.</li>
+<li>WINE is <i>substantially</i> better then Windows (36.2%) at running OpenGL applications, which means games and other software that use OpenGL may actually run better in WINE then in Windows.</li>
+</ol>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=235.html" title="11:13 pm" rel="bookmark"><time class="entry-date" datetime="2009-03-17T23:13:18+00:00">March 17, 2009</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-225" class="post-225 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=225.html" rel="bookmark">Ubuntu with two graphics cards</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=225.html#comments" title="Comment on Ubuntu with two graphics cards">11 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>As many of you may know, the <a href="http://www.nvidia.com/object/winvista_x86_181.22_whql.html">newest NVidia drivers (181.22)</a> added support for using a secondary graphics card (8 series or above) as a dedicated PhysX processor&#8230; and, if you add another graphics card, you get some more VGA/DVI ports as well.</p>
+<p>Anyway, NVidia hasn&#8217;t yet been kind enough to provide a driver update for Linux, but it is still possible to use both your graphics cards (as well as multiple monitors!) with Ubuntu. I dove into the process this weekend, finding minimal-to-none documentation about how to do it&#8230; very annoying.</p>
+<p>However, it is actually rather easy. First of all, start with a new installation of Ubuntu with all updates downloaded and installed (EXCLUDING video drivers). Then, boot up your computer into Ubuntu&#8230; you&#8217;ll probably have a graphical login screen on whatever monitor is connected to your primary graphics card.</p>
+<p>If you do:</p>
+<ol>
+<li>Log in</li>
+<li>Open a new terminal from Applications -&gt; Accessories -&gt; Terminal</li>
+</ol>
+<p>If you don&#8217;t:</p>
+<ol>
+<li>Press control + alt + F1 to get a fresh console</li>
+<li>Log in</li>
+</ol>
+<p>Now, at this point you should be able to execute a few simple commands. The first thing we need to do is stop X from starting when the system boots up. Run this command:</p>
+<blockquote><p>
+sudo update-rc.d -f gdm remove
+</p></blockquote>
+<p>Now, reboot your computer. If you are in a console and don&#8217;t know how to do so, just enter this command:</p>
+<blockquote><p>
+sudo shutdown -r now
+</p></blockquote>
+<p>Upon reboot, you should be presented with a standard console-based login prompt. Go ahead and login, and download the lastest NVidia drivers for Linux by using this command:</p>
+<blockquote><p>
+cd<br />
+wget http://us.download.nvidia.com/XFree86/Linux-x86/180.22/NVIDIA-Linux-x86-180.22-pkg1.run
+</p></blockquote>
+<p>NOTE: Make sure to download the most recent drivers &#8212; you may have to use a different URL as this post becomes outdated.</p>
+<p>Next, start the NVidia installer. Make sure you accept the license agreement, try to download the kernel module, and if one can&#8217;t be found, tell the installer to compile one (you&#8217;ll be prompted.) Here&#8217;s the command:</p>
+<blockquote><p>
+sudo sh NVIDIA-Linux-x86-180.22-pkg1.run
+</p></blockquote>
+<p>After the installation is complete, you&#8217;ll have to run the nvidia-xconfig program to set up your /etc/X11/xorg.conf file to run a separate X server on each of your graphics cards. To do this, simply run this command:</p>
+<blockquote><p>
+sudo nvidia-xconfig -a
+</p></blockquote>
+<p>Once the command completes (should not take long at all), re-enable Xorg/GDM with this command:</p>
+<blockquote><p>
+sudo update-rc.d -f gdm defaults
+</p></blockquote>
+<p>Restart your computer with this command:</p>
+<blockquote><p>
+sudo shutdown -r now
+</p></blockquote>
+<p>This time, you should get a graphical login screen. Go ahead and login, and open a terminal. Run this command:</p>
+<blockquote><p>
+sudo nvidia-settings
+</p></blockquote>
+<p>&#8230; and set up your displays. You&#8217;ll want to enable Xinerama.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=225.html" title="12:04 am" rel="bookmark"><time class="entry-date" datetime="2009-02-02T00:04:03+00:00">February 2, 2009</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-221" class="post-221 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=221.html" rel="bookmark">Java: Scrolling a JScrollPane (JEditorPane) to the bottom</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=221.html#comments" title="Comment on Java: Scrolling a JScrollPane (JEditorPane) to the bottom">12 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Recently, I&#8217;ve stumbled upon a difficult issue in Java. If you&#8217;ve got a JEditorPane contained in a JScrollPane, and you add text to the JEditorPane and then, on the next line, try to scroll the JEditorPane to the bottom, you&#8217;ll still end up with the scroll bar at the top. The reason is quite simple: Threading. When you call JEditorPane.setText(), you cause Java to do some stuff behind the scenes in a different thread &#8212; not the main thread. When you then try to set the scroll position on the next line, the scroll bar position will change &#8212; however, Java&#8217;s behind the scenes thread will move it back to the top &#8212; pretty standard concurrency bug. Anyway, there is a simple fix:</p>
+<blockquote><p>
+private void scrollPaneToBottom() {</code></p>
+<p>SwingUtilities.invokeLater(new Runnable() {</p>
+<p>public void run() {</p>
+<p>jScrollPane1.getVerticalScrollBar().setValue(</p>
+<p>jScrollPane1.getVerticalScrollBar().getMaximum());</p>
+<p>}</p>
+<p>});</p>
+<p>}
+</p></blockquote>
+<p>SwingUtilities.invokeLater runs a Runnable (which is pretty much a thread, for this extent and purpose.) after all of Java's behind-the-scenes stuff finishes.</p>
+<p>Thanks to Guillermo for providing the code to do this on a JList:</p>
+<blockquote><p>
+private void scrollToListBottom() {<br />
+    SwingUtilities.invokeLater(new Runnable() {<br />
+           public void run() {<br />
+                DefaultListModel DLM_model = (DefaultListModel)JSP_scrollpane.getModel();<br />
+                JL_list.ensureIndexIsVisible(DLM_model.getSize()-1);<br />
+             }<br />
+      }<br />
+);
+</p></blockquote>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=221.html" title="8:10 pm" rel="bookmark"><time class="entry-date" datetime="2009-01-24T20:10:53+00:00">January 24, 2009</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+	<article id="post-212" class="post-212 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=212.html" rel="bookmark">Mumble, a free (as in speech) TeamSpeak/Vent alternative</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=212.html#respond" title="Comment on Mumble, a free (as in speech) TeamSpeak/Vent alternative"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>For the past couple of weeks, I&#8217;ve been using Mumble to replace a TeamSpeak server one of my friends was paying for. We&#8217;re all quite pleased with the results.</p>
+<p>Server installtion could not be easier. If you&#8217;ve got an Ubuntu server, you can simply install the &#8216;mumble-server&#8217; package and change a couple of configuration files, you&#8217;ll be up and running in no time.</p>
+<p>The client side interface is really where Mumble shines. For the first time ever, configuring an audio application on Linux was as simple and painless as it was on Windows and Mac. The voice activation features were more advanced then I&#8217;ve ever seen &#8212; not just a simple threshold. Echo cancelation seems to be done incredibly well too.</p>
+<p>All in all, a very good, very solid application&#8230; give it a shot: <a title="Mumble" href="http://mumble.sourceforge.net/Main_Page" target="_blank">http://mumble.sourceforge.net/Main_Page</a></p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=212.html" title="6:19 am" rel="bookmark"><time class="entry-date" datetime="2009-01-03T06:19:26+00:00">January 3, 2009</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+		<nav id="nav-below" class="navigation" role="navigation">
+			<h3 class="assistive-text">Post navigation</h3>
+			<div class="nav-previous"><a href="index.html%3Fcat=7&amp;paged=2.html" ><span class="meta-nav">&larr;</span> Older posts</a></div>
+			<div class="nav-next"></div>
+		</nav><!-- #nav-below .navigation -->
+	
+		
+		</div><!-- #content -->
+	</section><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-3" class="widget widget_text"><h3 class="widget-title">FortranFail Twitter</h3>			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/FortranFail" data-widget-id="347407527333486593">Tweets by @FortranFail</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+		</aside><aside id="pages-3" class="widget widget_pages"><h3 class="widget-title">Pages</h3>		<ul>
+			<li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html%3Fcat=4.html" title="View all posts filed under Android Debate">Android Debate</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="index.html%3Fcat=6.html" title="View all posts filed under Clipboard Historian">Clipboard Historian</a>
+</li>
+	<li class="cat-item cat-item-7 current-cat"><a href="index.html%3Fcat=7.html" title="View all posts filed under Computer Tips">Computer Tips</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="index.html%3Fcat=9.html" title="The UofA evidence autocutter.">Evidence Auto Cutter</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="index.html%3Fcat=11.html" title="View all posts filed under Luxer, Battle.net Bot">Luxer, Battle.net Bot</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="index.html%3Fcat=13.html" title="View all posts filed under Luxer: Documentation Update">Luxer: Documentation Update</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="index.html%3Fcat=15.html" title="View all posts filed under Personal">Personal</a>
+</li>
+		</ul>
+</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='index.html%3Fm=201307.html'>July 2013</a></li>
+	<li><a href='index.html%3Fm=201303.html'>March 2013</a></li>
+	<li><a href='index.html%3Fm=201206.html'>June 2012</a></li>
+	<li><a href='index.html%3Fm=201205.html'>May 2012</a></li>
+	<li><a href='index.html%3Fm=201104.html'>April 2011</a></li>
+	<li><a href='index.html%3Fm=201103.html'>March 2011</a></li>
+	<li><a href='index.html%3Fm=201008.html'>August 2010</a></li>
+	<li><a href='index.html%3Fm=201003.html'>March 2010</a></li>
+	<li><a href='index.html%3Fm=201001.html'>January 2010</a></li>
+	<li><a href='index.html%3Fm=200912.html'>December 2009</a></li>
+	<li><a href='index.html%3Fm=200903.html'>March 2009</a></li>
+	<li><a href='index.html%3Fm=200902.html'>February 2009</a></li>
+	<li><a href='index.html%3Fm=200901.html'>January 2009</a></li>
+	<li><a href='index.html%3Fm=200811.html'>November 2008</a></li>
+	<li><a href='index.html%3Fm=200808.html'>August 2008</a></li>
+	<li><a href='index.html%3Fm=200807.html'>July 2008</a></li>
+	<li><a href='index.html%3Fm=200806.html'>June 2008</a></li>
+	<li><a href='index.html%3Fm=200802.html'>February 2008</a></li>
+	<li><a href='index.html%3Fm=200712.html'>December 2007</a></li>
+	<li><a href='index.html%3Fm=200704.html'>April 2007</a></li>
+	<li><a href='index.html%3Fm=200701.html'>January 2007</a></li>
+	<li><a href='index.html%3Fm=200612.html'>December 2006</a></li>
+	<li><a href='index.html%3Fm=200610.html'>October 2006</a></li>
+	<li><a href='index.html%3Fm=200609.html'>September 2006</a></li>
+	<li><a href='index.html%3Fm=200608.html'>August 2006</a></li>
+	<li><a href='index.html%3Fm=200607.html'>July 2006</a></li>
+	<li><a href='index.html%3Fm=200606.html'>June 2006</a></li>
+	<li><a href='index.html%3Fm=200605.html'>May 2006</a></li>
+	<li><a href='index.html%3Fm=200604.html'>April 2006</a></li>
+	<li><a href='index.html%3Fm=200512.html'>December 2005</a></li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h3 class="widget-title">Other</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html%3Ffeed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html%3Ffeed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='wp-content/themes/twentytwelve/js/navigation.js%3Fver=1.0'></script>
+</body>
+</html>

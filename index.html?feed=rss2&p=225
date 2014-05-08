@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Ubuntu with two graphics cards</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=225" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=225</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=225#comment-430</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Tue, 15 Mar 2011 19:11:23 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-430</guid>
+		<description><![CDATA[You&#039;ll have to download the files on a different machine and use a flash drive or something else to move them over.]]></description>
+		<content:encoded><![CDATA[<p>You&#8217;ll have to download the files on a different machine and use a flash drive or something else to move them over.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: tom</title>
+		<link>http://rmarcus.info/?p=225#comment-429</link>
+		<dc:creator><![CDATA[tom]]></dc:creator>
+		<pubDate>Sun, 22 Aug 2010 07:06:38 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-429</guid>
+		<description><![CDATA[I am interested in this, too: integrated intel and nvidia (one of the newer series). obviously, they don&#039;t use the same driver, being different manufacturers. thanks]]></description>
+		<content:encoded><![CDATA[<p>I am interested in this, too: integrated intel and nvidia (one of the newer series). obviously, they don&#8217;t use the same driver, being different manufacturers. thanks</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Erwan</title>
+		<link>http://rmarcus.info/?p=225#comment-428</link>
+		<dc:creator><![CDATA[Erwan]]></dc:creator>
+		<pubDate>Mon, 24 May 2010 22:15:35 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-428</guid>
+		<description><![CDATA[How can I proceed if I don&#039;t have internet access with that machine with two graphic cards ?]]></description>
+		<content:encoded><![CDATA[<p>How can I proceed if I don&#8217;t have internet access with that machine with two graphic cards ?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=225#comment-427</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Wed, 09 Dec 2009 00:08:24 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-427</guid>
+		<description><![CDATA[As long as both cards use the same driver (i.e., an NVidia and ATI card would not work) this guide should work.]]></description>
+		<content:encoded><![CDATA[<p>As long as both cards use the same driver (i.e., an NVidia and ATI card would not work) this guide should work.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Chris Meadows</title>
+		<link>http://rmarcus.info/?p=225#comment-426</link>
+		<dc:creator><![CDATA[Chris Meadows]]></dc:creator>
+		<pubDate>Tue, 08 Dec 2009 22:30:07 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-426</guid>
+		<description><![CDATA[What would I do if I had two different kinds of video cards and want them to drive two monitors? (e.g. my nVidia 8800 card, and the integrated Intel graphics chip on my motherboard).]]></description>
+		<content:encoded><![CDATA[<p>What would I do if I had two different kinds of video cards and want them to drive two monitors? (e.g. my nVidia 8800 card, and the integrated Intel graphics chip on my motherboard).</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Naif</title>
+		<link>http://rmarcus.info/?p=225#comment-425</link>
+		<dc:creator><![CDATA[Naif]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2009 00:41:56 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-425</guid>
+		<description><![CDATA[Thank you very much, solved my problem following your steps :) /respect]]></description>
+		<content:encoded><![CDATA[<p>Thank you very much, solved my problem following your steps <img src="http://rmarcus.info/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" />  /respect</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=225#comment-424</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Sat, 25 Jul 2009 03:41:26 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-424</guid>
+		<description><![CDATA[We&#039;re now up to version 185.
+
+64 bit: http://us.download.nvidia.com/XFree86/Linux-x86_64/185.18.14/NVIDIA-Linux-x86_64-185.18.14-pkg2.run]]></description>
+		<content:encoded><![CDATA[<p>We&#8217;re now up to version 185.</p>
+<p>64 bit: <a href="http://us.download.nvidia.com/XFree86/Linux-x86_64/185.18.14/NVIDIA-Linux-x86_64-185.18.14-pkg2.run" rel="nofollow">http://us.download.nvidia.com/XFree86/Linux-x86_64/185.18.14/NVIDIA-Linux-x86_64-185.18.14-pkg2.run</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: frelancr42</title>
+		<link>http://rmarcus.info/?p=225#comment-423</link>
+		<dc:creator><![CDATA[frelancr42]]></dc:creator>
+		<pubDate>Sat, 25 Jul 2009 01:41:23 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-423</guid>
+		<description><![CDATA[I&#039;m having alot of trouble finding the link for the 64bit versions can you post a link please?]]></description>
+		<content:encoded><![CDATA[<p>I&#8217;m having alot of trouble finding the link for the 64bit versions can you post a link please?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=225#comment-422</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Thu, 18 Jun 2009 03:31:09 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-422</guid>
+		<description><![CDATA[@ Dallas: Ya, as Sakisds suggested, just enter the URL for the x64 driver instead of the x86 ones.]]></description>
+		<content:encoded><![CDATA[<p>@ Dallas: Ya, as Sakisds suggested, just enter the URL for the x64 driver instead of the x86 ones.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Dallas Kelly</title>
+		<link>http://rmarcus.info/?p=225#comment-421</link>
+		<dc:creator><![CDATA[Dallas Kelly]]></dc:creator>
+		<pubDate>Wed, 17 Jun 2009 17:47:34 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=225#comment-421</guid>
+		<description><![CDATA[All the commands work fine. But the install command aborted because my system is Linux_x86_64. Is there a seperate software package for a
+64 bit system.  I have a amd processor and have installed mythbuntu-64.]]></description>
+		<content:encoded><![CDATA[<p>All the commands work fine. But the install command aborted because my system is Linux_x86_64. Is there a seperate software package for a<br />
+64 bit system.  I have a amd processor and have installed mythbuntu-64.</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

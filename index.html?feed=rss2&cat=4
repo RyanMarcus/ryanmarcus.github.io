@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>RMarcus.info &#187; Android Debate</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;cat=4" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Sun, 27 Oct 2013 08:46:08 +0000</lastBuildDate>
+	<language>en-US</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>Android Debate v0.6 Released</title>
+		<link>http://rmarcus.info/?p=480</link>
+		<comments>http://rmarcus.info/?p=480#comments</comments>
+		<pubDate>Tue, 08 May 2012 03:50:15 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Android Debate]]></category>
+
+		<guid isPermaLink="false">http://rmarcus.info/?p=480</guid>
+		<description><![CDATA[I (finally) put out a new version of Android Debate today. Functionality wise, it isn&#8217;t too much different from the previous version, but it is a lot cleaner, and you can search through judges and view their paradigms! Changelog: - Choose timer sounds - Progress bar! - Fully configurable times - Judge paradigms (currently they [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I (finally) put out a new version of Android Debate today. Functionality wise, it isn&#8217;t too much different from the previous version, but it is a lot cleaner, and you can search through judges and view their paradigms!</p>
+<p>Changelog:</p>
+<blockquote><p>
+- Choose timer sounds<br />
+- Progress bar!<br />
+- Fully configurable times<br />
+- Judge paradigms (currently they just open as links, but that will be changed in a future version)<br />
+- New look and feel!
+</p></blockquote>
+<p>I imagine I&#8217;ll have a lot more time this summer to work on the app, and I plan on adding a lot more features, including many that integrate with <a href="http://debateresults.com">DebateResults</a>.</p>
+<p>Check it out on your phones or on Google Play here: <a href="https://play.google.com/store/apps/details?id=info.rmarcus.debate">https://play.google.com/store/apps/details?id=info.rmarcus.debate</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=480</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Android Debate v0.5 Released</title>
+		<link>http://rmarcus.info/?p=299</link>
+		<comments>http://rmarcus.info/?p=299#comments</comments>
+		<pubDate>Fri, 20 Aug 2010 04:23:50 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Android Debate]]></category>
+
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=299</guid>
+		<description><![CDATA[Today I released version 0.5 of Android Debate. I added a &#8220;profiles&#8221; section to allow you to quickly change between high school and college CX timings. By request of Ben Batha.]]></description>
+				<content:encoded><![CDATA[<p>Today I released version 0.5 of Android Debate. I added a &#8220;profiles&#8221; section to allow you to quickly change between high school and college CX timings. By request of Ben Batha.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=299</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Android Debate 0.4 Released</title>
+		<link>http://rmarcus.info/?p=295</link>
+		<comments>http://rmarcus.info/?p=295#comments</comments>
+		<pubDate>Mon, 29 Mar 2010 02:52:39 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Android Debate]]></category>
+
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=295</guid>
+		<description><![CDATA[Today I released beta version 0.4 of Android Debate. The new version prevents the screen from going to sleep while the app is open. This was a user request from a user named Tom.]]></description>
+				<content:encoded><![CDATA[<p>Today I released beta version 0.4 of Android Debate. The new version prevents the screen from going to sleep while the app is open. This was a user request from a user named Tom.</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=295</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Android Debate Update 0.3</title>
+		<link>http://rmarcus.info/?p=286</link>
+		<comments>http://rmarcus.info/?p=286#comments</comments>
+		<pubDate>Mon, 01 Feb 2010 00:19:45 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Android Debate]]></category>
+
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=286</guid>
+		<description><![CDATA[The newest version of Android Debate (uploaded today) has support for high school and college CX as well as college CX timings. Check and out and leave a comment! Just search the Market for &#8220;debate&#8221;]]></description>
+				<content:encoded><![CDATA[<p>The newest version of Android Debate (uploaded today) has support for high school and college CX as well as college CX timings. Check and out and leave a comment!</p>
+<p>Just search the Market for &#8220;debate&#8221;</p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=286</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+		<item>
+		<title>Android Debate Beta Release</title>
+		<link>http://rmarcus.info/?p=277</link>
+		<comments>http://rmarcus.info/?p=277#comments</comments>
+		<pubDate>Thu, 21 Jan 2010 06:39:44 +0000</pubDate>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+				<category><![CDATA[Android Debate]]></category>
+
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=277</guid>
+		<description><![CDATA[I&#8217;m pleased to announce my very first published Android app. Android Debate is a simple policy debate round timer that can currently only be used for high school rounds (the timers stop at 8 minutes and 5 minutes). While currently in a very early beta, I plan to add more features, including: Judge Wiki Customizable [&#8230;]]]></description>
+				<content:encoded><![CDATA[<p>I&#8217;m pleased to announce my very first published Android app. Android Debate is a simple policy debate round timer that can currently only be used for high school rounds (the timers stop at 8 minutes and 5 minutes). While currently in a very early beta, I plan to add more features, including:</p>
+<ul>
+<li> Judge Wiki</li>
+<li>Customizable times (for use in college rounds)</li>
+<li>Out round calculator</li>
+<li>And more! (based on your suggestions!)</li>
+</ul>
+<p>You can give Android Debate a try right now for free. Just search for it in the Android market.</p>
+<p><img align="center" src="http://marcusfamily.info/~ryan/androiddebate/promo.png"><br />
+<img align="center" src="http://marcusfamily.info/~ryan/androiddebate/screen1.png"></p>
+]]></content:encoded>
+			<wfw:commentRss>http://rmarcus.info/?feed=rss2&#038;p=277</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+		</item>
+	</channel>
+</rss>

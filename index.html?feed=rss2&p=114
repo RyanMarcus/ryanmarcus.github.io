@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Luxer beta 11 released</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=114" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=114</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: max</title>
+		<link>http://rmarcus.info/?p=114#comment-265</link>
+		<dc:creator><![CDATA[max]]></dc:creator>
+		<pubDate>Fri, 30 Jun 2006 09:12:26 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=125#comment-265</guid>
+		<description><![CDATA[ok]]></description>
+		<content:encoded><![CDATA[<p>ok</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=114#comment-264</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Fri, 30 Jun 2006 01:50:36 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=125#comment-264</guid>
+		<description><![CDATA[I suggest you post a feature request on the &lt;a href=&quot;http://marcusfamily.info/~ryan/forums&quot; rel=&quot;nofollow&quot;&gt;forums.&lt;/a&gt;]]></description>
+		<content:encoded><![CDATA[<p>I suggest you post a feature request on the <a href="http://marcusfamily.info/~ryan/forums" rel="nofollow">forums.</a></p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: max</title>
+		<link>http://rmarcus.info/?p=114#comment-263</link>
+		<dc:creator><![CDATA[max]]></dc:creator>
+		<pubDate>Thu, 29 Jun 2006 16:10:06 +0000</pubDate>
+		<guid isPermaLink="false">http://marcusfamily.info/~ryan/blog/?p=125#comment-263</guid>
+		<description><![CDATA[Can you make a greating option.
+
+ex :
+
+max join a chat
+Kanebot say : hi,max ,you are in a kanebot bot channel .
+
+it&#039;s juste a sujection
+
+excuse me for a mistakes
+i&#039;m french :D]]></description>
+		<content:encoded><![CDATA[<p>Can you make a greating option.</p>
+<p>ex :</p>
+<p>max join a chat<br />
+Kanebot say : hi,max ,you are in a kanebot bot channel .</p>
+<p>it&#8217;s juste a sujection</p>
+<p>excuse me for a mistakes<br />
+i&#8217;m french <img src="http://rmarcus.info/wp-includes/images/smilies/icon_biggrin.gif" alt=":D" class="wp-smiley" /> </p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>

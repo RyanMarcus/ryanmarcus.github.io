@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>RMarcus.info | It&#039;s all Frank&#039;s fault! | Page 3</title>
+<link rel="profile" href="http://gmpg.org/xfn/11" />
+<link rel="pingback" href="http://rmarcus.info/xmlrpc.php" />
+<!--[if lt IE 9]>
+<script src="http://rmarcus.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Feed" href="index.html%3Ffeed=rss2" />
+<link rel="alternate" type="application/rss+xml" title="RMarcus.info &raquo; Comments Feed" href="index.html%3Ffeed=comments-rss2" />
+<link rel='stylesheet' id='twentytwelve-fonts-css'  href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&#038;subset=latin,latin-ext' type='text/css' media='all' />
+<link rel='stylesheet' id='twentytwelve-style-css'  href='wp-content/themes/twentytwelve/style.css%3Fver=3.8.css' type='text/css' media='all' />
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://rmarcus.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+<script type='text/javascript' src='wp-includes/js/jquery/jquery.js%3Fver=1.10.2'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min.js%3Fver=1.2.1'></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://rmarcus.info/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 3.8" />
+<link rel="stylesheet" type="text/css" href="wp-content/plugins/wp-code-highlight/css/wp-code-highlight.css" media="screen" />
+<link rel="publisher" href="https://plus.google.com/u/0/108417296717615529338" /><style type="text/css">
+/* <![CDATA[ */
+img.latex { 
+vertical-align: middle; 
+border: none;
+box-shadow: 0px 0px 0px #FFFFFF;
+ }
+/* ]]> */
+</style>
+<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #e6e6e6; }
+</style>
+</head>
+
+<body class="home blog paged custom-background paged-3 custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="index.html" title="RMarcus.info" rel="home">RMarcus.info</a></h1>
+			<h2 class="site-description">It&#039;s all Frank&#039;s fault!</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="index.html%3Fpaged=3.html#content" title="Skip to content">Skip to content</a>
+			<div class="nav-menu"><ul><li ><a href="index.html">Home</a></li><li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li></ul></div>
+		</nav><!-- #site-navigation -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+		
+										
+	<article id="post-188" class="post-188 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=188.html" rel="bookmark">TeamSpeak in Linux with Logitech (or other) USB desktop microphone on Ubuntu</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=188.html#comments" title="Comment on TeamSpeak in Linux with Logitech (or other) USB desktop microphone on Ubuntu">4 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Teamspeak seems to be one of those applications that is just needed. You don&#8217;t raid without it. You don&#8217;t shot without it. You don&#8217;t live without it. Therefore, if it is so needed, should Linux users be excluded from the fun?</p>
+<p>The Linux version of Teamspeak is crap. Total crap. You can only select on audio interface, and despite my hours of screwing around with padsp, I still could not get it to work with my desktop microphone. But there is a solution. Use the Windows version of Teamspeak in WINE!</p>
+<p>I assume that if you are a Linux gamer who wants to user Teamspeak that you already have WINE installed. If not, follow the instructions <a href="http://www.winehq.org/site/download-deb">here</a>.</p>
+<p>Once you have WINE installed, we need to install the native Linux version of Teamspeak (why?) to get the icon so our WINE launcher looks pretty. Go to Applications -&gt; Add/Remove&#8230; and search for Teamspeak. Install it.</p>
+<p>Once the Linux version of Teamspeak is installed, open a new terminal by going to Applications -&gt; Accessories -&gt; Terminal. Enter the following commands:</p>
+<blockquote><p>cd<br />
+mkdir .wine_ts<br />
+cp /usr/share/pixmaps/teamspeak.xpm ./.wine_ts</p></blockquote>
+<p>Don&#8217;t close your terminal just yet. Now, go to Applications -&gt; Add/Remove&#8230; and uninstall Teamspeak by searching for it, unchecking the box, and clicking apply. Switch back to that Terminal.</p>
+<p>Time for the tricky part. Well, kind of. A monkey&#8217;s common sense should get you through here. Enter this command:</p>
+<blockquote><p>cat /proc/asound/cards | grep USB</p></blockquote>
+<p>This will give you something that looks like this:</p>
+<blockquote><p>1 [default        ]: USB-Audio &#8211; AK5370</p></blockquote>
+<p>If it does not, Linux is not even seeing your USB microphone. This guide can&#8217;t help you, sorry.</p>
+<p>Find the number next to the USB device you want to use as your microphone. In my case, this was &#8220;1&#8243;. In that same terminal window, enter:</p>
+<blockquote><p>cd<br />
+gksudo gedit .asoundrc</p></blockquote>
+<p>Into the new gedit window that opens, copy and paste the following:</p>
+<blockquote><p>pcm.headset {</p>
+<p>type hw</p>
+<p>card 1</p>
+<p>}</p>
+<p>ctl.headset {</p>
+<p>type hw</p>
+<p>card 1</p>
+<p>}</p></blockquote>
+<p>Replace the 1s with the number you had.</p>
+<p>Now, run winecfg on our new wine prefix.</p>
+<blockquote><p>env WINEPREFIX=&#8221;/home/YOURUSERNAME/.wine_ts&#8221; winecfg</p></blockquote>
+<p>Replace your YOURUSERNAME with the name of your home folder. If you don&#8217;t know the name of your home folder, type &#8220;cd &amp;&amp; pwd&#8221;. Whatever is after &#8220;/home/&#8221; is the name of your home folder.</p>
+<p>Once winecfg opens, click on the audio tab. Ignore any errors and click &#8220;Ok&#8221; to close winecfg. Now, open the wine registry editor by entering the following into the terminal:</p>
+<blockquote><p>env WINEPREFIX=&#8221;/home/YOURUSERNAME/.wine_ts&#8221; wine regedit</p></blockquote>
+<p>Once again, replace YOURUSERNAME with the name of your home folder.</p>
+<ol>
+<li>Click on the plus next to &#8220;HKEY_CURRENT_USER&#8221;</li>
+<li>Click on the plus next to &#8220;Software&#8221;</li>
+<li>Right click on the &#8220;Wine&#8221; folder and go to New -&gt; Key. Name the new key &#8220;Alsa Driver&#8221; (without quotes.)</li>
+<li>Right click on the newly created &#8220;Alsa Driver&#8221; folder and select New -&gt; String value.</li>
+<li>Set the name to &#8220;AutoScanCards&#8221; (without quotes)</li>
+<li>Double click on the row of the new value. Enter &#8220;N&#8221; (without quotes) in the value field.</li>
+<li>Repeat step 4 to 6 for the following name/value pairs:
+<ul>
+<li>Name: DeviceCount Value: 2</li>
+<li>Name: DevicePCM1 Value: default</li>
+<li>Name: DevicePCM2 Value: headset</li>
+</ul>
+</li>
+<li>Click the close button on the Registry Editor window.</li>
+</ol>
+<p>Now, time to go back to winecfg window. Run this command, in case you have forgotten:</p>
+<blockquote><p>env WINEPREFIX=&#8221;/home/YOURUSERNAME/.wine_ts&#8221; winecfg</p></blockquote>
+<p>Click on the audio tab, and set &#8220;Hardware Acceleration&#8221; to &#8220;Emulation&#8221;, and check the &#8220;Driver Emulation&#8221; check box. Click on the apply button, then the OK button. Now, we need to download Teamspeak and install it in WINE.</p>
+<p>First we need to download Teamspeak. For the newest version, go to <a href="http://goteamspeak.com">http://goteamspeak.com</a> and download the Windows installer. Move it into your home folder. If you would like to use a version that I know works, run this:</p>
+<blockquote><p>wget ftp://ftp.freenet.de/pub/4players/teamspeak.org/releases/ts2_client_rc2_2032.exe</p></blockquote>
+<p>&#8230; and wait for the download to finish. Once you&#8217;ve got the Teamspeak installer downloaded, run it with this command:</p>
+<blockquote><p>cd<br />
+env WINEPREFIX=&#8221;/home/YOURUSERNAME/.wine_ts&#8221; wine ts2_client_rc2_2032.exe</p></blockquote>
+<p>If you downloaded a newer version, replace ts2_client_rc2_2032.exe with the name of your installer.</p>
+<p>Click through the installer (yes, yes, accept, you own my soul, accept&#8230;) and ignore the error about codecs not installing. Make sure to create a desktop shortcut! Close the Teamspeak installer.</p>
+<p>Now, making it all a nice part of the Ubuntu system is something I always like doing. Right click on your little Ubuntu logo (in the upper left of your screen. Yes, that one.) and select &#8220;Edit menus&#8221;.</p>
+<p>Click on &#8220;Internet&#8221; and click and drag the Teamspeak launcher on your desktop into the pane on the right. Once it is there, right click on it, and select &#8220;Properties.&#8221; In the window that appears, click on the icon button (which is probably currently a bottle of wine.), and enter this into the field at the top:</p>
+<blockquote><p>/home/YOURUSERNAME/.wine_ts/teamspeak.xpm</p></blockquote>
+<p>&#8230; and press enter. Close the &#8220;Main Menu&#8221; and &#8220;Launcher Properties&#8221; windows.</p>
+<p>Now you can open Teamspeak! Go to Applications -&gt; Internet -&gt; Teamspeak 2 RC2. Once it opens, go to Settings -&gt; Options. You should be able to select &#8220;USB Audio&#8221; as your input method and the only option for output. Set the sound driver to Wave and check the force 8 bit recording box. Click apply and then close.<br />
+<a href="http://rmarcus.files.wordpress.com/2008/07/tssettings.png"></a></p>
+<p style="text-align:center;"><img class="size-medium wp-image-189 aligncenter" src="http://rmarcus.files.wordpress.com/2008/07/tssettings.png?w=300" alt="My configured Teamspeak settings" width="300" height="298" /></p>
+<p>Ta da!</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=188.html" title="3:52 am" rel="bookmark"><time class="entry-date" datetime="2008-07-01T03:52:55+00:00">July 1, 2008</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-184" class="post-184 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=184.html" rel="bookmark">Linux dual screen gaming&#8230; as easy as Devil&#8217;s Pie.</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=184.html#respond" title="Comment on Linux dual screen gaming&#8230; as easy as Devil&#8217;s Pie."><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>As many of my fellow Linux gamers have noticed, dual screens can be a bitch. Especially with WINE. The solution is actually pretty simple. A package hidden away in the repositories called &#8220;devilspie.&#8221; This guide will help you set up a full screen game on one of your displays. This is only going to work if the game supports the resolution of one of your monitors. (I.E., my main screen runs at 1680&#215;1050.So does CS:S.)</p>
+<p>The issue I am talking about is getting games (in this case WINE games) to run on your main display in fullscreen mode. When I started messing around with this stuff, I had a few goals:</p>
+<ol>
+<li>To not change any of my dual monitor settings</li>
+<li>To be able to use my secondary display while in-game</li>
+<li>To be able to move my mouse from the game onto the secondary display (or to disable that)</li>
+<li>To be able to double click on a game and have it work  without changing my whole system just to play a game.</li>
+</ol>
+<p>A challenge, to be sure, but I found it to be a lot easier then I thought. First things first. Let&#8217;s install the <strong>devilspie</strong> package from the repos.</p>
+<ol>
+<li>Open System -&gt; Administration -&gt; Synaptic Package Manager.</li>
+<li>Click on the &#8220;Search&#8221; toolbar icon.</li>
+<li>Set the &#8220;Look in&#8221; popup to &#8220;Name&#8221;</li>
+<li>Enter &#8220;devilspie&#8221;</li>
+<li>Right click on the &#8220;devilspie&#8221; package and select &#8220;Mark for installation.&#8221;</li>
+<li>Click the green apply toolbar icon.</li>
+</ol>
+<p>Now, let&#8217;s add the devilspie service to our session, so that devilspie runs whenever we start up our computers. To do this:</p>
+<ol>
+<li>Open System -&gt; Preferences -&gt; Sessions</li>
+<li>Click the &#8220;Add&#8221; button.</li>
+<li>After your window looks like the one below, click &#8220;Ok&#8221;</li>
+<li>Close the Sessions Preferences window.</li>
+</ol>
+<p><img class="size-medium wp-image-185 aligncenter" src="http://rmarcus.files.wordpress.com/2008/06/screenshot.png?w=300" alt="A screenshot of my window" width="300" height="125" /></p>
+<p>Next, let&#8217;s install the front-end GUI to Devil&#8217;s Pie so we don&#8217;t have to muck around with config files. To do this, download the .deb file from <a title="gdevilspie download." href="http://code.google.com/p/gdevilspie/downloads/list" target="_blank">here</a>. Get the most recent version. I used release three. Once the file is downloaded:</p>
+<ol>
+<li>Double click the .deb file on your desktop.</li>
+<li>When GDebi loads, click on &#8220;Install.&#8221;</li>
+<li>Once the installation is done, press Alt+F2 and enter: nautilus /usr/share/applications</li>
+<li>In the new nautilus window, type &#8220;gd&#8221; whic should bring you fairly close to gDevilspie.</li>
+<li>You can click and drag this launcher to your panel, your desktop, or your menus (if you open Edit menus.)</li>
+</ol>
+<p>Next, we need to setup our WINE game so that Devil&#8217;s Pie can deal with it. This is pretty easy. First, open winecfg. If you&#8217;ve got a wineprefix setup for your game, you should know how to do this. If not, press Alt+F2 and enter &#8220;winecfg&#8221;.</p>
+<ol>
+<li>Click on the &#8220;Graphics&#8221; tab.</li>
+<li>Check the box labled &#8220;Emulate a virtual desktop&#8221; and enter in the size of your main display.</li>
+</ol>
+<p style="text-align:center;"><a href="http://rmarcus.files.wordpress.com/2008/06/wineconfig.png"><img class="size-medium wp-image-186 aligncenter" src="http://rmarcus.files.wordpress.com/2008/06/wineconfig.png?w=225" alt="An emulated desktop setup" width="225" height="300" /></a></p>
+<p>Now that winecfg is closed, we need to know the name of the window it creates for its emulated desktop. The quickest way to do this is:</p>
+<ol>
+<li>Run winecfg again.</li>
+<li>Winecfg should open in a large emulated desktop window that fills more then your whole primary monitor. If it does not, repeat the steps above to setup wine in a emulated desktop.</li>
+<li>Look at the bottom of your screen at the small tabs that represent windows. If you have removed this bar or moved it, I assume you know how to get it back.</li>
+<li>Look at the tab representing your wine emulated desktop, and take note of its name. Mine was &#8220;Default &#8211; Wine desktop&#8221;</li>
+</ol>
+<p>Now its time for the kicker. Set up the Devil&#8217;s Pie rule.</p>
+<ol>
+<li>Open gdevilspie in the way you set up earlier.</li>
+<li>Click on the &#8220;Add&#8221; button.</li>
+<li>Name your rule whatever you want.</li>
+<li>In the &#8220;Matching&#8221; tab, check the &#8220;window_name&#8221; checkbox.</li>
+<li>In the first field on the left side of the pane, enter the name of the window of your emulated wine desktop.</li>
+<li>Click on the &#8220;Actions&#8221; tab.</li>
+<li>Check the &#8220;fullscreen&#8221; box.</li>
+<li>If you move over to raw tab, you should see something like what I have. If you do, click &#8220;Save.&#8221;<a href="http://rmarcus.files.wordpress.com/2008/06/ruleeditor.png"><br />
+</a><a href="http://rmarcus.files.wordpress.com/2008/06/ruleeditor.png"></a></p>
+<p style="text-align:center;"><img class="size-medium wp-image-187 aligncenter" src="http://rmarcus.files.wordpress.com/2008/06/ruleeditor.png?w=300" alt="The RAW tab of my rule" width="300" height="250" /></p>
+</li>
+</ol>
+<ol>
+<p style="text-align:center;">
+<p style="text-align:left;">Now, restart your computer. When you log back in, your WINE virtual desktop will be fullscreen on your main monitor.</p>
+</ol>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=184.html" title="4:49 pm" rel="bookmark"><time class="entry-date" datetime="2008-06-25T16:49:36+00:00">June 25, 2008</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-176" class="post-176 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=176.html" rel="bookmark">Luxer 2 Preview</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=176.html#respond" title="Comment on Luxer 2 Preview"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Like a Star Wars sequel, I know it has taken long enough. Here is your first free sample of what will become Luxer 2.</p>
+<p><img src="http://marcusfamily.info/~ryan/luxer/Luxer2Preview.png" width="432"></p>
+<p>I&#8217;ll write more on this later, but I figure you&#8217;d all rather have me be writing code.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=176.html" title="5:28 am" rel="bookmark"><time class="entry-date" datetime="2008-02-10T05:28:03+00:00">February 10, 2008</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-174" class="post-174 post type-post status-publish format-standard hentry category-computer-tips">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=174.html" rel="bookmark">Wine vs. Windows XP: Can Linux write Windows better then Microsoft?</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=174.html#respond" title="Comment on Wine vs. Windows XP: Can Linux write Windows better then Microsoft?"><span class="leave-reply">Leave a reply</span></a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>A benchmark &#8212; when used in terms of computers &#8212; is a statistic for comparison, whether it be two different sets of graphics cards, two different processors, two different motherboards, etc. It is a rare occurrence when benchmarks can be used to determine the difference between two operating systems.</p>
+<p><a href="http://winehq.com/">WINE</a> (Wine Is Not An Emulator) is compatibility layer for Linux, giving Linux users the ability to run Windows applications with X (the Linux window server) and OpenGL (a free kind of OpenGL). Quite a few people say things like &#8220;it is impossible for Wine to ever run faster then Windows,&#8221; but it turns out that is not always the case.</p>
+<p>With the newest version of Wine (as of 12/03/07) is 0.9.50. Some kind Wine user has ran quite a few pieces of benchmarking software on an equivalent Windows XP and Wine. Wine is compared to XP and not Vista because Wine only supports DirectX 9, and XP is considered to have MUCH better performance then Vista.</p>
+<p>If you&#8217;d like to read the benchmarks yourself instead of my interpretation, or you&#8217;d like to refer to the benchmarks as I go through them, you can find them here: <a href="http://wiki.winehq.org/BenchMark-0.9.5">http://wiki.winehq.org/BenchMark-0.9.5</a>.</p>
+<p>On the first set of benchmarks (3DMark2000v1.1 1024x768x16), showed that, overall, Wine preformed 7.5% better then Windows XP. Now, let&#8217;s break it down into individual tests to see where Wine gets its lead from:</p>
+<ol>
+<li><strong>CPU Speed: Linux Leads by 12.5%</strong>: Linux is known for its process and memory management. It is just a little known fact that Linux runs about 15% faster then Windows XP does, and about 35% faster then Vista. The 12.5% is a reflection of that difference. Linux simply has done it right, Windows hasn&#8217;t. Linux is a lot less bloated, and everything is written smaller and more compactly then in Windows.</li>
+<li><strong>Helicopter: Windows leads by 2% at low detail, 11% at medium detail, and 33.8% on high detail</strong>: While Linux is known for process and memory advantages over Windows, Windows is known to have rendering advantages over Linux. OpenGL, while faster if written correctly, really slows down DirectX stuff when Wine has to channel all of an applications DirectX calls into OpenGl. The helicopter demo is a demonstration of a fast moving, many polygon model. Linux falls behind drastically in this respect.</li>
+<li><strong>Adventure: Linux leads 56.7% in low detail, 26.1% in medium detail, 13.7% in high detail</strong>: These are some rather interesting numbers, as they illustrate my last two points quite well. An adventure game is much more processor intensive then the helicopter. These numbers show how much Linux&#8217;s processor and memory advantages can show over Windows, and how quickly Windows catches up when the graphics level is bumped. Still, Linux rains supreme even at higher ends due to flat out bad process and memory management in Windows XP.</li>
+<li><strong>Single texture filling: Windows leads 11%</strong>: Single texture filling is one of those things that DirectX has going for it. It is all done on the graphics card. Single texture filling is mostly common with older games, so the level of graphical intensity probably won&#8217;t be enough to be effected by this.</li>
+<li><strong>Multiple texture filling: Linux leads 74.5%</strong> When you are filling with multiple textures, the processor starts to become a factor. Calculations of what texture to put where are not done on the card, they are done on the processor. Apparently, enough of the work is done on the processor to give Linux a huge lead in this area. Most newer games use this method, but because of Linux&#8217;s polygon difficulties, that doesn&#8217;t mean that all newer games run better in Wine.</li>
+<li><strong>Many polygons: Windows leads 50% &#8211; 54%</strong>: Rendering polygons and models is something left up to the graphics card, thus Windows will get better performance until the Wine folks get their act together. Most 3D first person games (World of Warcraft, Guild Wars, Counterstrike) included many polygon models, so Wine might have some trouble there. Hopefully its multiple texture filling advantage will earn you some of your lost frames back. Some games, like RTS&#8217;s (real time strategy, Supreme Commander, Command and Conquer, Starcraft (1 &amp; 2), Warcraft III) tend to use much less polygons then 3D first person shooters, so you should get better performance in those games.</li>
+<li><strong>Texture rendering speed: Linux leads 5.9% on 16 MB, 9.4% on 32 MB, 11.4% on 64 MB</strong>: One of the few areas where OpenGL surpasses DirectX is texture rendering. OpenGL is designed to render movies and slower paced animations as well as games, so the texture storage and rendering system is must farther along then DirectX. Once again, large textures are normally used in RTS&#8217;s and RPG&#8217;s, not in 3D first person games. You&#8217;ll see quite a difference when your playing your non-shooter games in Wine then in Windows XP.</li>
+<li><strong>Bump mapping: Linux leads 1.7% on 3 pass, Windows leads on 2 pass by 1.2%, Windows leads by 4.9% in one pass, Linux leads by 37.9% in environmental</strong>: Sadly, bump mapping is used in most games, and normally single pass. RTS&#8217;s and large, zoomed out games, luckily, tend to use environmental, so, once again, you&#8217;ll get some boosts there.</li>
+</ol>
+<p>Overall, Wine is making progress on Windows XP, and is ahead of Windows in many ways already. I can only encourage you to get Linux and try it yourself. Wine will continue to make progress, and maybe even surpass Windows XP entirely in the near future. Watch and wait!</p>
+<p>You are welcome to look through the rest of the benchmark, but I don&#8217;t believe there is anything else there to change the conclusions I made.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=7.html" title="View all posts in Computer Tips" rel="category">Computer Tips</a> on <a href="index.html%3Fp=174.html" title="9:55 am" rel="bookmark"><time class="entry-date" datetime="2007-12-04T09:55:17+00:00">December 4, 2007</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-165" class="post-165 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=165.html" rel="bookmark">More Luxer 1.0 Information</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=165.html#comments" title="Comment on More Luxer 1.0 Information">4 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I&#8217;ve decided that Luxer really needs a lot of under-the-hood work. A lot of the classes that I wrote two years ago are not written very well, and my connection style to JavaOp is a bit lacking.</p>
+<p>Also, I&#8217;ve decided to start supporting Luxer on Windows as well as Mac, as I am starting to think it may be one of the better bots out there.</p>
+<p>And thus, my current game plan:</p>
+<ol>
+<li><strong>Step 1:</strong> Go through all the code in my Java – REALbasic interface and make it optimized.</li>
+<li><strong>Step 2:</strong> Add support to enable / disable debug mode from a menu item instead of having to move plugin files around.</li>
+<li><strong>Step 3:</strong> Create classes and an interface to modify what BNLS servers are used, and create some kind of method to always obtain a working one.</li>
+<li><strong>Step 4:</strong> Redesign the user structure. Flags should not be letters, but check boxes. Luxer is an application, not a hack. This will require redoing the entire user database structure.</li>
+<li><strong>Step 5:</strong> Re-add commands in a secure and less-lengthy fashion. Only send back error messages if something actually went wrong.
+</li>
+<li><strong>Step 6:</strong> Redo wildcard kicking and banning. We need a faster way, possibly with RegEx, to do this.
+<p>Once this is done, I&#8217;ll take a look at new features. I think that a new and better bot core will lead to an easier way to add more to Luxer.</li>
+</ol>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=165.html" title="11:04 pm" rel="bookmark"><time class="entry-date" datetime="2007-04-26T23:04:57+00:00">April 26, 2007</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-155" class="post-155 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=155.html" rel="bookmark">Luxer Update</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=155.html#comments" title="Comment on Luxer Update">3 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Sorry for not being a little more active guys, debate has been a bigger time suck then World of Warcraft&#8230;</p>
+<p>Anyhow, I&#8217;m going to write the next version of Luxer to use local hashing, which several people have told me works. Just hold tight for a while, should not be too much longer.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=155.html" title="8:22 pm" rel="bookmark"><time class="entry-date" datetime="2007-01-29T20:22:46+00:00">January 29, 2007</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-154" class="post-154 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=154.html" rel="bookmark">Luxer 1.0 Release Info and Luxer 2.0 Plan</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=154.html#comments" title="Comment on Luxer 1.0 Release Info and Luxer 2.0 Plan">19 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Luxer 1.0 is officially done!</p>
+<p>The only thing preventing me from releasing is the small things I need to do (document, clean forums, get site up, etc.), then, you will all have a working WAR3 bot!</p>
+<p>Anyhow, I&#8217;d like to announce the official game plan for the next version of Luxer&#8230; 2!</p>
+<ul>
+<li><strong>Completely redone UI and code</strong></li>
+<p>No more sloppy code, no more sloppy UI. The final Luxer is going to be a shining jewel of the Macintosh, as well as Linux.</p>
+<li><strong>Unity</strong></li>
+<p>Like all great applications, it is time to add some UNITY to Luxer. My plan is to write a server (called &#8220;UNITY&#8221;) that will allow Luxer users to communicate and share, as well as download trivia questions and upload Chuck Norris jokes. <img src="wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley" /> </p>
+<li><strong>Custom-Command Access</strong></li>
+<p>The main reason I could not get this feature in version 1.0 is because of my own sloppy code. However, in 2, this will not be a problem.</p>
+<li><strong>Web Interface&#8230; Batlle.net clans + UNITY = a better battle.net</strong></li>
+<p>As a part of UNITY, you will be able to do amazing things with Luxer. A quick brainstorming proposes these features:</p>
+<ol>
+<li><em>Web-based Chat</em></li>
+<p>Get a free hosted, web-based chat room with optional password for your channel.</p>
+<li><em>Forum Signatures</em></li>
+<p>Now, how is that for sweet? Put your battle.net name, access level, clan channel, and maybe a brief chat history in an image that could become your forum signature.
+</ol>
+</ul>
+<p>There is bound to be tons new in the next version of Luxer, but I will keep it at that for the moment.</p>
+<p>There is a small problem with UNITY&#8230; I need somebody to host it. It will be as simple as opening two ports to a computer and running a REALbasic program, but if I could get a Mac or Linux user who is willing to do that, it will save a lot of time. In order for me to use my own server for this, I will have to write the server in Java, which will take, shall we say, years.</p>
+<p>So, if you&#8217;ve been too lazy to donate to Luxer, perhaps this is your chance to contribute to the project.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=154.html" title="7:42 pm" rel="bookmark"><time class="entry-date" datetime="2006-12-20T19:42:13+00:00">December 20, 2006</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-153" class="post-153 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=153.html" rel="bookmark">Luxer 1.0 Screenshot</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=153.html#comments" title="Comment on Luxer 1.0 Screenshot">2 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Hey, I just took a screenshot and stitched together of every single Luxer window in dual-screen goodness. (yes, all the windows take up two entire screens!)</p>
+<p>Anyhow, check it out:</p>
+<p><a href="http://marcusfamily.info/~ryan/luxer/1point0beta.jpg">Click here.</a></p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=153.html" title="1:47 am" rel="bookmark"><time class="entry-date" datetime="2006-12-18T01:47:51+00:00">December 18, 2006</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-145" class="post-145 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=145.html" rel="bookmark">Luxer Version 1.0 Update</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=145.html#comments" title="Comment on Luxer Version 1.0 Update">15 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I&#8217;ve done a bit of work on all 9 of the features that I&#8217;ve promised for Luxer 1.0.</p>
+<ul>
+<li><strong>Easy install. Download and double click, as it should be.</strong><br />
+I&#8217;ve figured out how to run the shell install script from a REALbasic application. Should not be long now!</li>
+<li><strong>More iTunes commands</strong><br />
+I&#8217;m planning on adding the following iTunes features:</p>
+<ol>
+<li><strong>PlayRating RATING(1-5)</strong>: Skips forward until a song of RATING is found.</li>
+<li><strong>Notification</strong>: Sends you a whisper with song information as the song changes</li>
+<li><strong>openitunes and quititunes</strong>: Commands to open and quit iTunes</li>
+</ol>
+</li>
+<li><strong>Remember CDKeys for different clients</strong><br />
+Finished.</li>
+<li><strong>Phrasebans</strong><br />
+I&#8217;ve finished this feature 100%. You can look at the documentation forum and check it out.</li>
+<li><strong>Vote</strong><br />
+Have not done much on this yet, still brainstorming about the best way to do it.</li>
+<li><strong>Chat window</strong><br />
+Almost complete. A few bugs to work out, and we got it!</li>
+<li><strong>Be able to change the access level required for commands</strong><br />
+Have not even touched it. This one will be a pain.</li>
+<li><strong>Make custom commands easier</strong><br />
+Done! You can now double click a command in the custom commands window to edit it, which is faster then remaking the command everytime&#8230; <img src="wp-includes/images/smilies/icon_wink.gif" alt=";)" class="wp-smiley" />  </li>
+<li><strong>Implement Mail</strong><br />
+This was a lot easier then it sounded. I created a mail database, and you can use the mail and inbox commands just like most other bots. Any person can have an unlimited number of messages sent to them, and when they join the channel they will be notified of their new mail.</li>
+</ul>
+<p>I&#8217;ve also added a few extra goodies:</p>
+<ul>
+<li><strong>Faster connection</strong>: I optimized the code Luxer uses to connect. It will be faster.</li>
+<li><strong>APM</strong>: You can now use the commands apm START apm STOP and apm RESULTS to see and measure your actions per minute.</li>
+<p>Demember 14th, here we come!</ul>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=145.html" title="10:43 pm" rel="bookmark"><time class="entry-date" datetime="2006-10-16T22:43:54+00:00">October 16, 2006</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+							
+	<article id="post-138" class="post-138 post type-post status-publish format-standard hentry category-luxer-battlenet-bot">
+				<header class="entry-header">
+									<h1 class="entry-title">
+				<a href="index.html%3Fp=138.html" rel="bookmark">Luxer Version 1.0 Game Plan</a>
+			</h1>
+										<div class="comments-link">
+					<a href="index.html%3Fp=138.html#comments" title="Comment on Luxer Version 1.0 Game Plan">1 Reply</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>I&#8217;ve gone thourgh the forums and have created a list of features I will definitly be adding to the first offical release of Luxer.</p>
+<ol>
+<li>Easy install. Download and double click, as it should be.</li>
+<li>More iTunes commands</li>
+<li>Remember CDKeys for different clients</li>
+<li>Phrasebans</li>
+<li>Vote</li>
+<li>Chat window</li>
+<li>Be able to change the access level required for commands</li>
+<li>Make custom commands easier</li>
+<li>Implement Mail</li>
+</ol>
+<p>I&#8217;m sorry if your feature did not make the short list. I don&#8217;t know if I am even going to have time to implement these.</p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="index.html%3Fcat=11.html" title="View all posts in Luxer, Battle.net Bot" rel="category">Luxer, Battle.net Bot</a> on <a href="index.html%3Fp=138.html" title="11:40 pm" rel="bookmark"><time class="entry-date" datetime="2006-09-19T23:40:33+00:00">September 19, 2006</time></a><span class="by-author"> by <span class="author vcard"><a class="url fn n" href="index.html%3Fauthor=1.html" title="View all posts by Ryan Marcus" rel="author">Ryan Marcus</a></span></span>.								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+			
+					<nav id="nav-below" class="navigation" role="navigation">
+			<h3 class="assistive-text">Post navigation</h3>
+			<div class="nav-previous"><a href="index.html%3Fpaged=4.html" ><span class="meta-nav">&larr;</span> Older posts</a></div>
+			<div class="nav-next"><a href="index.html%3Fpaged=2.html" >Newer posts <span class="meta-nav">&rarr;</span></a></div>
+		</nav><!-- #nav-below .navigation -->
+	
+		
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-3" class="widget widget_text"><h3 class="widget-title">FortranFail Twitter</h3>			<div class="textwidget"><a class="twitter-timeline" href="https://twitter.com/FortranFail" data-widget-id="347407527333486593">Tweets by @FortranFail</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+</div>
+		</aside><aside id="pages-3" class="widget widget_pages"><h3 class="widget-title">Pages</h3>		<ul>
+			<li class="page_item page-item-532"><a href="index.html%3Fp=532.html">Publications</a></li>
+		</ul>
+		</aside><aside id="categories-3" class="widget widget_categories"><h3 class="widget-title">Categories</h3>		<ul>
+	<li class="cat-item cat-item-4"><a href="index.html%3Fcat=4.html" title="View all posts filed under Android Debate">Android Debate</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="index.html%3Fcat=6.html" title="View all posts filed under Clipboard Historian">Clipboard Historian</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="index.html%3Fcat=7.html" title="View all posts filed under Computer Tips">Computer Tips</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="index.html%3Fcat=9.html" title="The UofA evidence autocutter.">Evidence Auto Cutter</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="index.html%3Fcat=11.html" title="View all posts filed under Luxer, Battle.net Bot">Luxer, Battle.net Bot</a>
+</li>
+	<li class="cat-item cat-item-13"><a href="index.html%3Fcat=13.html" title="View all posts filed under Luxer: Documentation Update">Luxer: Documentation Update</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="index.html%3Fcat=15.html" title="View all posts filed under Personal">Personal</a>
+</li>
+		</ul>
+</aside><aside id="archives-3" class="widget widget_archive"><h3 class="widget-title">Archives</h3>		<ul>
+			<li><a href='index.html%3Fm=201307.html'>July 2013</a></li>
+	<li><a href='index.html%3Fm=201303.html'>March 2013</a></li>
+	<li><a href='index.html%3Fm=201206.html'>June 2012</a></li>
+	<li><a href='index.html%3Fm=201205.html'>May 2012</a></li>
+	<li><a href='index.html%3Fm=201104.html'>April 2011</a></li>
+	<li><a href='index.html%3Fm=201103.html'>March 2011</a></li>
+	<li><a href='index.html%3Fm=201008.html'>August 2010</a></li>
+	<li><a href='index.html%3Fm=201003.html'>March 2010</a></li>
+	<li><a href='index.html%3Fm=201001.html'>January 2010</a></li>
+	<li><a href='index.html%3Fm=200912.html'>December 2009</a></li>
+	<li><a href='index.html%3Fm=200903.html'>March 2009</a></li>
+	<li><a href='index.html%3Fm=200902.html'>February 2009</a></li>
+	<li><a href='index.html%3Fm=200901.html'>January 2009</a></li>
+	<li><a href='index.html%3Fm=200811.html'>November 2008</a></li>
+	<li><a href='index.html%3Fm=200808.html'>August 2008</a></li>
+	<li><a href='index.html%3Fm=200807.html'>July 2008</a></li>
+	<li><a href='index.html%3Fm=200806.html'>June 2008</a></li>
+	<li><a href='index.html%3Fm=200802.html'>February 2008</a></li>
+	<li><a href='index.html%3Fm=200712.html'>December 2007</a></li>
+	<li><a href='index.html%3Fm=200704.html'>April 2007</a></li>
+	<li><a href='index.html%3Fm=200701.html'>January 2007</a></li>
+	<li><a href='index.html%3Fm=200612.html'>December 2006</a></li>
+	<li><a href='index.html%3Fm=200610.html'>October 2006</a></li>
+	<li><a href='index.html%3Fm=200609.html'>September 2006</a></li>
+	<li><a href='index.html%3Fm=200608.html'>August 2006</a></li>
+	<li><a href='index.html%3Fm=200607.html'>July 2006</a></li>
+	<li><a href='index.html%3Fm=200606.html'>June 2006</a></li>
+	<li><a href='index.html%3Fm=200605.html'>May 2006</a></li>
+	<li><a href='index.html%3Fm=200604.html'>April 2006</a></li>
+	<li><a href='index.html%3Fm=200512.html'>December 2005</a></li>
+		</ul>
+</aside><aside id="meta-3" class="widget widget_meta"><h3 class="widget-title">Other</h3>			<ul>
+						<li><a href="wp-login.php.html">Log in</a></li>
+			<li><a href="index.html%3Ffeed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="index.html%3Ffeed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>						</ul>
+</aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	<script type="text/javascript">
+		window.onload = function(){prettyPrint();};
+	</script>
+	<script type="text/javascript" src="wp-content/plugins/wp-code-highlight/js/wp-code-highlight.js"></script>
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<script type='text/javascript' src='wp-content/themes/twentytwelve/js/navigation.js%3Fver=1.0'></script>
+</body>
+</html>

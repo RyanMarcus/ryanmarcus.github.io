@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	
+	>
+<channel>
+	<title>Comments on: Java: Scrolling a JScrollPane (JEditorPane) to the bottom</title>
+	<atom:link href="http://rmarcus.info/?feed=rss2&#038;p=221" rel="self" type="application/rss+xml" />
+	<link>http://rmarcus.info/?p=221</link>
+	<description>It&#039;s all Frank&#039;s fault!</description>
+	<lastBuildDate>Tue, 15 Mar 2011 19:11:23 +0000</lastBuildDate>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.org/?v=3.8</generator>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=221#comment-419</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Mon, 05 Jul 2010 18:16:50 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-419</guid>
+		<description><![CDATA[Thanks for the extra snippet! I hope you don&#039;t mind, but I added it to the main post (giving you credit of course!) If this is an issue, let me know!]]></description>
+		<content:encoded><![CDATA[<p>Thanks for the extra snippet! I hope you don&#8217;t mind, but I added it to the main post (giving you credit of course!) If this is an issue, let me know!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Guillermo</title>
+		<link>http://rmarcus.info/?p=221#comment-418</link>
+		<dc:creator><![CDATA[Guillermo]]></dc:creator>
+		<pubDate>Mon, 05 Jul 2010 06:11:16 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-418</guid>
+		<description><![CDATA[Excellent and amazing work!!! It just solved my problem too. I just made one adjustement to use it with a JList, that has a DefaultListModel:
+
+private void scrollToListBottom() {
+
+        SwingUtilities.invokeLater(new Runnable() {
+
+        public void run() {
+
+            DefaultListModel DLM_model = (DefaultListModel)JSP_scrollpane.getModel();
+
+            JL_list.ensureIndexIsVisible(DLM_model.getSize()-1);
+
+        }
+
+    });]]></description>
+		<content:encoded><![CDATA[<p>Excellent and amazing work!!! It just solved my problem too. I just made one adjustement to use it with a JList, that has a DefaultListModel:</p>
+<p>private void scrollToListBottom() {</p>
+<p>        SwingUtilities.invokeLater(new Runnable() {</p>
+<p>        public void run() {</p>
+<p>            DefaultListModel DLM_model = (DefaultListModel)JSP_scrollpane.getModel();</p>
+<p>            JL_list.ensureIndexIsVisible(DLM_model.getSize()-1);</p>
+<p>        }</p>
+<p>    });</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Michael</title>
+		<link>http://rmarcus.info/?p=221#comment-417</link>
+		<dc:creator><![CDATA[Michael]]></dc:creator>
+		<pubDate>Mon, 07 Jun 2010 18:35:38 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-417</guid>
+		<description><![CDATA[Amazingly, this solved my problem too. If you told me a day ago I would have to create a runnable to just scroll down a simple JScrollPane, I wouldn&#039;t believe it. An excellent work you did. :)]]></description>
+		<content:encoded><![CDATA[<p>Amazingly, this solved my problem too. If you told me a day ago I would have to create a runnable to just scroll down a simple JScrollPane, I wouldn&#8217;t believe it. An excellent work you did. <img src="http://rmarcus.info/wp-includes/images/smilies/icon_smile.gif" alt=":)" class="wp-smiley" /> </p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=221#comment-416</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Wed, 31 Mar 2010 19:27:15 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-416</guid>
+		<description><![CDATA[Just stick whatever scrolling code you want to use inside of that thread construct -- you have to tell Swing that you want your code to run AFTER Swing does all of its stuff.]]></description>
+		<content:encoded><![CDATA[<p>Just stick whatever scrolling code you want to use inside of that thread construct &#8212; you have to tell Swing that you want your code to run AFTER Swing does all of its stuff.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: David</title>
+		<link>http://rmarcus.info/?p=221#comment-415</link>
+		<dc:creator><![CDATA[David]]></dc:creator>
+		<pubDate>Wed, 31 Mar 2010 19:09:20 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-415</guid>
+		<description><![CDATA[Officially the correct way to do this is
+textArea.setCaretPosition(textArea.getDocument().getLength());
+The problem I am seeing with both methods is the panel seems to forget how big it is from time to time and (getHeight() and .getVerticalScrollBar().getMaximum()) returns a value that is the size of the visible area giving the appearance of scrolling to the top.
+
+I have also seen this suggestion:
+//scroll the text as it gets more and more
+jTextPane1.scrollRectToVisible(
+  new Rectangle(0,jTextPane1.getHeight()-2,1,1));
+
+which of course has the same issue. Note I am seeing this with 1.5 and 1.6 JDKs running on XP Vista and Win7. I have also noticed this happening in the the Java console window when running Web Start apps with lots of output and in JLists. 
+
+Any ideas?]]></description>
+		<content:encoded><![CDATA[<p>Officially the correct way to do this is<br />
+textArea.setCaretPosition(textArea.getDocument().getLength());<br />
+The problem I am seeing with both methods is the panel seems to forget how big it is from time to time and (getHeight() and .getVerticalScrollBar().getMaximum()) returns a value that is the size of the visible area giving the appearance of scrolling to the top.</p>
+<p>I have also seen this suggestion:<br />
+//scroll the text as it gets more and more<br />
+jTextPane1.scrollRectToVisible(<br />
+  new Rectangle(0,jTextPane1.getHeight()-2,1,1));</p>
+<p>which of course has the same issue. Note I am seeing this with 1.5 and 1.6 JDKs running on XP Vista and Win7. I have also noticed this happening in the the Java console window when running Web Start apps with lots of output and in JLists. </p>
+<p>Any ideas?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Ryan Marcus</title>
+		<link>http://rmarcus.info/?p=221#comment-414</link>
+		<dc:creator><![CDATA[Ryan Marcus]]></dc:creator>
+		<pubDate>Mon, 07 Dec 2009 02:55:14 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-414</guid>
+		<description><![CDATA[I can&#039;t tell if that is an attempt at a put-down, a sarcastic comment, or an attack on my or the above commenters ability as programmers... either way, of course I&#039;ve read the SDK docs, that&#039;s how I figured it out.]]></description>
+		<content:encoded><![CDATA[<p>I can&#8217;t tell if that is an attempt at a put-down, a sarcastic comment, or an attack on my or the above commenters ability as programmers&#8230; either way, of course I&#8217;ve read the SDK docs, that&#8217;s how I figured it out.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Danny</title>
+		<link>http://rmarcus.info/?p=221#comment-413</link>
+		<dc:creator><![CDATA[Danny]]></dc:creator>
+		<pubDate>Mon, 07 Dec 2009 01:19:04 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-413</guid>
+		<description><![CDATA[Ever tried reading the SDK Docs?]]></description>
+		<content:encoded><![CDATA[<p>Ever tried reading the SDK Docs?</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Nicklas Jepsen</title>
+		<link>http://rmarcus.info/?p=221#comment-412</link>
+		<dc:creator><![CDATA[Nicklas Jepsen]]></dc:creator>
+		<pubDate>Tue, 17 Nov 2009 00:47:07 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-412</guid>
+		<description><![CDATA[You just saved me from endless hours of figuring out how to do this. 
+Thank you!]]></description>
+		<content:encoded><![CDATA[<p>You just saved me from endless hours of figuring out how to do this.<br />
+Thank you!</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Virux</title>
+		<link>http://rmarcus.info/?p=221#comment-411</link>
+		<dc:creator><![CDATA[Virux]]></dc:creator>
+		<pubDate>Wed, 23 Sep 2009 23:06:27 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-411</guid>
+		<description><![CDATA[Beautiful!
+And to think I have been writing hundreds of lines of code to figure this out!
+
+A life saver for sure.]]></description>
+		<content:encoded><![CDATA[<p>Beautiful!<br />
+And to think I have been writing hundreds of lines of code to figure this out!</p>
+<p>A life saver for sure.</p>
+]]></content:encoded>
+	</item>
+	<item>
+		<title>By: Sérgio Berlotto</title>
+		<link>http://rmarcus.info/?p=221#comment-410</link>
+		<dc:creator><![CDATA[Sérgio Berlotto]]></dc:creator>
+		<pubDate>Tue, 02 Jun 2009 20:51:05 +0000</pubDate>
+		<guid isPermaLink="false">http://rmarcus.wordpress.com/?p=221#comment-410</guid>
+		<description><![CDATA[Tanks for this .. really work fine !]]></description>
+		<content:encoded><![CDATA[<p>Tanks for this .. really work fine !</p>
+]]></content:encoded>
+	</item>
+</channel>
+</rss>
