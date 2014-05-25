@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      rdtheory.js: relational database algorithms in JavaScript &middot; RMarcus
+    
+  </title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog/public/css/poole.css">
+  <link rel="stylesheet" href="/blog/public/css/syntax.css">
+  <link rel="stylesheet" href="/blog/public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog/public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/blog/public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog/atom.xml">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    }
+    });
+  </script>
+  <script type="text/javascript"
+	  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+</head>
+
+
+  <body>
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>RMarcus</h1>
+      <p class="lead">The musings and work of Ryan Marcus, a graduate student at the Los Alamos National Laboratory.</p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li class="sidebar-nav-item">
+        <a href="/">Home</a>
+      </li>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <li class="sidebar-nav-item">
+              <a href="/blog/pubs/">Publications</a>
+            </li>
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+
+      <!-- <li class="sidebar-nav-item"><a href="/archive/v2.0.0.zip">Download</a></li>
+      <li class="sidebar-nav-item"><a href="">GitHub project</a></li>
+      <li class="sidebar-nav-item">Currently v2.0.0</li> -->
+    </ul>
+
+    <p>&copy; 2014. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">rdtheory.js: relational database algorithms in JavaScript</h1>
+  <span class="post-date">09 May 2014</span>
+  <p>While reviewing <a href="http://www.amazon.com/Fundamentals-Database-Systems-6th-Edition/dp/0136086209">my database theory textbook</a>, I stumbled across a few algorithms for <a href="http://en.wikipedia.org/wiki/Database_normalization">relational schema decomposition and database normalization</a>. Aside from <a href="https://code.google.com/p/oneschema/">a dead project on Google Code</a> and <a href="http://uisacad5.uis.edu/cgi-bin/mcrem2/database_design_tool.cgi">a buggy and apparently closed-source implementation hosted at the University of Illinois</a>, I couldn’t really find any implementations or libraries implementing these algorithms.</p>
+
+<p>So, I created <a href="http://bitbucket.org/RyanMarcus/rdtheory/">rdtheory.js</a> and <a href="http://ryanmarcus.bitbucket.org/schemata/">a small 3NF decomposition tool</a>. Neither are particularly polished or documented, but the library itself contains several tests. It is entirely synchronous, which could be a problem for very large schemes. At some point I might rewrite it with <a href="http://www.html5rocks.com/en/tutorials/es6/promises/">promises</a>.</p>
+
+<p>There are a few examples on the <a href="https://bitbucket.org/RyanMarcus/rdtheory/">BitBucket page</a>, but working through an example might be useful. Consider a relation with the following attributes:</p>
+
+<ul>
+  <li>First name [latex]F[/latex]</li>
+  <li>Last name [latex]L[/latex]</li>
+  <li>Email address [latex]E[/latex]</li>
+  <li>Home address [latex]A[/latex]</li>
+  <li>ZIP Code [latex]Z[/latex]</li>
+  <li>Manager [latex]M[/latex]</li>
+  <li>Years with company [latex]Y[/latex]</li>
+  <li>Pay [latex]P[/latex]</li>
+</ul>
+
+<p>We can represent this relation as [latex]R[/latex]:</p>
+
+<script type="math/tex; mode=display">R = \left\{ F, L, E, A, Z, M, Y, P \right\}</script>
+
+<p>Next, let’s consider the semantics of the information stored in \(R\). In order to do so, it is helpful to remember the definition of a <a href="http://en.wikipedia.org/wiki/Functional_dependency">functional dependency</a>. We say that the set of attributes \(Y \in R\) functionally depends on another set of attributes \(X \in R\) if and only if every pair of rows in \(R\) that match on the attributes \(X\) also match on the attributes \(Y\). In other words, if \(X = \{A\}\) and \(Y = \{Z\}\), then we would say that one’s ZIP code functionally depends on one’s home address if and only if any two individuals with the same home address also have the same ZIP code. We write this functional dependency as \(X \to Y\). We can also say that \(X\) <em>determines</em> \(Y\). </p>
+
+<p>For our example, let’s assume the following set of functional dependencies:</p>
+
+<p>An employee’s first and last name determines their email address:</p>
+
+<script type="math/tex; mode=display">\left\{F, L\right\} \to \left\{E\right\}</script>
+
+<p>An employee’s first and last name determines their home address:</p>
+
+<script type="math/tex; mode=display">\left\{F, L\right\} \to \left\{A\right\}</script>
+
+<p>An employee’s home address determines their ZIP code:</p>
+
+<script type="math/tex; mode=display">\left\{A\right\} \to \left\{Z\right\}</script>
+
+<p>An employee’s email address determines their manager:</p>
+
+<script type="math/tex; mode=display">\left\{E\right\} \to \left\{M\right\}</script>
+
+<p>An employee’s years of service and their manager determines their pay:</p>
+
+<script type="math/tex; mode=display">\left\{M, Y\right\} \to \left\{P \right\}</script>
+
+<p>Now, as database programmers, we could simply create one table with each attribute in \(R\) as a column. But we know better! With our relation \(R\) and all these functional dependencies, we can use various algorithms and theorems from <a href="http://en.wikipedia.org/wiki/Relational_algebra">relational algebra</a> to create a <a href="http://en.wikipedia.org/wiki/Third_normal_form">3NF decomposition</a>.</p>
+
+<p>Using <a href="http://ryanmarcus.bitbucket.org/schemata/">the tool I developed and linked above</a>, we can decompose \(R\) without computing minimal covers ourselves.</p>
+
+<p><img src="/blog/assets/rdtheory_decomp.png" alt="A screenshot of the tool" /></p>
+
+<p>From the tool, we can see that our universal relation \(R\) was not in 3NF. The tool suggests a decomposition of \(R\) into five relations, and conveniently marks the keys of each new relation with boldface. We can formally represent this decomposition as:</p>
+
+<script type="math/tex; mode=display">R_1 = \left\{\underline{E}, M\right\}</script>
+
+<script type="math/tex; mode=display">R_2 = \left\{E, \underline{F}, A, \underline{L}\right\}</script>
+
+<script type="math/tex; mode=display">R_3 = \left\{\underline{A}, Z\right\}</script>
+
+<script type="math/tex; mode=display">R_4 = \left\{\underline{M}, P, \underline{Y}\right\}</script>
+
+<script type="math/tex; mode=display">R_5 = \left\{\underline{F}, \underline{L}, \underline{Y}\right\}</script>
+
+<script type="math/tex; mode=display"> R_1 \cup R_2 \cup R_3 \cup R_4 \cup R_5 = R </script>
+
+<p>Now, we can create five tables instead of one. The algorithm used also ensures that the decomposition preserves all dependencies and is a loseless join decomposition.</p>
+
+<p>Happy normalizing!</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog/2013/07/01/fallthrough-sort.html">
+            Fallthrough Sort: Quickly Sorting Small Sets
+            <small>01 Jul 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog/2013/03/09/topntree.html">
+            TopNTree: A merge-sort inspired data structure
+            <small>09 Mar 2013</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>

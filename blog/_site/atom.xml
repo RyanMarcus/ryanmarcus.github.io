@@ -4,13 +4,89 @@
  <title>RMarcus</title>
  <link href="http:/rmarcus.info/atom.xml" rel="self"/>
  <link href="http:/rmarcus.info/"/>
- <updated>2014-05-07T22:01:20-07:00</updated>
+ <updated>2014-05-25T14:50:24-07:00</updated>
  <id>http:/rmarcus.info</id>
  <author>
    <name>Ryan Marcus</name>
    <email></email>
  </author>
 
+ 
+ <entry>
+   <title>rdtheory.js: relational database algorithms in JavaScript</title>
+   <link href="http:/rmarcus.info/2014/05/09/rdtheory.html"/>
+   <updated>2014-05-09T00:00:00-07:00</updated>
+   <id>http:/rmarcus.info/2014/05/09/rdtheory</id>
+   <content type="html">&lt;p&gt;While reviewing &lt;a href=&quot;http://www.amazon.com/Fundamentals-Database-Systems-6th-Edition/dp/0136086209&quot;&gt;my database theory textbook&lt;/a&gt;, I stumbled across a few algorithms for &lt;a href=&quot;http://en.wikipedia.org/wiki/Database_normalization&quot;&gt;relational schema decomposition and database normalization&lt;/a&gt;. Aside from &lt;a href=&quot;https://code.google.com/p/oneschema/&quot;&gt;a dead project on Google Code&lt;/a&gt; and &lt;a href=&quot;http://uisacad5.uis.edu/cgi-bin/mcrem2/database_design_tool.cgi&quot;&gt;a buggy and apparently closed-source implementation hosted at the University of Illinois&lt;/a&gt;, I couldn’t really find any implementations or libraries implementing these algorithms.&lt;/p&gt;
+
+&lt;p&gt;So, I created &lt;a href=&quot;http://bitbucket.org/RyanMarcus/rdtheory/&quot;&gt;rdtheory.js&lt;/a&gt; and &lt;a href=&quot;http://ryanmarcus.bitbucket.org/schemata/&quot;&gt;a small 3NF decomposition tool&lt;/a&gt;. Neither are particularly polished or documented, but the library itself contains several tests. It is entirely synchronous, which could be a problem for very large schemes. At some point I might rewrite it with &lt;a href=&quot;http://www.html5rocks.com/en/tutorials/es6/promises/&quot;&gt;promises&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;There are a few examples on the &lt;a href=&quot;https://bitbucket.org/RyanMarcus/rdtheory/&quot;&gt;BitBucket page&lt;/a&gt;, but working through an example might be useful. Consider a relation with the following attributes:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First name [latex]F[/latex]&lt;/li&gt;
+  &lt;li&gt;Last name [latex]L[/latex]&lt;/li&gt;
+  &lt;li&gt;Email address [latex]E[/latex]&lt;/li&gt;
+  &lt;li&gt;Home address [latex]A[/latex]&lt;/li&gt;
+  &lt;li&gt;ZIP Code [latex]Z[/latex]&lt;/li&gt;
+  &lt;li&gt;Manager [latex]M[/latex]&lt;/li&gt;
+  &lt;li&gt;Years with company [latex]Y[/latex]&lt;/li&gt;
+  &lt;li&gt;Pay [latex]P[/latex]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;We can represent this relation as [latex]R[/latex]:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R = \left\{ F, L, E, A, Z, M, Y, P \right\}&lt;/script&gt;
+
+&lt;p&gt;Next, let’s consider the semantics of the information stored in \(R\). In order to do so, it is helpful to remember the definition of a &lt;a href=&quot;http://en.wikipedia.org/wiki/Functional_dependency&quot;&gt;functional dependency&lt;/a&gt;. We say that the set of attributes \(Y \in R\) functionally depends on another set of attributes \(X \in R\) if and only if every pair of rows in \(R\) that match on the attributes \(X\) also match on the attributes \(Y\). In other words, if \(X = \{A\}\) and \(Y = \{Z\}\), then we would say that one’s ZIP code functionally depends on one’s home address if and only if any two individuals with the same home address also have the same ZIP code. We write this functional dependency as \(X \to Y\). We can also say that \(X\) &lt;em&gt;determines&lt;/em&gt; \(Y\). &lt;/p&gt;
+
+&lt;p&gt;For our example, let’s assume the following set of functional dependencies:&lt;/p&gt;
+
+&lt;p&gt;An employee’s first and last name determines their email address:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left\{F, L\right\} \to \left\{E\right\}&lt;/script&gt;
+
+&lt;p&gt;An employee’s first and last name determines their home address:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left\{F, L\right\} \to \left\{A\right\}&lt;/script&gt;
+
+&lt;p&gt;An employee’s home address determines their ZIP code:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left\{A\right\} \to \left\{Z\right\}&lt;/script&gt;
+
+&lt;p&gt;An employee’s email address determines their manager:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left\{E\right\} \to \left\{M\right\}&lt;/script&gt;
+
+&lt;p&gt;An employee’s years of service and their manager determines their pay:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\left\{M, Y\right\} \to \left\{P \right\}&lt;/script&gt;
+
+&lt;p&gt;Now, as database programmers, we could simply create one table with each attribute in \(R\) as a column. But we know better! With our relation \(R\) and all these functional dependencies, we can use various algorithms and theorems from &lt;a href=&quot;http://en.wikipedia.org/wiki/Relational_algebra&quot;&gt;relational algebra&lt;/a&gt; to create a &lt;a href=&quot;http://en.wikipedia.org/wiki/Third_normal_form&quot;&gt;3NF decomposition&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Using &lt;a href=&quot;http://ryanmarcus.bitbucket.org/schemata/&quot;&gt;the tool I developed and linked above&lt;/a&gt;, we can decompose \(R\) without computing minimal covers ourselves.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/rdtheory_decomp.png&quot; alt=&quot;A screenshot of the tool&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;From the tool, we can see that our universal relation \(R\) was not in 3NF. The tool suggests a decomposition of \(R\) into five relations, and conveniently marks the keys of each new relation with boldface. We can formally represent this decomposition as:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_1 = \left\{\underline{E}, M\right\}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_2 = \left\{E, \underline{F}, A, \underline{L}\right\}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_3 = \left\{\underline{A}, Z\right\}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_4 = \left\{\underline{M}, P, \underline{Y}\right\}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_5 = \left\{\underline{F}, \underline{L}, \underline{Y}\right\}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt; R_1 \cup R_2 \cup R_3 \cup R_4 \cup R_5 = R &lt;/script&gt;
+
+&lt;p&gt;Now, we can create five tables instead of one. The algorithm used also ensures that the decomposition preserves all dependencies and is a loseless join decomposition.&lt;/p&gt;
+
+&lt;p&gt;Happy normalizing!&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Fallthrough Sort: Quickly Sorting Small Sets</title>
