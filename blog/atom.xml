@@ -4,7 +4,7 @@
  <title>RMarcus</title>
  <link href="http:/rmarcus.info/atom.xml" rel="self"/>
  <link href="http:/rmarcus.info/"/>
- <updated>2014-05-25T14:52:24-07:00</updated>
+ <updated>2014-05-26T13:08:59-06:00</updated>
  <id>http:/rmarcus.info</id>
  <author>
    <name>Ryan Marcus</name>
@@ -15,7 +15,7 @@
  <entry>
    <title>rdtheory.js: relational database algorithms in JavaScript</title>
    <link href="http:/rmarcus.info/2014/05/09/rdtheory.html"/>
-   <updated>2014-05-09T00:00:00-07:00</updated>
+   <updated>2014-05-09T00:00:00-06:00</updated>
    <id>http:/rmarcus.info/2014/05/09/rdtheory</id>
    <content type="html">&lt;p&gt;While reviewing &lt;a href=&quot;http://www.amazon.com/Fundamentals-Database-Systems-6th-Edition/dp/0136086209&quot;&gt;my database theory textbook&lt;/a&gt;, I stumbled across a few algorithms for &lt;a href=&quot;http://en.wikipedia.org/wiki/Database_normalization&quot;&gt;relational schema decomposition and database normalization&lt;/a&gt;. Aside from &lt;a href=&quot;https://code.google.com/p/oneschema/&quot;&gt;a dead project on Google Code&lt;/a&gt; and &lt;a href=&quot;http://uisacad5.uis.edu/cgi-bin/mcrem2/database_design_tool.cgi&quot;&gt;a buggy and apparently closed-source implementation hosted at the University of Illinois&lt;/a&gt;, I couldn’t really find any implementations or libraries implementing these algorithms.&lt;/p&gt;
 
@@ -91,7 +91,7 @@
  <entry>
    <title>Fallthrough Sort: Quickly Sorting Small Sets</title>
    <link href="http:/rmarcus.info/2013/07/01/fallthrough-sort.html"/>
-   <updated>2013-07-01T00:00:00-07:00</updated>
+   <updated>2013-07-01T00:00:00-06:00</updated>
    <id>http:/rmarcus.info/2013/07/01/fallthrough-sort</id>
    <content type="html">&lt;p&gt;In many applications, such as a &lt;a href=&quot;http://en.wikipedia.org/wiki/Median_filter&quot;&gt;median filter&lt;/a&gt;, we want to sort a small ([latex]n &amp;lt; 30[/latex]) set of numbers. In the case of the median filter, we are only concerned with sorting sets of one exact size – if this is the case, one can generate an optimal &lt;a href=&quot;http://en.wikipedia.org/wiki/Sorting_network&quot;&gt;sorting network&lt;/a&gt; using a tool like &lt;a href=&quot;http://pages.ripco.net/~jgamble/nw.html&quot;&gt;this one&lt;/a&gt; to create a provably-unbeatable solution.&lt;/p&gt;
 
