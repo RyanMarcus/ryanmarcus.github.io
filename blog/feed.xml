@@ -7,15 +7,6 @@
     <atom:link href="/blog/feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
-        <title>A Connect 4 AI From the Ground Up</title>
-        <description>
-</description>
-        <pubDate>Tue, 03 Jun 2014 00:00:00 -0600</pubDate>
-        <link>/blog/2014/06/03/connect4.html</link>
-        <guid isPermaLink="true">/blog/2014/06/03/connect4.html</guid>
-      </item>
-    
-      <item>
         <title>rdtheory.js: relational database algorithms in JavaScript</title>
         <description>&lt;p&gt;While reviewing &lt;a href=&quot;http://www.amazon.com/Fundamentals-Database-Systems-6th-Edition/dp/0136086209&quot;&gt;my database theory textbook&lt;/a&gt;, I stumbled across a few algorithms for &lt;a href=&quot;http://en.wikipedia.org/wiki/Database_normalization&quot;&gt;relational schema decomposition and database normalization&lt;/a&gt;. Aside from &lt;a href=&quot;https://code.google.com/p/oneschema/&quot;&gt;a dead project on Google Code&lt;/a&gt; and &lt;a href=&quot;http://uisacad5.uis.edu/cgi-bin/mcrem2/database_design_tool.cgi&quot;&gt;a buggy and apparently closed-source implementation hosted at the University of Illinois&lt;/a&gt;, I couldn’t really find any implementations or libraries implementing these algorithms.&lt;/p&gt;
 
