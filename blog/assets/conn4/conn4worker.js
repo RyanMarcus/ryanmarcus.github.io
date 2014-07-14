@@ -1,4 +1,4 @@
-importScripts("/blog/assets/conn4/conn4.js");
+importScripts("conn4.js");
 
 var startNewGame = Module.cwrap('startNewGame');
 var playerMove = Module.cwrap('playerMove', '', ['number']);

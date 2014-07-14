@@ -4,7 +4,7 @@
  <title>RMarcus</title>
  <link href="http:/rmarcus.info/atom.xml" rel="self"/>
  <link href="http:/rmarcus.info/"/>
- <updated>2014-06-04T19:51:41-06:00</updated>
+ <updated>2014-07-14T00:36:21-06:00</updated>
  <id>http:/rmarcus.info</id>
  <author>
    <name>Ryan Marcus</name>
@@ -66,7 +66,7 @@
 
 &lt;p&gt;Using &lt;a href=&quot;http://ryanmarcus.bitbucket.org/schemata/&quot;&gt;the tool I developed and linked above&lt;/a&gt;, we can decompose \(R\) without computing minimal covers ourselves.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/rdtheory_decomp.png&quot; alt=&quot;A screenshot of the tool&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog//assets/rdtheory_decomp.png&quot; alt=&quot;A screenshot of the tool&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;From the tool, we can see that our universal relation \(R\) was not in 3NF. The tool suggests a decomposition of \(R\) into five relations, and conveniently marks the keys of each new relation with boldface. We can formally represent this decomposition as:&lt;/p&gt;
 

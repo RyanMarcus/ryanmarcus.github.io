@@ -4,15 +4,17 @@ function ConnFourCtrl($scope) {
 
 
 	$scope.board = [];
-	$scope.look_ahead = 5;
+	$scope.look_ahead = 4;
 	$scope.winner = false;
 	$scope.draw = false;
 	$scope.thinking = false;
-
+	$scope.isOver = {};
 
 	$scope.move = function(i) {
+		if ($scope.winner)
+			return;
 		$scope.thinking = true;
-		$scope.worker.postMessage({'cmd': 'move', 'val': i});		
+		$scope.worker.postMessage({'cmd': 'move', 'val': i});	
 	};
 
 
@@ -20,19 +22,23 @@ function ConnFourCtrl($scope) {
 		$scope.worker.postMessage({'cmd': "ahead", 'val': $scope.look_ahead});
 	});
 
-	$scope.newGame = function() {
-		$scope.worker.postMessage({'cmd': 'new'});		
-	};
-
+	$scope.worker.postMessage({'cmd': 'new'});
 	$scope.worker.addEventListener('message', function(data) {
 		var m = data.data;
 		$scope.board = m['board'];
+
 		$scope.winner = m['win'];
 		$scope.draw = m['draw'];
 		$scope.thinking = m['thinking'];
 		$scope.$apply();
 	});
 
-	$scope.newGame();
+	$scope.over = function(idx) {
+		$scope.isOver[idx] = true;
+	};
+
+	$scope.leave = function(idx) {
+		$scope.isOver[idx] = false;
+	};
 
 }
