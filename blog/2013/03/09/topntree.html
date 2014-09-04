@@ -144,7 +144,7 @@
 
 <p>In case the similarity to merge sort is not clear, here is some pseudo-code for the merging:</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
    <span class="kt">int</span> <span class="n">myPos</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
    <span class="kt">int</span> <span class="n">theirPos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
                 
@@ -153,7 +153,7 @@
         <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
              <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
              <span class="n">myPos</span><span class="o">--;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
              <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
              <span class="n">myPos</span><span class="o">--;</span>
              <span class="n">theirPos</span><span class="o">--;</span>
