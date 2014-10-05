@@ -7,6 +7,46 @@
     <atom:link href="/blog//feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>A Dirty JSON Parser</title>
+        <description>&lt;p&gt;I’ve written a &lt;a href=&quot;http://github.com/RyanMarcus/dirty-json&quot;&gt;parser that does its best to parse invalid and malformed JSON&lt;/a&gt;. It is written in JavaScript, and is &lt;a href=&quot;https://www.npmjs.org/package/dirty-json&quot;&gt;available on NPM&lt;/a&gt;. There’s also &lt;a href=&quot;http://rmarcus.info/dirty-json&quot;&gt;an online demo&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;why&quot;&gt;Why?&lt;/h2&gt;
+
+&lt;p&gt;Recently, I had the unfortunate job of parsing some malformed JSON. This particular JSON had a lot of embedded HTML and newlines, and looked something like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{ &quot;key&quot;: &quot;&amp;lt;div class=&quot;item&quot;&amp;gt;an item
+with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
+&amp;lt;/span&amp;gt;html&amp;lt;/div&amp;gt;&quot;,
+  &quot;key2&quot;: &quot;&amp;lt;div class=&quot;item&quot;&amp;gt;...&quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Since this was a very large JSON file, I did not want to correct it by hand. I noticed that some of the other JSON files I had to parse were also malformed, so I began to make a list of common JSON mistakes I’d seen.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Non-escaped quotes inside of strings (&lt;code&gt;&quot;some &quot;string&quot; here&quot;&lt;/code&gt; instead of &lt;code&gt;&quot;some \&quot;string\&quot; here&quot;&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Decimal numbers without a leading zero (&lt;code&gt;.5&lt;/code&gt; instead of &lt;code&gt;0.5&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Newlines inside of keys (&lt;code&gt;&quot;some \n text&quot;&lt;/code&gt; instead of &lt;code&gt;&quot;some \\n text&quot;&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Single quotes used instead of double quotes (&lt;code&gt;{&#39;key&#39;: true}&lt;/code&gt; instead of &lt;code&gt;{&quot;key&quot;: true}&lt;/code&gt;)&lt;/li&gt;
+  &lt;li&gt;Non-quoted object keys (&lt;code&gt;{key: true}&lt;/code&gt; instead of &lt;code&gt;{&quot;key&quot;: true}&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Some of these errors made the JSON ambiguous, but generally a human being could see what the JSON was “supposed” to be. Of course, no parser will be able to correctly disambiguate ambiguous JSON all the time, but I thought it was worth a try.&lt;/p&gt;
+
+&lt;p&gt;The result is a hand-written &lt;a href=&quot;http://en.wikipedia.org/wiki/LL_parser&quot;&gt;&lt;code&gt;LL(1)&lt;/code&gt;&lt;/a&gt; parser that can handle JSON with a mix of the above errors. The parsed result will be a JavaScript object, but it might not always be the JavaScript object one expects. You can play around with &lt;a href=&quot;http://rmarcus.info/dirty-json&quot;&gt;the demo that I wrote to investigate yourself&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I have spent no time optimizing the parser. In fact, it checks every rule whenever it finds a match regardless of the current terminal. So it’s probably pretty slow.&lt;/p&gt;
+
+&lt;p&gt;While I’m pretty sure that this parser will correctly handle all valid JSON (you can investigate my test cases in the &lt;a href=&quot;http://github.com/RyanMarcus/dirty-json&quot;&gt;GitHub repo&lt;/a&gt;), I’m not completely convinced. This parser should probably only be used in one-time-use programs that absolutely need to handle malformed JSON.&lt;/p&gt;
+
+&lt;p&gt;If you find a bug (or an interesting use case), let me know via &lt;a href=&quot;http://github.com/RyanMarcus/dirty-json&quot;&gt;the GitHub repo&lt;/a&gt; or &lt;a href=&quot;http://twitter.com/RyanMarcus&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 05 Oct 2014 00:00:00 -0400</pubDate>
+        <link>/blog//2014/10/05/dirty-json-parser.html</link>
+        <guid isPermaLink="true">/blog//2014/10/05/dirty-json-parser.html</guid>
+      </item>
+    
+      <item>
         <title>rdtheory.js: relational database algorithms in JavaScript</title>
         <description>&lt;p&gt;While reviewing &lt;a href=&quot;http://www.amazon.com/Fundamentals-Database-Systems-6th-Edition/dp/0136086209&quot;&gt;my database theory textbook&lt;/a&gt;, I stumbled across a few algorithms for &lt;a href=&quot;http://en.wikipedia.org/wiki/Database_normalization&quot;&gt;relational schema decomposition and database normalization&lt;/a&gt;. Aside from &lt;a href=&quot;https://code.google.com/p/oneschema/&quot;&gt;a dead project on Google Code&lt;/a&gt; and &lt;a href=&quot;http://uisacad5.uis.edu/cgi-bin/mcrem2/database_design_tool.cgi&quot;&gt;a buggy and apparently closed-source implementation hosted at the University of Illinois&lt;/a&gt;, I couldn’t really find any implementations or libraries implementing these algorithms.&lt;/p&gt;
 

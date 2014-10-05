@@ -110,7 +110,51 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2014/05/09/rdtheory.html">
+      <a href="/blog/2014/10/05/dirty-json-parser.html">
+        A Dirty JSON Parser
+      </a>
+    </h1>
+
+    <span class="post-date">05 Oct 2014</span>
+
+    <p>I’ve written a <a href="http://github.com/RyanMarcus/dirty-json">parser that does its best to parse invalid and malformed JSON</a>. It is written in JavaScript, and is <a href="https://www.npmjs.org/package/dirty-json">available on NPM</a>. There’s also <a href="http://rmarcus.info/dirty-json">an online demo</a>.</p>
+
+<h2 id="why">Why?</h2>
+
+<p>Recently, I had the unfortunate job of parsing some malformed JSON. This particular JSON had a lot of embedded HTML and newlines, and looked something like this:</p>
+
+<pre><code>{ "key": "&lt;div class="item"&gt;an item
+with newlines &lt;span class="attrib"&gt; and embedded
+&lt;/span&gt;html&lt;/div&gt;",
+  "key2": "&lt;div class="item"&gt;..."
+}
+</code></pre>
+
+<p>Since this was a very large JSON file, I did not want to correct it by hand. I noticed that some of the other JSON files I had to parse were also malformed, so I began to make a list of common JSON mistakes I’d seen.</p>
+
+<ul>
+  <li>Non-escaped quotes inside of strings (<code>"some "string" here"</code> instead of <code>"some \"string\" here"</code>)</li>
+  <li>Decimal numbers without a leading zero (<code>.5</code> instead of <code>0.5</code>)</li>
+  <li>Newlines inside of keys (<code>"some \n text"</code> instead of <code>"some \\n text"</code>)</li>
+  <li>Single quotes used instead of double quotes (<code>{'key': true}</code> instead of <code>{"key": true}</code>)</li>
+  <li>Non-quoted object keys (<code>{key: true}</code> instead of <code>{"key": true}</code>)</li>
+</ul>
+
+<p>Some of these errors made the JSON ambiguous, but generally a human being could see what the JSON was “supposed” to be. Of course, no parser will be able to correctly disambiguate ambiguous JSON all the time, but I thought it was worth a try.</p>
+
+<p>The result is a hand-written <a href="http://en.wikipedia.org/wiki/LL_parser"><code>LL(1)</code></a> parser that can handle JSON with a mix of the above errors. The parsed result will be a JavaScript object, but it might not always be the JavaScript object one expects. You can play around with <a href="http://rmarcus.info/dirty-json">the demo that I wrote to investigate yourself</a>.</p>
+
+<p>I have spent no time optimizing the parser. In fact, it checks every rule whenever it finds a match regardless of the current terminal. So it’s probably pretty slow.</p>
+
+<p>While I’m pretty sure that this parser will correctly handle all valid JSON (you can investigate my test cases in the <a href="http://github.com/RyanMarcus/dirty-json">GitHub repo</a>), I’m not completely convinced. This parser should probably only be used in one-time-use programs that absolutely need to handle malformed JSON.</p>
+
+<p>If you find a bug (or an interesting use case), let me know via <a href="http://github.com/RyanMarcus/dirty-json">the GitHub repo</a> or <a href="http://twitter.com/RyanMarcus">Twitter</a>.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/blog/2014/05/09/rdtheory.html">
         rdtheory.js: relational database algorithms in JavaScript
       </a>
     </h1>
@@ -190,7 +234,7 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013/07/01/fallthrough-sort.html">
+      <a href="/blog/2013/07/01/fallthrough-sort.html">
         Fallthrough Sort: Quickly Sorting Small Sets
       </a>
     </h1>
@@ -297,7 +341,7 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/2013/03/09/topntree.html">
+      <a href="/blog/2013/03/09/topntree.html">
         TopNTree: A merge-sort inspired data structure
       </a>
     </h1>
