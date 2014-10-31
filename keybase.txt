@@ -6,8 +6,7 @@ I hereby claim:
 
   * I am an admin of http://rmarcus.info
   * I am rmarcus (https://keybase.io/rmarcus) on keybase.
-  * I have a public key with fingerprint 0E49 94F4 4CCB BCF7 5F00  6C81 
-56E4 21C4 B2CF 69B1
+  * I have a public key with fingerprint 0E49 94F4 4CCB BCF7 5F00  6C81 56E4 21C4 B2CF 69B1
 
 To claim this, I am signing this object:
 
@@ -15,7 +14,7 @@ To claim this, I am signing this object:
     "body": {
         "client": {
             "name": "keybase.io node.js client",
-            "version": "0.3.2"
+            "version": "0.7.2"
         },
         "key": {
             "fingerprint": "0e4994f44ccbbcf75f006c8156e421c4b2cf69b1",
@@ -25,10 +24,9 @@ To claim this, I am signing this object:
             "username": "rmarcus"
         },
         "merkle_root": {
-            "ctime": 1399818076,
-            "hash": 
-"12465034f1e27fed3f8ff17174e820867a6107adb582519163c780798e11f7e01e050d996bfdae3f8f152f47334b2dedf08778487024b258add25c3a691a88df",
-            "seqno": 6924
+            "ctime": 1414770928,
+            "hash": "8aecf34f0a431c62523f7d7580447d852848f62c7b0e9687578597155c91115fa008f5f1b11dcd4956c020fc6565624dd84ad3cd177ef5aa8a4e1833ba53c32f",
+            "seqno": 90406
         },
         "service": {
             "hostname": "rmarcus.info",
@@ -37,38 +35,37 @@ To claim this, I am signing this object:
         "type": "web_service_binding",
         "version": 1
     },
-    "ctime": 1399818534,
+    "ctime": 1414770952,
     "expire_in": 157680000,
-    "prev": 
-"62682a574df11b6e132bda286c02d53056225071e6ccf97aea7804da69c6df41",
-    "seqno": 10,
+    "prev": "12832ce7effb37aeccd71ea1814064c48e6037c1793b69e0ef7fcc9392f7b1e2",
+    "seqno": 16,
     "tag": "signature"
 }
 
 with the aforementioned key, yielding the PGP signature:
 
 -----BEGIN PGP MESSAGE-----
-Version: GnuPG v2.0.22 (GNU/Linux)
+Version: GnuPG v1
 
-owFVkn1oHEUYh+/ieTYxQoLQqoRaV9MWPI6Z2fnaFLT00OYfQSjRYpFzdnYmtybZ
-ve5uEs80qCiUgNhaP0gI1FZaESxCKiUgglZKWym2pLWixRiaqqEoVpFWUlScCS2a
-/Wt25pln3t87s/uOW3JN+Sd+uO/Y4TPhVP7UZT+3JR5bO+L4cdBwukYc2R+qKLOj
-SAwop8vpUw1fpKocxmuiOFDlZ9M1N5iSM6SSNIwjQ4GyW0bOaMnidrMOo16V1JPQ
-uhygsOdhjbGUvi81IxoAKjkkVGEEJfaR1NTzoVHW4jRbdqqz5KyGgZkl9BHDV/Am
-VHmUepssP7i0ADwOpcCeABJB1/WEEBQL5WPf9X0KgAVTldyIlAyIRA6mttwBlfT1
-q2oSx0uZZRZaArqeEXLAqClIpDWzByJMCXCxhgoxrQJXc60hgwwrjgCnTFAImAh8
-whGBHqSuZEbgcQWhZgpABQgIPI/6OhDK7oYEacxc16QPVKABZ4xjzgAyE4SLIEBE
-uoJ6UHAeaJMgVduj2OmiHsKj9i8ZCqWyVdueLY9WDiNtO1dP4iyWcb9ZqWVZvctG
-zhp1Sw4rv2ocH1hJ1Q+jwNzY/68UGnR5O4iLS456rh4mqhpagjDKgfnsOWrIOCmi
-HAnCcKAh9KmCLvIDgTiVAAXEBYQiRACDikqpPSaUMD3CgQkpaaAx/C8kNNJM9Bpn
-GvZGIhtMlDM6lu8o5PJNueKtTfbR5lqa226+5NfW3fZXq1u8uv9FfnFP9aOZbz68
-/6W7j7wq+SvvlX9cd2X9Uy1HWx+aqnUX689cdzesKk18/+WDlfG2lYc+f+f39sLb
-j4VfjO8dntzR8/g9+c9W/Xl9IG5OPr3wa2/nvVu7920rHnr3nL97ovW31Wc6N89s
-7OCzb22cHP/n1PGWl0n8x1TH5pO7nr545ac9bz68diG69J06euf+fX/jfvZCHe+q
-XNq6OFRplHoK0/MPfLuhMX3i/NnJs4vnj7dVvh6bJcOnJw5kxdoc6Wmfu3BXaWFn
-abJweP0nb5QKT74/d3rFxGIB7bi2sHp6e0c6787/svDxsYPi5+eb25r6Vrx+7fLM
-8O2zO/d29o3Mf9V9tf1f
-=NPcG
+owFdkm9oVlUcx589mzWzaJmU/SO77U20np1z7vn79JeZoSJBzVIKfTrn3HO2q9u9
+j/c+2xprQ7QZZuEqX0ikL7IXuYRQYyFZjTbaxgphbCCSIZFmZMFSCIpp5w6j7Jw3
+58/nfM/3+ztn4KbqXL7q+R/vGz1yIjxcNfmzyq1tPlzb46k46PaKPZ5uC01UyUaR
+bDde0dtsupVMTSGMl0VxYAqb0mVXmQav0yRpGEeOAgVWQF5vQ4Znh20YtZiknISZ
+lgcMFgJbjLVWSltGLABUc0iowQhqrJC2VCjoJFvjtHLNrd68ZikM3CqhKxy/HDeh
+5U9R0ZTxHfMbQHCoJRYSaAR9X0gpKZZGYeUrRQHIwNQkVyMl7TLRHWlmt90km9tM
+KYnj+cy6EmYExBAzBgTizpBMW90ZLo22PrZAYh9qigjyLQsY4QBjFnCCOOaWIs0U
+MIJyRhgngkFCtIAQEisB4JZYqCAMdIAFoRogYDUlriMcBBzLwNcBZMxYIiWX2EDu
++0oSX/vIugSp2RLFXlEADGhvNk06Q20y21nRrs1WCCObla6cxJVYx21up7VSKRez
+zJXuckZ2GVVKzaF5kZIKo8A92X/fFDr0f/UgqMEzL5fDxJTCjCCMcuBado/pdJoQ
+cR9p4yJY5TNXMh0waCTk0HnGGnNDgc80ZMJXVBhgLLNaC18gyxQ06N+UkDqjssVp
+pmFLJCsdifF6d1bdXZOryueuW5DPfm3uhoV1/3zlF+auv7LxoaUPPHuuo35wekvj
+oVPP8Ue7H+m/oPt++Wh2aHbHOZNPz7xv1zRGX02c1mPPXNrzR03Nl99uEKt3bX9i
+bKBYeGsP/H3rxcujH0wd2xuMezP5+rse/PrNM++NLFl/q1258cVdfRfK6fHGvQfn
+3tlWs3L/VHjLw7n1U8cG1+1ee3ZiZLjuzk2La6/0/zb3eb/c0LX9s29+Ghz4YWCk
+/t2LQ5cnLzUf3bdzYuKV2dmeE9P3njfnj7/+fXP122MH/L7Fb6y7Z8WqXz859fH0
+TPX+ricfr33t5NmX7j8d5XaMT+7mNy74ru624S+aDrQtbQ6eHp3zXh3uXfLX+MkP
+b/7zsUUza8QiMnT71ju2fRofNAv/Bg==
+=wYSQ
 -----END PGP MESSAGE-----
 
 And finally, I am proving ownership of this host by posting or
@@ -77,5 +74,3 @@ appending to this document.
 View my publicly-auditable identity here: https://keybase.io/rmarcus
 
 ==================================================================
-
-
