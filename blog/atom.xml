@@ -4,7 +4,7 @@
  <title>RMarcus</title>
  <link href="http:/rmarcus.info/atom.xml" rel="self"/>
  <link href="http:/rmarcus.info/"/>
- <updated>2014-10-08T16:49:40-04:00</updated>
+ <updated>2014-11-30T23:40:41-05:00</updated>
  <id>http:/rmarcus.info</id>
  <author>
    <name>Ryan Marcus</name>
@@ -42,7 +42,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;Some of these errors made the JSON ambiguous, but generally a human being could see what the JSON was “supposed” to be. Of course, no parser will be able to correctly disambiguate ambiguous JSON all the time, but I thought it was worth a try.&lt;/p&gt;
 
-&lt;p&gt;The result is a hand-written &lt;a href=&quot;http://en.wikipedia.org/wiki/LL_parser&quot;&gt;&lt;code&gt;LL(1)&lt;/code&gt;&lt;/a&gt; parser that can handle JSON with a mix of the above errors. The parsed result will be a JavaScript object, but it might not always be the JavaScript object one expects. You can play around with &lt;a href=&quot;http://rmarcus.info/dirty-json&quot;&gt;the demo that I wrote to investigate yourself&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The result is a hand-written &lt;a href=&quot;http://en.wikipedia.org/wiki/LL_parser&quot;&gt;&lt;code&gt;LR(1)&lt;/code&gt;&lt;/a&gt; parser that can handle JSON with a mix of the above errors. The parsed result will be a JavaScript object, but it might not always be the JavaScript object one expects. You can play around with &lt;a href=&quot;http://rmarcus.info/dirty-json&quot;&gt;the demo that I wrote to investigate yourself&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;I have spent no time optimizing the parser. In fact, it checks every rule whenever it finds a match regardless of the current terminal. So it’s probably pretty slow.&lt;/p&gt;
 

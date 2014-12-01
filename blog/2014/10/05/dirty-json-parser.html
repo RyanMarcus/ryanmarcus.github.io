@@ -137,7 +137,7 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
 <p>Some of these errors made the JSON ambiguous, but generally a human being could see what the JSON was “supposed” to be. Of course, no parser will be able to correctly disambiguate ambiguous JSON all the time, but I thought it was worth a try.</p>
 
-<p>The result is a hand-written <a href="http://en.wikipedia.org/wiki/LL_parser"><code>LL(1)</code></a> parser that can handle JSON with a mix of the above errors. The parsed result will be a JavaScript object, but it might not always be the JavaScript object one expects. You can play around with <a href="http://rmarcus.info/dirty-json">the demo that I wrote to investigate yourself</a>.</p>
+<p>The result is a hand-written <a href="http://en.wikipedia.org/wiki/LL_parser"><code>LR(1)</code></a> parser that can handle JSON with a mix of the above errors. The parsed result will be a JavaScript object, but it might not always be the JavaScript object one expects. You can play around with <a href="http://rmarcus.info/dirty-json">the demo that I wrote to investigate yourself</a>.</p>
 
 <p>I have spent no time optimizing the parser. In fact, it checks every rule whenever it finds a match regardless of the current terminal. So it’s probably pretty slow.</p>
 
