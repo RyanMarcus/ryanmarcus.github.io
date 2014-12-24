@@ -4,7 +4,7 @@
  <title>RMarcus</title>
  <link href="http:/rmarcus.info/atom.xml" rel="self"/>
  <link href="http:/rmarcus.info/"/>
- <updated>2014-12-23T19:20:04-07:00</updated>
+ <updated>2014-12-24T11:53:56-07:00</updated>
  <id>http:/rmarcus.info</id>
  <author>
    <name>Ryan Marcus</name>
@@ -81,7 +81,7 @@
 
 &lt;p&gt;Oh – there’s one more complication. A lot of the boards that you encounter when going down the tree are duplicates (there is more than one way to get to a state). To avoid recomputing the desirability of these boards, we store them in a hash table.&lt;/p&gt;
 
-&lt;p&gt;It also looks like writing this type of AI is homework for AI classes at &lt;a href=&quot;http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf&quot;&gt;Cornell&lt;/a&gt;,  &lt;a href=&quot;http://www.ccs.neu.edu/home/eclip5e/classes/csu520/&quot;&gt;Northeastern&lt;/a&gt;, and &lt;a href=&quot;https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/&quot;&gt;Purdue&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;It also looks like writing this type of AI is homework for AI classes at &lt;a href=&quot;http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf&quot;&gt;Cornell&lt;/a&gt;,  &lt;a href=&quot;http://www.ccs.neu.edu/home/eclip5e/classes/csu520/&quot;&gt;Northeastern&lt;/a&gt;, and &lt;a href=&quot;https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/&quot;&gt;Purdue&lt;/a&gt;. I could only find &lt;a href=&quot;http://simulationcorner.net/index.php?page=connectfour&quot;&gt;one other Javascript Connect Four AI&lt;/a&gt;, which moves substantially faster than mine, but is easily defeated (which is exactly the behavior one would expect). &lt;/p&gt;
 </content>
  </entry>
  
