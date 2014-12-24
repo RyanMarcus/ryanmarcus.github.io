@@ -23,7 +23,7 @@
 
 function ConnFourCtrl($scope) {
 
-	$scope.worker = new Worker('assets/conn4/conn4worker.js');
+	$scope.worker = new Worker('/blog/assets/conn4/conn4worker.js');
 
 
 	$scope.board = [];
