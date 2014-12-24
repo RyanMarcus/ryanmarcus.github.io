@@ -49,7 +49,7 @@
 
 &lt;p&gt;A small subset of the tree (for a small game board) might look like this:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;assets/conn4/tree2.png&quot; alt=&quot;Small tree&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/conn4/tree2.png&quot; alt=&quot;Small tree&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Imagine expanding the tree all the way down to the bottom, where the leaf nodes are “terminal” states – states where one player has won the game, or there is a draw. In order to make moves, the AI applies a &lt;a href=&quot;http://en.wikipedia.org/wiki/Minimax&quot;&gt;minimax strategy&lt;/a&gt;. In other words, the AI assumes that its opponent will always play optimally, and thus tries to minimize the maximum gain of its opponent.&lt;/p&gt;
 
