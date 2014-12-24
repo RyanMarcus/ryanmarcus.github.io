@@ -7,6 +7,79 @@
     <atom:link href="/blog//feed.xml" rel="self" type="application/rss+xml" />
     
       <item>
+        <title>A JavaScript Connect Four AI</title>
+        <description>&lt;p&gt;Might I interest you in a rousing game of &lt;a href=&quot;http://en.wikipedia.org/wiki/Connect_Four&quot;&gt;Connect Four&lt;/a&gt;? You and the computer take turns dropping discs into one of the seven colums below. The goal is to get four pieces of your color in a row (vertically, diagonally, or horizontally).&lt;/p&gt;
+
+&lt;script type=&quot;text/javascript&quot; src=&quot;/blog/assets/conn4/conn4ctrl.js&quot;&gt;&lt;/script&gt;
+
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/blog/assets/conn4/conn4.css&quot; /&gt;
+
+&lt;div class=&quot;conn4&quot; ng-controller=&quot;ConnFourCtrl&quot;&gt;
+   &lt;div class=&quot;info&quot;&gt;
+     &lt;div&gt;Winner: &lt;span ng-hide=&quot;winner&quot;&gt;none yet...&lt;/span&gt;&lt;span ng-show=&quot;winner&quot;&gt;Player {{winner}}&lt;/span&gt;&lt;/div&gt;
+     &lt;div&gt;Draw: &lt;span ng-hide=&quot;draw&quot;&gt;no&lt;/span&gt;&lt;span ng-show=&quot;draw&quot;&gt;yes&lt;/span&gt;&lt;/div&gt;
+   &lt;/div&gt;
+   &lt;div class=&quot;thinking&quot;&gt;
+     &lt;img src=&quot;/blog/assets/conn4/ajax-loader.gif&quot; ng-show=&quot;thinking&quot; /&gt;
+   &lt;/div&gt;
+   
+   &lt;svg width=&quot;240&quot; height=&quot;180&quot;&gt;
+     &lt;rect width=&quot;100%&quot; height=&quot;100%&quot; style=&quot;fill: yellow;&quot; /&gt;
+     &lt;g ng-repeat=&quot;row in board&quot; transform=&quot;translate(30, {{ ($index + 1) * 25 }})&quot;&gt;
+       &lt;circle ng-repeat=&quot;col in row track by $index&quot; cx=&quot;{{ $index * 30 }}&quot; cy=&quot;0&quot; r=&quot;11&quot; class=&quot;hlc&quot; ng-show=&quot;isOver[$index]&quot; /&gt;
+       &lt;circle ng-repeat=&quot;col in row track by $index&quot; cx=&quot;{{ $index * 30 }}&quot; cy=&quot;0&quot; r=&quot;10&quot; stroke=&quot;black&quot; ng-class=&quot;col&quot; ng-click=&quot;move($index)&quot; ng-mouseover=&quot;over($index)&quot; ng-mouseleave=&quot;leave($index)&quot; /&gt;
+     &lt;/g&gt;
+   &lt;/svg&gt;
+   
+   
+   &lt;div class=&quot;ai&quot;&gt;
+     &lt;form class=&quot;form-horizontal&quot; role=&quot;form&quot;&gt;
+       &lt;label for=&quot;movesAhead&quot;&gt;Moves to to think ahead&lt;/label&gt;
+       &lt;input type=&quot;integer&quot; class=&quot;movesAhead&quot; id=&quot;movesAhead&quot; ng-model=&quot;look_ahead&quot; /&gt;
+     &lt;/form&gt;
+   &lt;/div&gt;
+   
+ &lt;/div&gt;
+
+&lt;p&gt;That’s a &lt;a href=&quot;https://angularjs.org&quot;&gt;AngularJS&lt;/a&gt; powered Connect Four AI that was originally written in C and then compiled to JavaScript using &lt;a href=&quot;https://github.com/kripken/emscripten/wiki&quot;&gt;Emscripten&lt;/a&gt;. It runs the actual AI in a &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage&quot;&gt;web worker&lt;/a&gt; to prevent your browser from locking up.&lt;/p&gt;
+
+&lt;p&gt;It was implemented using techniques from &lt;a href=&quot;http://www.cs.berkeley.edu/~russell/&quot;&gt;Stuart Russell&lt;/a&gt; and &lt;a href=&quot;http://norvig.com&quot;&gt;Peter Norvig’s&lt;/a&gt; excellent book, &lt;a href=&quot;http://www.amazon.com/Artificial-Intelligence-Modern-Approach-Edition/dp/0136042597&quot;&gt;Artificial Intelligence: A Modern Approach (3rd Edition)&lt;/a&gt;. These techniques might not create the best Connect Four AI possible (in fact, &lt;a href=&quot;/blog/assets/conn4/thesis.pdf&quot;&gt;Victor Allis’ thesis shows how to create a provably-unbeatable AI&lt;/a&gt;), but it can still do pretty well! The code (in C, Python, and JavaScript) is available &lt;a href=&quot;http://github.org/RyanMarcus/connect4&quot;&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The main idea behind the AI is &lt;a href=&quot;http://en.wikibooks.org/wiki/Artificial_Intelligence/Search/Adversarial_search/Minimax_Search&quot;&gt;adversarial search&lt;/a&gt;. Think of all the possible games of Connect Four represented as a tree. The root of the tree is the empty board. The second tier of the tree represents all the possible moves that can be made by the first player. The third tier of the tree represents all the possible moves that can be made by the second player.&lt;/p&gt;
+
+&lt;p&gt;A small subset of the tree (for a small game board) might look like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;assets/conn4/tree2.png&quot; alt=&quot;Small tree&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Imagine expanding the tree all the way down to the bottom, where the leaf nodes are “terminal” states – states where one player has won the game, or there is a draw. In order to make moves, the AI applies a &lt;a href=&quot;http://en.wikipedia.org/wiki/Minimax&quot;&gt;minimax strategy&lt;/a&gt;. In other words, the AI assumes that its opponent will always play optimally, and thus tries to minimize the maximum gain of its opponent.&lt;/p&gt;
+
+&lt;p&gt;This tree is really big. The branching factor is approximately seven, and the depth of the tree could be as high as 42. So, while the the &lt;a href=&quot;http://en.wikipedia.org/wiki/K-ary_tree&quot;&gt;perfect tree formula&lt;/a&gt; would tell us that there are &lt;script type=&quot;math/tex&quot;&gt;\frac{7^{43} - 1}{6} \approx 3 \mbox{ undecillion}&lt;/script&gt; boards, some smart mathematicians have figured out that there are “only” around &lt;a href=&quot;http://oeis.org/A212693&quot;&gt;4 trillion different boards&lt;/a&gt;. That’s still way too many to examine.&lt;/p&gt;
+
+&lt;p&gt;Thankfully, we can use a technique called &lt;a href=&quot;http://en.wikipedia.org/wiki/Alpha–beta_pruning&quot;&gt;alpha-beta pruning&lt;/a&gt;. The idea is pretty simple: do not bother searching branches that would either:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;require our opponent to make a detrimental move (to get an outcome less than the outcome they could get if they played optimally)&lt;/li&gt;
+  &lt;li&gt;or, require us to make a move that was less advantageous than another move we could make&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Now, this is a hand wavey oversimplification of how the process actually works. I suggest you read the chapters in Russell and Norvig, or fuss through the Wikipedia page, to get a better understanding. &lt;/p&gt;
+
+&lt;p&gt;In the average case, alpha-beta pruning reduces the number of nodes we need to evaluate from &lt;script type=&quot;math/tex&quot;&gt;O(b^d)&lt;/script&gt; to &lt;script type=&quot;math/tex&quot;&gt;O(b^{\frac{3d}{4}})&lt;/script&gt;. This brings us from 4 trillion boards to around 2.7 billion boards. A pretty good drop – but still not enough for us to enumerate.&lt;/p&gt;
+
+&lt;p&gt;Next, we employ a heuristic function. Since we can’t reach the bottom of the tree, we’ll go down a certain depth and then make some kind of guess as to whether or not the board we are evaluating is a winning or losing board. I used a very simple heuristic: the number of possible four-in-a-rows. The computer would calculate how many ways it could win using alignments present in the current board, and then subtract the number of ways the computer’s opponent could win.&lt;/p&gt;
+
+&lt;p&gt;Now, the computer will exhaustively evaluate the tree to a certain depth (the number of moves to “think ahead”) and then use a heuristic to evaluate that board. Eventually, as the end of the game draws near, the computer finds winning or losing states within the prescribed depth, and plays perfectly. The hope is that the heuristic function can guide the AI to a winnable position. It seems to work pretty well – if you can beat it, try increasing the number of moves to think ahead. It’ll make it slow down, but it’ll get exponentially more difficult. &lt;/p&gt;
+
+&lt;p&gt;Oh – there’s one more complication. A lot of the boards that you encounter when going down the tree are duplicates (there is more than one way to get to a state). To avoid recomputing the desirability of these boards, we store them in a hash table.&lt;/p&gt;
+
+&lt;p&gt;It also looks like writing this type of AI is homework for AI classes at &lt;a href=&quot;http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf&quot;&gt;Cornell&lt;/a&gt;,  &lt;a href=&quot;http://www.ccs.neu.edu/home/eclip5e/classes/csu520/&quot;&gt;Northeastern&lt;/a&gt;, and &lt;a href=&quot;https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/&quot;&gt;Purdue&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 23 Dec 2014 00:00:00 -0700</pubDate>
+        <link>/blog//2014/12/23/connect4.html</link>
+        <guid isPermaLink="true">/blog//2014/12/23/connect4.html</guid>
+      </item>
+    
+      <item>
         <title>A Dirty JSON Parser</title>
         <description>&lt;p&gt;I’ve written a &lt;a href=&quot;http://github.com/RyanMarcus/dirty-json&quot;&gt;parser that does its best to parse invalid and malformed JSON&lt;/a&gt;. It is written in JavaScript, and is &lt;a href=&quot;https://www.npmjs.org/package/dirty-json&quot;&gt;available on NPM&lt;/a&gt;. There’s also &lt;a href=&quot;http://rmarcus.info/dirty-json&quot;&gt;an online demo&lt;/a&gt;.&lt;/p&gt;
 
@@ -41,7 +114,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;If you find a bug (or an interesting use case), let me know via &lt;a href=&quot;http://github.com/RyanMarcus/dirty-json&quot;&gt;the GitHub repo&lt;/a&gt; or &lt;a href=&quot;http://twitter.com/RyanMarcus&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 05 Oct 2014 00:00:00 -0400</pubDate>
+        <pubDate>Sun, 05 Oct 2014 00:00:00 -0600</pubDate>
         <link>/blog//2014/10/05/dirty-json-parser.html</link>
         <guid isPermaLink="true">/blog//2014/10/05/dirty-json-parser.html</guid>
       </item>
@@ -117,7 +190,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;Happy normalizing!&lt;/p&gt;
 </description>
-        <pubDate>Fri, 09 May 2014 00:00:00 -0400</pubDate>
+        <pubDate>Fri, 09 May 2014 00:00:00 -0600</pubDate>
         <link>/blog//2014/05/09/rdtheory.html</link>
         <guid isPermaLink="true">/blog//2014/05/09/rdtheory.html</guid>
       </item>
@@ -220,7 +293,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 &lt;p&gt;Reddit user &lt;a href=&quot;http://www.reddit.com/r/programming/comments/1hilkn/fallthrough_sort_quickly_sorting_small_sets/cauvhhp&quot;&gt;sltkr seems to be getting better results from a simple insertion sort&lt;/a&gt;. This appears to be due to CPU differences, but the discussion is ongoing.&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 01 Jul 2013 00:00:00 -0400</pubDate>
+        <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
         <link>/blog//2013/07/01/fallthrough-sort.html</link>
         <guid isPermaLink="true">/blog//2013/07/01/fallthrough-sort.html</guid>
       </item>
@@ -325,7 +398,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;Reddit user JustSomeBadAdvice &lt;a href=&quot;http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n&quot;&gt;points out&lt;/a&gt; that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.&lt;/p&gt;
 </description>
-        <pubDate>Sat, 09 Mar 2013 00:00:00 -0500</pubDate>
+        <pubDate>Sat, 09 Mar 2013 00:00:00 -0700</pubDate>
         <link>/blog//2013/03/09/topntree.html</link>
         <guid isPermaLink="true">/blog//2013/03/09/topntree.html</guid>
       </item>

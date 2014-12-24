@@ -113,6 +113,83 @@
   
   <div class="post">
     <h1 class="post-title">
+      <a href="/blog/2014/12/23/connect4.html">
+        A JavaScript Connect Four AI
+      </a>
+    </h1>
+
+    <span class="post-date">23 Dec 2014</span>
+
+    <p>Might I interest you in a rousing game of <a href="http://en.wikipedia.org/wiki/Connect_Four">Connect Four</a>? You and the computer take turns dropping discs into one of the seven colums below. The goal is to get four pieces of your color in a row (vertically, diagonally, or horizontally).</p>
+
+<script type="text/javascript" src="/blog/assets/conn4/conn4ctrl.js"></script>
+
+<link rel="stylesheet" href="/blog/assets/conn4/conn4.css" />
+
+<div class="conn4" ng-controller="ConnFourCtrl">
+   <div class="info">
+     <div>Winner: <span ng-hide="winner">none yet...</span><span ng-show="winner">Player {{winner}}</span></div>
+     <div>Draw: <span ng-hide="draw">no</span><span ng-show="draw">yes</span></div>
+   </div>
+   <div class="thinking">
+     <img src="/blog/assets/conn4/ajax-loader.gif" ng-show="thinking" />
+   </div>
+   
+   <svg width="240" height="180">
+     <rect width="100%" height="100%" style="fill: yellow;" />
+     <g ng-repeat="row in board" transform="translate(30, {{ ($index + 1) * 25 }})">
+       <circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="11" class="hlc" ng-show="isOver[$index]" />
+       <circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="10" stroke="black" ng-class="col" ng-click="move($index)" ng-mouseover="over($index)" ng-mouseleave="leave($index)" />
+     </g>
+   </svg>
+   
+   
+   <div class="ai">
+     <form class="form-horizontal" role="form">
+       <label for="movesAhead">Moves to to think ahead</label>
+       <input type="integer" class="movesAhead" id="movesAhead" ng-model="look_ahead" />
+     </form>
+   </div>
+   
+ </div>
+
+<p>That’s a <a href="https://angularjs.org">AngularJS</a> powered Connect Four AI that was originally written in C and then compiled to JavaScript using <a href="https://github.com/kripken/emscripten/wiki">Emscripten</a>. It runs the actual AI in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage">web worker</a> to prevent your browser from locking up.</p>
+
+<p>It was implemented using techniques from <a href="http://www.cs.berkeley.edu/~russell/">Stuart Russell</a> and <a href="http://norvig.com">Peter Norvig’s</a> excellent book, <a href="http://www.amazon.com/Artificial-Intelligence-Modern-Approach-Edition/dp/0136042597">Artificial Intelligence: A Modern Approach (3rd Edition)</a>. These techniques might not create the best Connect Four AI possible (in fact, <a href="/blog/assets/conn4/thesis.pdf">Victor Allis’ thesis shows how to create a provably-unbeatable AI</a>), but it can still do pretty well! The code (in C, Python, and JavaScript) is available <a href="http://github.org/RyanMarcus/connect4">on GitHub</a>.</p>
+
+<p>The main idea behind the AI is <a href="http://en.wikibooks.org/wiki/Artificial_Intelligence/Search/Adversarial_search/Minimax_Search">adversarial search</a>. Think of all the possible games of Connect Four represented as a tree. The root of the tree is the empty board. The second tier of the tree represents all the possible moves that can be made by the first player. The third tier of the tree represents all the possible moves that can be made by the second player.</p>
+
+<p>A small subset of the tree (for a small game board) might look like this:</p>
+
+<p><img src="assets/conn4/tree2.png" alt="Small tree" /></p>
+
+<p>Imagine expanding the tree all the way down to the bottom, where the leaf nodes are “terminal” states – states where one player has won the game, or there is a draw. In order to make moves, the AI applies a <a href="http://en.wikipedia.org/wiki/Minimax">minimax strategy</a>. In other words, the AI assumes that its opponent will always play optimally, and thus tries to minimize the maximum gain of its opponent.</p>
+
+<p>This tree is really big. The branching factor is approximately seven, and the depth of the tree could be as high as 42. So, while the the <a href="http://en.wikipedia.org/wiki/K-ary_tree">perfect tree formula</a> would tell us that there are <script type="math/tex">\frac{7^{43} - 1}{6} \approx 3 \mbox{ undecillion}</script> boards, some smart mathematicians have figured out that there are “only” around <a href="http://oeis.org/A212693">4 trillion different boards</a>. That’s still way too many to examine.</p>
+
+<p>Thankfully, we can use a technique called <a href="http://en.wikipedia.org/wiki/Alpha–beta_pruning">alpha-beta pruning</a>. The idea is pretty simple: do not bother searching branches that would either:</p>
+
+<ul>
+  <li>require our opponent to make a detrimental move (to get an outcome less than the outcome they could get if they played optimally)</li>
+  <li>or, require us to make a move that was less advantageous than another move we could make</li>
+</ul>
+
+<p>Now, this is a hand wavey oversimplification of how the process actually works. I suggest you read the chapters in Russell and Norvig, or fuss through the Wikipedia page, to get a better understanding. </p>
+
+<p>In the average case, alpha-beta pruning reduces the number of nodes we need to evaluate from <script type="math/tex">O(b^d)</script> to <script type="math/tex">O(b^{\frac{3d}{4}})</script>. This brings us from 4 trillion boards to around 2.7 billion boards. A pretty good drop – but still not enough for us to enumerate.</p>
+
+<p>Next, we employ a heuristic function. Since we can’t reach the bottom of the tree, we’ll go down a certain depth and then make some kind of guess as to whether or not the board we are evaluating is a winning or losing board. I used a very simple heuristic: the number of possible four-in-a-rows. The computer would calculate how many ways it could win using alignments present in the current board, and then subtract the number of ways the computer’s opponent could win.</p>
+
+<p>Now, the computer will exhaustively evaluate the tree to a certain depth (the number of moves to “think ahead”) and then use a heuristic to evaluate that board. Eventually, as the end of the game draws near, the computer finds winning or losing states within the prescribed depth, and plays perfectly. The hope is that the heuristic function can guide the AI to a winnable position. It seems to work pretty well – if you can beat it, try increasing the number of moves to think ahead. It’ll make it slow down, but it’ll get exponentially more difficult. </p>
+
+<p>Oh – there’s one more complication. A lot of the boards that you encounter when going down the tree are duplicates (there is more than one way to get to a state). To avoid recomputing the desirability of these boards, we store them in a hash table.</p>
+
+<p>It also looks like writing this type of AI is homework for AI classes at <a href="http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf">Cornell</a>,  <a href="http://www.ccs.neu.edu/home/eclip5e/classes/csu520/">Northeastern</a>, and <a href="https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/">Purdue</a>.</p>
+
+  </div>
+  
+  <div class="post">
+    <h1 class="post-title">
       <a href="/blog/2014/10/05/dirty-json-parser.html">
         A Dirty JSON Parser
       </a>
