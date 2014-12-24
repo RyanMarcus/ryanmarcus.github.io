@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <description>The musings and work of Ryan Marcus, a graduate student at the Los Alamos National Laboratory.</description>
+    <description>The musings and work of Ryan Marcus, a graduate student at Brandeis University and the Los Alamos National Laboratory.</description>
     <link>/blog/</link>
     <atom:link href="/blog//feed.xml" rel="self" type="application/rss+xml" />
     
