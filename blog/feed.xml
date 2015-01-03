@@ -74,7 +74,7 @@
 
 &lt;p&gt;It also looks like writing this type of AI is homework for AI classes at &lt;a href=&quot;http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf&quot;&gt;Cornell&lt;/a&gt;,  &lt;a href=&quot;http://www.ccs.neu.edu/home/eclip5e/classes/csu520/&quot;&gt;Northeastern&lt;/a&gt;, and &lt;a href=&quot;https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/&quot;&gt;Purdue&lt;/a&gt;. I could only find &lt;a href=&quot;http://simulationcorner.net/index.php?page=connectfour&quot;&gt;one other Javascript Connect Four AI&lt;/a&gt;, which moves substantially faster than mine, but is easily defeated (which is exactly the behavior one would expect). &lt;/p&gt;
 </description>
-        <pubDate>Tue, 23 Dec 2014 00:00:00 -0700</pubDate>
+        <pubDate>Tue, 23 Dec 2014 00:00:00 -0800</pubDate>
         <link>/blog//2014/12/23/connect4.html</link>
         <guid isPermaLink="true">/blog//2014/12/23/connect4.html</guid>
       </item>
@@ -114,7 +114,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;If you find a bug (or an interesting use case), let me know via &lt;a href=&quot;http://github.com/RyanMarcus/dirty-json&quot;&gt;the GitHub repo&lt;/a&gt; or &lt;a href=&quot;http://twitter.com/RyanMarcus&quot;&gt;Twitter&lt;/a&gt;.&lt;/p&gt;
 </description>
-        <pubDate>Sun, 05 Oct 2014 00:00:00 -0600</pubDate>
+        <pubDate>Sun, 05 Oct 2014 00:00:00 -0700</pubDate>
         <link>/blog//2014/10/05/dirty-json-parser.html</link>
         <guid isPermaLink="true">/blog//2014/10/05/dirty-json-parser.html</guid>
       </item>
@@ -190,7 +190,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;Happy normalizing!&lt;/p&gt;
 </description>
-        <pubDate>Fri, 09 May 2014 00:00:00 -0600</pubDate>
+        <pubDate>Fri, 09 May 2014 00:00:00 -0700</pubDate>
         <link>/blog//2014/05/09/rdtheory.html</link>
         <guid isPermaLink="true">/blog//2014/05/09/rdtheory.html</guid>
       </item>
@@ -293,7 +293,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 &lt;p&gt;Reddit user &lt;a href=&quot;http://www.reddit.com/r/programming/comments/1hilkn/fallthrough_sort_quickly_sorting_small_sets/cauvhhp&quot;&gt;sltkr seems to be getting better results from a simple insertion sort&lt;/a&gt;. This appears to be due to CPU differences, but the discussion is ongoing.&lt;/p&gt;
 
 </description>
-        <pubDate>Mon, 01 Jul 2013 00:00:00 -0600</pubDate>
+        <pubDate>Mon, 01 Jul 2013 00:00:00 -0700</pubDate>
         <link>/blog//2013/07/01/fallthrough-sort.html</link>
         <guid isPermaLink="true">/blog//2013/07/01/fallthrough-sort.html</guid>
       </item>
@@ -398,7 +398,7 @@ with newlines &amp;lt;span class=&quot;attrib&quot;&amp;gt; and embedded
 
 &lt;p&gt;Reddit user JustSomeBadAdvice &lt;a href=&quot;http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n&quot;&gt;points out&lt;/a&gt; that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.&lt;/p&gt;
 </description>
-        <pubDate>Sat, 09 Mar 2013 00:00:00 -0700</pubDate>
+        <pubDate>Sat, 09 Mar 2013 00:00:00 -0800</pubDate>
         <link>/blog//2013/03/09/topntree.html</link>
         <guid isPermaLink="true">/blog//2013/03/09/topntree.html</guid>
       </item>
