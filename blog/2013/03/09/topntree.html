@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="/blog//public/css/syntax.css">
   <link rel="stylesheet" href="/blog//public/css/hyde.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="/blog//public/css/rmarcus.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog//public/apple-touch-icon-144-precomposed.png">
@@ -204,9 +205,8 @@
 <p>For me, the search time of the heap and the “getting most contacted” time of the tree made those solutions impractical, so I compared the TopNTree to a tree and a heap. Since the size of [latex]k[/latex] was both constant and very low (5, for my listing of most popular contacts), I decided to use the TopNTree.</p>
 
 <p>Because big-O analysis, in general, is not to be trusted, I created a synthetic benchmark that emphasized the operations I was concerned with. The results are graphed below.</p>
-<center>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidDRIMm8yampxcDk4UVBCSS0zV1J6NWc&transpose=0&headers=1&range=A1%3AC6&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time (s)","minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"curveType":"","booleanRole":"certainty","title":"TopNTree v AVL/Heap for k = 5","interpolateNulls":false,"animation":{"duration":0},"domainAxis":{"direction":1},"legend":"in","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"Keys (n)","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script>
-</center>
+
+<p><img src="/blog/assets/topn/chart.png" alt="chart" /></p>
 
 <p>Obviously, no synthetic beats real-world testing. I hope the TopNTree performs well!</p>
 

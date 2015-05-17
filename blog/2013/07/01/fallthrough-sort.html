@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="/blog//public/css/syntax.css">
   <link rel="stylesheet" href="/blog//public/css/hyde.css">
   <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="/blog//public/css/rmarcus.css">
 
   <!-- Icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog//public/apple-touch-icon-144-precomposed.png">
@@ -176,24 +177,19 @@
 
 <p>The following graph shows the performance of fallthrough sort (for [latex]n \leq 9[/latex]) compared to the standard library’s qsort function. Both functions sorted [latex]10^7[/latex] randomly generated lists of size [latex]n = 9[/latex].</p>
 
-<center>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidFlYX1lOWUtVNENMM0lCa05Tbi1VZUE&transpose=0&headers=1&range=A53%3AC61&gid=0&pub=1","options":{"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"series":{"0":{"hasAnnotations":true}},"curveType":"function","animation":{"duration":500},"lineWidth":2,"hAxis":{"title":"Arrays sorted","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"vAxes":[{"title":"Time (s)","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"logScale":false,"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"logScale":false,"maxValue":null}],"title":"n=9 Quicksort vs. Fallthrough Sort","booleanRole":"certainty","legend":"right","annotations":{"domain":{}},"useFirstColumnAsDomain":true,"tooltip":{},"width":451,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 1"} </script>
-</center>
+<p><img src="/blog/assets/fallthrough/chart1.png" alt="first chart" /></p>
+
 <p>As you can see, fallthrough sort provides a substantial speed boost. Obviously, the difference is negligible if you’re only sorting one list.</p>
 
 <p>This next graph shows the performance of fallthrough sort (for [latex]n \leq 25[/latex]) compared to the standard library’s qsort function when sorting [latex]10^7[/latex] lists of varying sizes.</p>
 
-<center>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidFlYX1lOWUtVNENMM0lCa05Tbi1VZUE&transpose=0&headers=1&range=A1%3AC24&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Time (s)","minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"logScale":false,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"booleanRole":"certainty","curveType":"function","title":"10^7 Quicksort vs. Fallthrough Sort","animation":{"duration":500},"legend":"right","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"useFormatFromData":true,"title":"# of elements","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"tooltip":{},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 2"} </script>
-</center>
+<p><img src="/blog/assets/fallthrough/chart2.png" alt="second chart" /></p>
 
 <p>As the number of elements increases, fallthrough sort seems to slow down and approach the speed of qsort (eventually, qsort will become faster). This is expected, given the asymptotic behavior of each algorithm.</p>
 
 <p>This last graph shows how many times faster fallthrough sort is compared to qsort.</p>
 
-<center>
-<script type="text/javascript" src="//ajax.googleapis.com/ajax/static/modules/gviz/1.0/chart.js"> {"dataSourceUrl":"//docs.google.com/a/rmarcus.info/spreadsheet/tq?key=0AmQWGSF3o-iidFlYX1lOWUtVNENMM0lCa05Tbi1VZUE&transpose=0&headers=1&range=A26%3AB49&gid=0&pub=1","options":{"vAxes":[{"useFormatFromData":true,"title":"Times faster","minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},{"useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null}],"titleTextStyle":{"bold":true,"color":"#000","fontSize":16},"booleanRole":"certainty","curveType":"function","title":"Fallthrough Sort Speed Multiplier","animation":{"duration":500},"legend":"right","lineWidth":2,"useFirstColumnAsDomain":true,"hAxis":{"title":"# of elements","useFormatFromData":true,"minValue":null,"viewWindow":{"min":null,"max":null},"maxValue":null},"tooltip":{},"width":450,"height":320},"state":{},"view":{},"isDefaultVisualization":true,"chartType":"LineChart","chartName":"Chart 3"} </script>
-</center>
+<p><img src="/blog/assets/fallthrough/chart3.png" alt="third chart" /></p>
 
 <p>Here, the asymptotic behavior of both algorithms is extremely clear: qsort scales much better than fallthrough sort.</p>
 
