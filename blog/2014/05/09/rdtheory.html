@@ -136,7 +136,7 @@
 
 <script type="math/tex; mode=display">R = \left\{ F, L, E, A, Z, M, Y, P \right\}</script>
 
-<p>Next, let’s consider the semantics of the information stored in \(R\). In order to do so, it is helpful to remember the definition of a <a href="http://en.wikipedia.org/wiki/Functional_dependency">functional dependency</a>. We say that the set of attributes \(Y \in R\) functionally depends on another set of attributes \(X \in R\) if and only if every pair of rows in \(R\) that match on the attributes \(X\) also match on the attributes \(Y\). In other words, if \(X = \{A\}\) and \(Y = \{Z\}\), then we would say that one’s ZIP code functionally depends on one’s home address if and only if any two individuals with the same home address also have the same ZIP code. We write this functional dependency as \(X \to Y\). We can also say that \(X\) <em>determines</em> \(Y\).</p>
+<p>Next, let’s consider the semantics of the information stored in \(R\). In order to do so, it is helpful to remember the definition of a <a href="http://en.wikipedia.org/wiki/Functional_dependency">functional dependency</a>. We say that the set of attributes \(Y \in R\) functionally depends on another set of attributes \(X \in R\) if and only if every pair of rows in \(R\) that match on the attributes \(X\) also match on the attributes \(Y\). In other words, if \(X = \{A\}\) and \(Y = \{Z\}\), then we would say that one’s ZIP code functionally depends on one’s home address if and only if any two individuals with the same home address also have the same ZIP code. We write this functional dependency as \(X \to Y\). We can also say that \(X\) <em>determines</em> \(Y\). </p>
 
 <p>For our example, let’s assume the following set of functional dependencies:</p>
 
@@ -178,7 +178,7 @@
 
 <script type="math/tex; mode=display">R_5 = \left\{\underline{F}, \underline{L}, \underline{Y}\right\}</script>
 
-<script type="math/tex; mode=display">R_1 \cup R_2 \cup R_3 \cup R_4 \cup R_5 = R</script>
+<script type="math/tex; mode=display"> R_1 \cup R_2 \cup R_3 \cup R_4 \cup R_5 = R </script>
 
 <p>Now, we can create five tables instead of one. The algorithm used also ensures that the decomposition preserves all dependencies and is a loseless join decomposition.</p>
 

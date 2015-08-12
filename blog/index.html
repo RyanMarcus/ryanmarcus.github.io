@@ -177,17 +177,17 @@
   <li>or, require us to make a move that was less advantageous than another move we could make</li>
 </ul>
 
-<p>Now, this is a hand wavey oversimplification of how the process actually works. I suggest you read the chapters in Russell and Norvig, or fuss through the Wikipedia page, to get a better understanding.</p>
+<p>Now, this is a hand wavey oversimplification of how the process actually works. I suggest you read the chapters in Russell and Norvig, or fuss through the Wikipedia page, to get a better understanding. </p>
 
 <p>In the average case, alpha-beta pruning reduces the number of nodes we need to evaluate from <script type="math/tex">O(b^d)</script> to <script type="math/tex">O(b^{\frac{3d}{4}})</script>. This brings us from 4 trillion boards to around 2.7 billion boards. A pretty good drop – but still not enough for us to enumerate.</p>
 
 <p>Next, we employ a heuristic function. Since we can’t reach the bottom of the tree, we’ll go down a certain depth and then make some kind of guess as to whether or not the board we are evaluating is a winning or losing board. I used a very simple heuristic: the number of possible four-in-a-rows. The computer would calculate how many ways it could win using alignments present in the current board, and then subtract the number of ways the computer’s opponent could win.</p>
 
-<p>Now, the computer will exhaustively evaluate the tree to a certain depth (the number of moves to “think ahead”) and then use a heuristic to evaluate that board. Eventually, as the end of the game draws near, the computer finds winning or losing states within the prescribed depth, and plays perfectly. The hope is that the heuristic function can guide the AI to a winnable position. It seems to work pretty well – if you can beat it, try increasing the number of moves to think ahead. It’ll make it slow down, but it’ll get exponentially more difficult.</p>
+<p>Now, the computer will exhaustively evaluate the tree to a certain depth (the number of moves to “think ahead”) and then use a heuristic to evaluate that board. Eventually, as the end of the game draws near, the computer finds winning or losing states within the prescribed depth, and plays perfectly. The hope is that the heuristic function can guide the AI to a winnable position. It seems to work pretty well – if you can beat it, try increasing the number of moves to think ahead. It’ll make it slow down, but it’ll get exponentially more difficult. </p>
 
 <p>Oh – there’s one more complication. A lot of the boards that you encounter when going down the tree are duplicates (there is more than one way to get to a state). To avoid recomputing the desirability of these boards, we store them in a hash table.</p>
 
-<p>It also looks like writing this type of AI is homework for AI classes at <a href="http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf">Cornell</a>,  <a href="http://www.ccs.neu.edu/home/eclip5e/classes/csu520/">Northeastern</a>, and <a href="https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/">Purdue</a>. I could only find <a href="http://simulationcorner.net/index.php?page=connectfour">one other Javascript Connect Four AI</a>, which moves substantially faster than mine, but is easily defeated (which is exactly the behavior one would expect).</p>
+<p>It also looks like writing this type of AI is homework for AI classes at <a href="http://www.cs.cornell.edu/courses/CS2110/2014sp/assignments/a4/A4ConnectFour.pdf">Cornell</a>,  <a href="http://www.ccs.neu.edu/home/eclip5e/classes/csu520/">Northeastern</a>, and <a href="https://www.cs.purdue.edu/homes/cs190m/fall08/projects/project4/">Purdue</a>. I could only find <a href="http://simulationcorner.net/index.php?page=connectfour">one other Javascript Connect Four AI</a>, which moves substantially faster than mine, but is easily defeated (which is exactly the behavior one would expect). </p>
 
   </div>
   
@@ -265,7 +265,7 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
 <script type="math/tex; mode=display">R = \left\{ F, L, E, A, Z, M, Y, P \right\}</script>
 
-<p>Next, let’s consider the semantics of the information stored in \(R\). In order to do so, it is helpful to remember the definition of a <a href="http://en.wikipedia.org/wiki/Functional_dependency">functional dependency</a>. We say that the set of attributes \(Y \in R\) functionally depends on another set of attributes \(X \in R\) if and only if every pair of rows in \(R\) that match on the attributes \(X\) also match on the attributes \(Y\). In other words, if \(X = \{A\}\) and \(Y = \{Z\}\), then we would say that one’s ZIP code functionally depends on one’s home address if and only if any two individuals with the same home address also have the same ZIP code. We write this functional dependency as \(X \to Y\). We can also say that \(X\) <em>determines</em> \(Y\).</p>
+<p>Next, let’s consider the semantics of the information stored in \(R\). In order to do so, it is helpful to remember the definition of a <a href="http://en.wikipedia.org/wiki/Functional_dependency">functional dependency</a>. We say that the set of attributes \(Y \in R\) functionally depends on another set of attributes \(X \in R\) if and only if every pair of rows in \(R\) that match on the attributes \(X\) also match on the attributes \(Y\). In other words, if \(X = \{A\}\) and \(Y = \{Z\}\), then we would say that one’s ZIP code functionally depends on one’s home address if and only if any two individuals with the same home address also have the same ZIP code. We write this functional dependency as \(X \to Y\). We can also say that \(X\) <em>determines</em> \(Y\). </p>
 
 <p>For our example, let’s assume the following set of functional dependencies:</p>
 
@@ -307,7 +307,7 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
 <script type="math/tex; mode=display">R_5 = \left\{\underline{F}, \underline{L}, \underline{Y}\right\}</script>
 
-<script type="math/tex; mode=display">R_1 \cup R_2 \cup R_3 \cup R_4 \cup R_5 = R</script>
+<script type="math/tex; mode=display"> R_1 \cup R_2 \cup R_3 \cup R_4 \cup R_5 = R </script>
 
 <p>Now, we can create five tables instead of one. The algorithm used also ensures that the decomposition preserves all dependencies and is a loseless join decomposition.</p>
 
@@ -330,7 +330,7 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
 <p>In this case, we can utilize a special implementation of <a href="http://en.wikipedia.org/wiki/Bubble_sort">bubble sort</a> that takes advantage of <a href="http://en.wikipedia.org/wiki/Switch_statement#Fallthrough">switch statement fallthrough</a>. To quickly sort sets of size [latex]n \leq 9[/latex], we could use this C code:</p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdlib.h&gt;</span>
+<div class="highlight"><pre><code class="c"><span class="cp">#include &lt;stdlib.h&gt;</span>
 <span class="cp">#define min(a, b) (a &lt; b ? a : b)</span>
 <span class="cp">#define max(a, b) (a &gt; b ? a : b)</span>
 <span class="cp">#define exch(a, b) temp = a; a = min(temp, b); b = max(temp, b);</span>
@@ -352,28 +352,28 @@ with newlines &lt;span class="attrib"&gt; and embedded
 <span class="kt">void</span> <span class="nf">fallthroughSort</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">9</span>:
      	<span class="n">exch9</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">8</span>:
      	<span class="n">exch8</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">7</span>:
      	<span class="n">exch7</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">6</span>:
      	<span class="n">exch6</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">5</span>:
      	<span class="n">exch5</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">4</span>:
      	<span class="n">exch4</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">3</span>:
      	<span class="n">exch3</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">2</span>:
      	<span class="n">exch</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
      	<span class="k">break</span><span class="p">;</span>
-    <span class="k">default</span><span class="o">:</span>
+    <span class="nl">default:</span>
      	<span class="n">qsort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="n">cmpfunc</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
@@ -426,13 +426,13 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
     <span class="post-date">09 Mar 2013</span>
 
-    <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time.</p>
+    <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time. </p>
 
 <p>However, I also needed to be able to query the [latex]k[/latex] most frequently contacted contacts. Since contacts are sorted by their names, finding the [latex]k[/latex] most frequently contacted contacts would require [latex]O(n \log n)[/latex] search time.</p>
 
 <p>To solve this problem, I created an <a href="http://www.cs.arizona.edu/classes/cs545/fall09/Augmented-DS.prn.pdf">augmented binary tree</a> which provides an insertion time of [latex]O(k \log n)[/latex], a search time of [latex]O( \log n)[/latex], and can find the top [latex]k[/latex] contacts in [latex]O(1)[/latex]. You can view a Java implementation of the code <a href="https://bitbucket.org/RyanMarcus/topntree/overview">here</a>. The code is license free, and ought to be considered public domain.</p>
 
-<p>In order to accomplish this, each node is augmented with an array of size [latex]k[/latex] that stores, in sorted order, the [latex]k[/latex] largest keys in it’s left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value.</p>
+<p>In order to accomplish this, each node is augmented with an array of size [latex]k[/latex] that stores, in sorted order, the [latex]k[/latex] largest keys in it’s left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value. </p>
 
 <p>When a node [latex]\alpha[/latex] is inserted and becomes the left or right child of [latex]\beta[/latex], [latex]\beta[/latex]’s array is merged with [latex]\alpha[/latex]’s array, with the result stored into [latex]\beta[/latex]’s array. This merging can be done in <a href="http://en.wikipedia.org/wiki/Merge_sort">linear time</a>, since both arrays are already sorted. After this, [latex]\beta[/latex]’s parent is updated, and then the parent’s parent, all the way up to the root of the tree.</p>
 
@@ -461,7 +461,7 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
 <p>In case the similarity to merge sort is not clear, here is some pseudo-code for the merging:</p>
 
-<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
    <span class="kt">int</span> <span class="n">myPos</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
    <span class="kt">int</span> <span class="n">theirPos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
                 
@@ -470,7 +470,7 @@ with newlines &lt;span class="attrib"&gt; and embedded
         <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
              <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
              <span class="n">myPos</span><span class="o">--;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
              <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
              <span class="n">myPos</span><span class="o">--;</span>
              <span class="n">theirPos</span><span class="o">--;</span>

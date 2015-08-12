@@ -121,7 +121,7 @@
 
 <p>In this case, we can utilize a special implementation of <a href="http://en.wikipedia.org/wiki/Bubble_sort">bubble sort</a> that takes advantage of <a href="http://en.wikipedia.org/wiki/Switch_statement#Fallthrough">switch statement fallthrough</a>. To quickly sort sets of size [latex]n \leq 9[/latex], we could use this C code:</p>
 
-<div class="highlight"><pre><code class="language-c" data-lang="c"><span class="cp">#include &lt;stdlib.h&gt;</span>
+<div class="highlight"><pre><code class="c"><span class="cp">#include &lt;stdlib.h&gt;</span>
 <span class="cp">#define min(a, b) (a &lt; b ? a : b)</span>
 <span class="cp">#define max(a, b) (a &gt; b ? a : b)</span>
 <span class="cp">#define exch(a, b) temp = a; a = min(temp, b); b = max(temp, b);</span>
@@ -143,28 +143,28 @@
 <span class="kt">void</span> <span class="nf">fallthroughSort</span><span class="p">(</span><span class="kt">int</span><span class="o">*</span> <span class="n">array</span><span class="p">,</span> <span class="kt">int</span> <span class="n">length</span><span class="p">)</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">temp</span><span class="p">;</span>
     <span class="k">switch</span> <span class="p">(</span><span class="n">length</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="mi">9</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">9</span>:
      	<span class="n">exch9</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">8</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">8</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">8</span>:
      	<span class="n">exch8</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">6</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">7</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">7</span>:
      	<span class="n">exch7</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">6</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">6</span>:
      	<span class="n">exch6</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
 		       <span class="n">array</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">5</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">5</span>:
      	<span class="n">exch5</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">4</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">4</span>:
      	<span class="n">exch4</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">3</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">3</span>:
      	<span class="n">exch3</span><span class="p">(</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">);</span>
-    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+    <span class="k">case</span> <span class="mi">2</span>:
      	<span class="n">exch</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
      	<span class="k">break</span><span class="p">;</span>
-    <span class="k">default</span><span class="o">:</span>
+    <span class="nl">default:</span>
      	<span class="n">qsort</span><span class="p">(</span><span class="n">array</span><span class="p">,</span> <span class="n">length</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">),</span> <span class="n">cmpfunc</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span></code></pre></div>
