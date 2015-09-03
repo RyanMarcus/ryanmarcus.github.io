@@ -11,7 +11,7 @@
 
   <title>
     
-      TopNTree: A merge-sort inspired data structure &middot; RMarcus
+      RMarcus &middot; It's all Frank's Fault!
     
   </title>
 
@@ -117,10 +117,18 @@
 
 
     <div class="content container">
-      <div class="post">
-  <h1 class="post-title">TopNTree: A merge-sort inspired data structure</h1>
-  <span class="post-date">09 Mar 2013</span>
-  <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time. </p>
+      <div class="posts">
+  
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/blog/2013/03/09/topntree.html">
+        TopNTree: A merge-sort inspired data structure
+      </a>
+    </h1>
+
+    <span class="post-date">09 Mar 2013</span>
+
+    <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time. </p>
 
 <p>However, I also needed to be able to query the [latex]k[/latex] most frequently contacted contacts. Since contacts are sorted by their names, finding the [latex]k[/latex] most frequently contacted contacts would require [latex]O(n \log n)[/latex] search time.</p>
 
@@ -217,40 +225,19 @@
 
 <p>Reddit user JustSomeBadAdvice <a href="http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n">points out</a> that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.</p>
 
+  </div>
+  
 </div>
 
-<div class="related">
-  <h2>Related Posts</h2>
-  <ul class="related-posts">
+<div class="pagination">
+  
+    <span class="pagination-item older">Older</span>
+  
+  
     
-      <li>
-        <h3>
-          <a href="/blog//2015/09/02/vulcan.html">
-            Vulcan: A JavaScript Automated Proof System
-            <small>02 Sep 2015</small>
-          </a>
-        </h3>
-      </li>
+      <a class="pagination-item newer" href="/blog/">Newer</a>
     
-      <li>
-        <h3>
-          <a href="/blog//2014/12/23/connect4.html">
-            A JavaScript Connect Four AI
-            <small>23 Dec 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/blog//2014/10/05/dirty-json-parser.html">
-            A Dirty JSON Parser
-            <small>05 Oct 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-  </ul>
+  
 </div>
 
     </div>
