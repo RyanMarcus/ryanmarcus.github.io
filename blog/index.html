@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html ng-app xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -53,8 +53,7 @@
 	  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
 
-  <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>-->
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
 
 </head>
 
@@ -97,10 +96,6 @@
           
         
       
-        
-          
-        
-      
 
             <a class="sidebar-nav-item" href="/blog"></a>
 
@@ -121,211 +116,6 @@
   
   <div class="post">
     <h1 class="post-title">
-      <a href="/blog/2015/09/02/vulcan.html">
-        Vulcan: A JavaScript Automated Proof System
-      </a>
-    </h1>
-
-    <span class="post-date">02 Sep 2015</span>
-
-    <p>Mathematicians have been trying to figure out how to <a href="https://en.wikipedia.org/wiki/Automated_theorem_proving">get computers to write proofs for a long time</a>. One of the earliest (dating back to the 1960s) attempts to do so was a logical rule called <a href="https://en.wikipedia.org/wiki/Resolution_%28logic%29">resolution</a>.</p>
-
-<p>I created <a href="https://www.npmjs.com/package/vulcan">Vulcan, an NPM package</a> that implements a resolution-based automated proof system. Below is a in-browser demo I created with <a href="https://angularjs.org/">AngularJS</a> and <a href="http://browserify.org/">Browserify</a>. You can use symbols <code>A-Z</code> as variables that can be either true or false, and any of the following operations: <code>-&gt;</code> (implication), <code>&lt;-&gt;</code> (equivalence), <code>!</code> (negation), <code>&amp;</code> (conjunction), and <code>|</code> (disjunction).</p>
-
-<p>Enter some information into the knowledge base, enter a query, and click “prove” to see a proof (if one exists).</p>
-
-<script src="/blog/assets/vulcan/vulcan.js"></script>
-
-<script src="/blog/assets/vulcan/app.js"></script>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
-
-<div ng-app="vulcanApp">
-  <ng-include src="'/blog/assets/vulcan/vulcan.html'"></ng-include>
-</div>
-
-<hr />
-
-<p>This certainly <a href="http://blog.metawrap.com/2008/07/21/javascript-finite-state-machinetheorem-prover/">isn’t the first JavaScript implementation of a theorem prover</a>, nor is it even <a href="https://github.com/leanprover/lean.js">the most powerful</a>. It does, however, demonstrate the ability of a very simple system to come up with (in exponential time), a proof of <em>any provable statement in propositional calculus</em>.</p>
-
-<p>But how does it work? Once again, you can find an excellent introduction in <a href="http://www.cs.berkeley.edu/~russell/">Stuart Russell</a> and <a href="http://norvig.com">Peter Norvig’s</a> <a href="http://www.amazon.com/Artificial-Intelligence-Modern-Approach-Edition/dp/0136042597">book</a>. But understanding the system really only requires two fundamental ideas about symbolic logic:</p>
-
-<ol>
-  <li>That any expression in propositional logic can be written in <strong>conjunctive normal form</strong></li>
-  <li>That logical resolution is <strong>sound and complete</strong>.</li>
-</ol>
-
-<h3 id="conjunctive-normal-form">Conjunctive normal form</h3>
-
-<p>The first point is the simplest. We say that a sentence of propositional logic is in conjunctive normal form if it is a series of other sentences combined via conjunction, such that each of the combined sentences is a disjunction of sentence symbols or negations of sentence symbols. In other words, a sentence is in conjunctive normal form if it is an AND of ORs. For example,</p>
-
-<script type="math/tex; mode=display">A \land (B \lor D) \land C</script>
-
-<p>… is in conjunctive normal form, as is:</p>
-
-<script type="math/tex; mode=display">A \land (B \lor \lnot C \lor D) \land C</script>
-
-<p>However, this sentence is not in conjunctive normal form:</p>
-
-<script type="math/tex; mode=display">A \land (B \lor C \land E) \lor D</script>
-
-<p>Nor is this one:</p>
-
-<script type="math/tex; mode=display"> (A \to B) \land C</script>
-
-<p>The fact that <script type="math/tex">(A \to B) \land C</script> is not in CNF (conjunctive normal form) seems problematic. Surely, any sufficiently powerful proof system should be able to handle implications. However, we can transform this expression into one that is in CNF using a simple trick: we replace the implication <script type="math/tex">A \to B</script> with <script type="math/tex">\lnot A \lor B</script>.</p>
-
-<script type="math/tex; mode=display"> (A \to B) \land C \Rightarrow (\lnot A \lor B) \land C</script>
-
-<p>Our new expression, <script type="math/tex">(\lnot A \lor B) \land C</script>, is in CNF. In fact, there is a sequence of logical rules that can be applied to any expression to convert it into CNF. Norvig and Russell give an excellent description that can be found in other places on the Internet, and I’ll produce my own explanation here.</p>
-
-<ol>
-  <li>Remove bijections: <script type="math/tex">A \leftrightarrow B \Rightarrow (A \to B) \land (B \to A)</script>.</li>
-  <li>Replace any implications: <script type="math/tex">A \to B \Rightarrow \lnot A \lor B</script></li>
-  <li>Move nots inwards via DeMorgan’s rule:
-    <ul>
-      <li>Not over and: <script type="math/tex"> \lnot (A \land B) \Rightarrow (\lnot A \lor \lnot B) </script></li>
-      <li>Not over or: <script type="math/tex"> \lnot (A \lor B) \Rightarrow (\lnot A \land \lnot B) </script></li>
-    </ul>
-  </li>
-  <li>Eliminate double negation: <script type="math/tex"> \lnot \lnot A \Rightarrow A </script></li>
-  <li>Distribute ors over ands: <script type="math/tex"> (A \land B) \lor C \Rightarrow (C \lor A) \land (C \lor B)</script></li>
-</ol>
-
-<p>If you don’t believe that this simple algorithm will convert any sentence into CNF, try out a few examples. But this algorithm is not the easiest way to understand why any sentence in propositional logic can be converted into CNF. It’s helpful to remember that two sentences are equivalent if and only if they agree in every model. In other words, imagine you have two sentences, <script type="math/tex"> \alpha </script> and <script type="math/tex"> \beta </script>, composed of the symbols A, B, and C. You can say that <script type="math/tex"> \alpha = \beta </script> if you can plug in any value for A, B, and C and get the same final result for both <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script>.</p>
-
-<p>Let’s take <script type="math/tex"> \alpha = (A \to (B \lor C)) </script>, and <script type="math/tex"> \beta = \lnot (A \land \lnot B \land \lnot C)</script> and test to see if they are equivalent by building a truth table.</p>
-
-<table>
-<tr>
-<th>A</th><th>B</th><th>C</th><th>$$\alpha$$</th><th>$$\beta$$</th>
-</tr>
-<tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
-<tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
-<tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
-<tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
-<tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
-<tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
-<tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
-<tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td></tr>
-
-</table>
-
-<p>Quite an exhausting process, but it works. We can see that <script type="math/tex"> \alpha = \beta </script>. The important consequence here is this: if we can construct a sentence with the same truth table as <script type="math/tex"> \alpha </script>, we can construct a sentence that is equivalent to <script type="math/tex">\alpha</script>.</p>
-
-<p>So let’s think about how to construct a new sentence <script type="math/tex"> \gamma </script> that will be equivalent to <script type="math/tex"> \alpha </script> but also in CNF. Think of <script type="math/tex"> \gamma </script> as a bunch of clauses linked together by conjunctions. So, whenever <script type="math/tex"> \alpha </script> is false, we need to make sure that at least one of the clauses in <script type="math/tex"> \gamma </script> is false – that’ll make sure that all of <script type="math/tex"> \gamma </script> is false.</p>
-
-<p>For every row in the truth table that ends in false, add a clause to <script type="math/tex"> \gamma </script> that is a conjunction of each sentence symbol, but negate the sentence symbol if that symbol is “false” in the table. For <script type="math/tex"> \alpha </script>, we have only one row in the truth table where the result is false. So we’ll have only one clause in <script type="math/tex"> \gamma </script>. That clause will be a disjunction of:</p>
-
-<ul>
-  <li>the negation of A, because A is false in that row of the truth table</li>
-  <li>B, because B is true in that row</li>
-  <li>C, because C is true in that row.</li>
-</ul>
-
-<p>So finally, we get <script type="math/tex"> \gamma = \lnot A \lor B \lor C </script>, which is equivalent to <script type="math/tex"> \alpha </script> and in CNF. If you don’t believe me, try a truth table or <a href="http://www.wolframalpha.com/input/?i=CNF+of+%28A+implies+%28B+or+C%29%29+">try WolframAlpha</a>. Now we have an algorithm for taking a truth table to a new sentence that will be in CNF.</p>
-
-<p>Let’s try another example. Let <script type="math/tex"> \sigma = A \leftrightarrow B </script>. We’ll write out a truth table for <script type="math/tex"> \sigma </script> and then convert it to CNF.</p>
-
-<table>
-<tr>
-<th>A</th><th>B</th><th>$$\sigma$$</th>
-</tr>
-
-<tr><td>T</td><td>T</td><td>T</td></tr>
-<tr><td>T</td><td>F</td><td>F</td></tr>
-<tr><td>F</td><td>T</td><td>F</td></tr>
-<tr><td>F</td><td>F</td><td>T</td></tr>
-
-</table>
-
-<p>Since <script type="math/tex">\sigma</script> is false in two rows, we’ll have to build clauses from both of them. For the seoncd row, we get the clause <script type="math/tex"> A \lor \lnot B </script>. From the third row, we get <script type="math/tex"> \lnot A \lor B </script>. Putting the clauses together gives us <script type="math/tex"> (A \lor \lnot B) \land (\lnot A \lor B)</script>. That’s equivalent to <script type="math/tex"> \sigma </script>, which you can verify with a truth table or with <a href="http://www.wolframalpha.com/input/?i=CNF+of++%28A+equivalent+B%29">WolframAlpha</a>.</p>
-
-<p>Hopefully you’re now significantly convinced that, given any sentence in propositional logic, there’s an equivalent sentence in CNF. The next critical component is <a href="https://en.wikipedia.org/wiki/Resolution_%28logic%29"><strong>logical resolution</strong></a>.</p>
-
-<h3 id="resolution">Resolution</h3>
-
-<p>Resolution is an interesting trick with some very useful properties. It can be stated as follows:</p>
-
-<script type="math/tex; mode=display">\frac{A \lor B \lor C, \quad E \lor \lnot B \lor F}{A \lor C \lor E \lor F}</script>
-
-<p>If you’ve never seen this notation before, it just means that if you are given the two sentences on top as true, then you can deduce that the sentence on the bottom is true as well. For resolution specifically, if you have two disjunctions with a complementary symbol (a symbol that is negated in one disjunction but not in the other), you can remove that symbol from both sentences and combine the two sentences with another disjunction.</p>
-
-<p>It possible to prove that resolution is both sound (meaning that a deduction made by resolution will always be correct) and complete (meaning that any sentence that can be deduced can be deduced by resolution). The second property – completeness – is rather amazing. You might find it interesting to <a href="http://www.mathcs.duq.edu/simon/Fall04/notes-6-20/node3.html">read through a proof that explains why</a>.</p>
-
-<p>So how do we take advantage of resolution to create a proof system? Notice that the inputs and the output of resolution are conjunctions – meaning a string of (possibly negated) symbols linked together by ORs. Since we can convert every statement in our knowledge base to CNF, we can separate out each of the disjunctions into different statements and combine them in different ways with resolution. Since resolution is sound, we know that any combination of two clauses in our knowledge base will be valid. Since resolution is complete, we know that any fact that can be inferred from our knowledge base can be inferred via resolution.</p>
-
-<p>Now, given a knowledge base <script type="math/tex">KB</script> and a query <script type="math/tex">Q</script>, how do we find out if <script type="math/tex">Q</script> is true, given <script type="math/tex">KB</script>? To be more specific, we want to know if <script type="math/tex">Q</script> is semantically entailed by <script type="math/tex">KB</script>. Written formally: <script type="math/tex">KB \vDash Q</script>. By the <a href="https://en.wikipedia.org/wiki/G%C3%B6del's_completeness_theorem">completeness theorem</a>, we know that <script type="math/tex">KB \vDash Q</script> if and only if <script type="math/tex">Q</script> can be syntactically generated from <script type="math/tex">KB</script> using some sound method <script type="math/tex">m</script>: <script type="math/tex">KB \vdash_m Q</script>.</p>
-
-<script type="math/tex; mode=display">KB \vDash Q \leftrightarrow \exists m (KB \vdash_m Q)</script>
-
-<p>Let’s call our resolution method <script type="math/tex">r</script>. Since resolution is complete, we know that any semantically true sentence entailed by <script type="math/tex">KB</script> can be syntactically derived via <script type="math/tex">r</script>. In other words, we know that:</p>
-
-<script type="math/tex; mode=display">KB \vDash Q \to KB \vdash_r Q</script>
-
-<p>And, since <script type="math/tex">r</script> is sound, we know that any sentence derived via <script type="math/tex">r</script> from <script type="math/tex">KB</script> will also be entailed by <script type="math/tex">KB</script>. In other words, we have:</p>
-
-<script type="math/tex; mode=display">KB \vdash_r Q \to KB \vDash Q</script>
-
-<p>Combining these two gives us:</p>
-
-<script type="math/tex; mode=display">KB \vDash Q \leftrightarrow KB \vdash_r Q</script>
-
-<p>At this point, you might think an acceptable algorithm would be to take your knowledge base and apply resolution over and over again until you either find all possible sentences or you find <script type="math/tex">Q</script>. The problem here is that all sentences of propositional logic can be stated in infinitely many finite ways (there are infinitely many ways to express any sentence using only finitely many symbols). You might think you could solve this problem by simply converting each step into CNF. The problem with that is that CNF representations are not unique. Example:</p>
-
-<script type="math/tex; mode=display">P \land (Q \lor A) == (A \lor Q) \land P</script>
-
-<p>Even if you were to generate unique CNF statements by deriving the CNF from the truth table at each step, such an approach would require the proof system to build larger and larger clauses (until reaching <script type="math/tex">Q</script>). Ideally, we want to make things smaller and smaller. So instead of searching for <script type="math/tex">Q</script>, we’ll add <script type="math/tex">\lnot Q</script> to the knowledge base and then search for <code>false</code>. If you think about it, this is equivalent to <a href="https://en.wikipedia.org/wiki/Reductio_ad_absurdum"><em>reductio ad absurdum</em></a>, or proof by contradiction. If by assuming that our query is false we can produce a contradiction, then it must be the case that our query is true.</p>
-
-<p>Let’s formalize that a little bit. Essentially, our statement is:</p>
-
-<script type="math/tex; mode=display">KB \vDash Q \leftrightarrow (KB \cup \lnot Q) \mbox{ is unsatisfiable}</script>
-
-<p>This is equivalent to the <a href="https://en.wikipedia.org/wiki/Deduction_theorem">deduction theorem</a>. A nice way to think of this is:</p>
-
-<blockquote>
-  <p>A statement can be proven from a knowledge base if and only if the negation of that statement combined with the knowledge base produces a contradiction. In other words, a statement is provable from a knowledge base only if the union of the knowledge base and the negation of the statement is unsatisfiable.</p>
-</blockquote>
-
-<p>So, if we show that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, we’ve shown that <script type="math/tex">KB \vDash Q</script>. This gives us the following algorithm:</p>
-
-<ol>
-  <li>Convert <script type="math/tex">KB</script> into CNF, and split up each sentence into clauses</li>
-  <li>Assume <script type="math/tex">\lnot Q</script></li>
-  <li>Apply resolution to every pair of clauses until either…
-    <ul>
-      <li>(a) no more clauses can be derived, meaning that there is no proof of <script type="math/tex">Q</script> from <script type="math/tex">KB</script>. If there were a proof, that would imply that there existed some <script type="math/tex">m</script> such that <script type="math/tex">KB \vdash_m Q</script>, but since we know resolution is complete and sound, it must be the case that such an <script type="math/tex">m</script> is not sound.</li>
-      <li>(b) we derive an “empty clause”, or false. In other words, we find a contradiction. The existence of a contradiction is enough to prove that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, since it proves that you’ll always get <code>false</code> no matter what model you use. You’ve proven <script type="math/tex">Q</script> by contradiction.</li>
-    </ul>
-  </li>
-</ol>
-
-<p>The correctness of this algorithm has some interesting consequences. For example, try a knowledge base of <script type="math/tex">P</script> and <script type="math/tex">\lnot P</script>. That’s a contradiction. Then, ask the system to prove <script type="math/tex">A</script>, a symbol we know absolutely nothing about. The system will resolve <script type="math/tex">P</script> and <script type="math/tex">\lnot P</script> to false, and suggest that a contradiction has been reached from the knowledge base <script type="math/tex">P \land \lnot P \land A</script>. So have we proven <script type="math/tex">A</script> from <script type="math/tex">P \land \lnot P</script>?</p>
-
-<p>Well, it turns out that we have! In fact, any conclusion follows from a contradiction. This is called <a href="https://en.wikipedia.org/wiki/Principle_of_explosion">the principle of explosion</a>, which can be stated as:</p>
-
-<script type="math/tex; mode=display">\{ \nu, \lnot \nu \} \vdash \psi</script>
-
-<p>Think of it this way. Consider a true statement like “the sky is blue.” We’ll call that <script type="math/tex">B</script>. Consider another statement, “the Easter Bunny is real.” We’ll call that <script type="math/tex">E</script>. We know that the statement <script type="math/tex">B \lor E</script> is true because <script type="math/tex">B</script> is true. However, let’s say for some reason we knew that the sky was blue and not blue, in other words, we know that <script type="math/tex">B \land \lnot B</script> was somehow true. Since we know <script type="math/tex">B \lor E</script> is true, and we know <script type="math/tex">\lnot B</script> is true, we can use resolution to deduce <script type="math/tex">E</script>:</p>
-
-<script type="math/tex; mode=display">\frac{B \lor E, \quad \lnot B}{E}</script>
-
-<p>So we’ve shown that <script type="math/tex">\{ B \lor E, B \land \lnot B \} \vdash_r E</script>. Since resolution (<script type="math/tex">r</script>) is sound, we know that <script type="math/tex">\{ B \lor E, B \land \lnot B \} \vDash E</script>. This isn’t so ridiculous when we say it out loud:</p>
-
-<blockquote>
-  <p>If the sky isn’t blue, the Easter Bunny is real.</p>
-</blockquote>
-
-<p>So it’s a good thing that our system finds that <script type="math/tex">A</script> is entailed by <script type="math/tex">P \land \lnot P</script>. If it didn’t, it wouldn’t be complete!</p>
-
-<p>You might’ve noticed that the line numbers of each statement in the generated proofs aren’t sequential. That’s because the proof is generated via resolution, and only the relevant clauses are displayed at the end. Since what we’re trying to prove is that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, we’re essentially solving a limited case of the <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">boolean satisfiability problem</a>, which is <code>NP-complete</code>. That means there could be quite a few steps! If you put a lot of data into the knowledge base and ask a tough question, it might take your browser quite a while to come with an answer!</p>
-
-<p>One more interesting tidbit: the initial state of the demo shows  how <a href="https://en.wikipedia.org/wiki/Modus_ponens">modus ponens</a> is really just a special case of resolution. Since we know that resolution is sound and complete, all sound logical inference rules are a special case of resolution. We also know that resolution is a subset of any complete inference rule, and we know that resolution is equivalent to any sound and complete inference rule. It’s reassuring to know that truth works the same way no matter what.</p>
-
-  </div>
-  
-  <div class="post">
-    <h1 class="post-title">
       <a href="/blog/2014/12/23/connect4.html">
         A JavaScript Connect Four AI
       </a>
@@ -339,34 +129,32 @@
 
 <link rel="stylesheet" href="/blog/assets/conn4/conn4.css" />
 
-<div ng-app="conn4App">
-  <div class="conn4" ng-controller="ConnFourCtrl">
-    <div class="info">
-      <div>Winner: <span ng-hide="winner">none yet...</span><span ng-show="winner">Player {{winner}}</span></div>
-      <div>Draw: <span ng-hide="draw">no</span><span ng-show="draw">yes</span></div>
-    </div>
-    <div class="thinking">
-      <img src="/blog/assets/conn4/ajax-loader.gif" ng-show="thinking" />
-    </div>
-    
-    <svg width="240" height="180">
-      <rect width="100%" height="100%" style="fill: yellow;" />
-      <g ng-repeat="row in board" transform="translate(30, {{ ($index + 1) * 25 }})">
-	<circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="11" class="hlc" ng-show="isOver[$index]" />
-	<circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="10" stroke="black" ng-class="col" ng-click="move($index)" ng-mouseover="over($index)" ng-mouseleave="leave($index)" />
-      </g>
-    </svg>
-    
-    
-    <div class="ai">
-      <form class="form-horizontal" role="form">
-	<label for="movesAhead">Moves to to think ahead</label>
-	<input type="integer" class="movesAhead" id="movesAhead" ng-model="look_ahead" />
-      </form>
-    </div>
-    
-  </div>
-</div>
+<div class="conn4" ng-controller="ConnFourCtrl">
+   <div class="info">
+     <div>Winner: <span ng-hide="winner">none yet...</span><span ng-show="winner">Player {{winner}}</span></div>
+     <div>Draw: <span ng-hide="draw">no</span><span ng-show="draw">yes</span></div>
+   </div>
+   <div class="thinking">
+     <img src="/blog/assets/conn4/ajax-loader.gif" ng-show="thinking" />
+   </div>
+   
+   <svg width="240" height="180">
+     <rect width="100%" height="100%" style="fill: yellow;" />
+     <g ng-repeat="row in board" transform="translate(30, {{ ($index + 1) * 25 }})">
+       <circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="11" class="hlc" ng-show="isOver[$index]" />
+       <circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="10" stroke="black" ng-class="col" ng-click="move($index)" ng-mouseover="over($index)" ng-mouseleave="leave($index)" />
+     </g>
+   </svg>
+   
+   
+   <div class="ai">
+     <form class="form-horizontal" role="form">
+       <label for="movesAhead">Moves to to think ahead</label>
+       <input type="integer" class="movesAhead" id="movesAhead" ng-model="look_ahead" />
+     </form>
+   </div>
+   
+ </div>
 
 <p>That’s an <a href="https://angularjs.org">AngularJS</a> powered Connect Four AI that was originally written in C and then compiled to JavaScript using <a href="https://github.com/kripken/emscripten/wiki">Emscripten</a>. It runs the actual AI in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage">web worker</a> to prevent your browser from locking up.</p>
 
@@ -629,11 +417,119 @@ with newlines &lt;span class="attrib"&gt; and embedded
 
   </div>
   
+  <div class="post">
+    <h1 class="post-title">
+      <a href="/blog/2013/03/09/topntree.html">
+        TopNTree: A merge-sort inspired data structure
+      </a>
+    </h1>
+
+    <span class="post-date">09 Mar 2013</span>
+
+    <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time. </p>
+
+<p>However, I also needed to be able to query the [latex]k[/latex] most frequently contacted contacts. Since contacts are sorted by their names, finding the [latex]k[/latex] most frequently contacted contacts would require [latex]O(n \log n)[/latex] search time.</p>
+
+<p>To solve this problem, I created an <a href="http://www.cs.arizona.edu/classes/cs545/fall09/Augmented-DS.prn.pdf">augmented binary tree</a> which provides an insertion time of [latex]O(k \log n)[/latex], a search time of [latex]O( \log n)[/latex], and can find the top [latex]k[/latex] contacts in [latex]O(1)[/latex]. You can view a Java implementation of the code <a href="https://bitbucket.org/RyanMarcus/topntree/overview">here</a>. The code is license free, and ought to be considered public domain.</p>
+
+<p>In order to accomplish this, each node is augmented with an array of size [latex]k[/latex] that stores, in sorted order, the [latex]k[/latex] largest keys in it’s left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value. </p>
+
+<p>When a node [latex]\alpha[/latex] is inserted and becomes the left or right child of [latex]\beta[/latex], [latex]\beta[/latex]’s array is merged with [latex]\alpha[/latex]’s array, with the result stored into [latex]\beta[/latex]’s array. This merging can be done in <a href="http://en.wikipedia.org/wiki/Merge_sort">linear time</a>, since both arrays are already sorted. After this, [latex]\beta[/latex]’s parent is updated, and then the parent’s parent, all the way up to the root of the tree.</p>
+
+<p>Pictures are great. Consider a tree with one node, for a contact Dave who has been contacted 10 times.</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/r11.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/r11.png" alt="One node" width="303" height="89" class="aligncenter size-full wp-image-568" /></a></p>
+
+<p>Then, we add another node for Betsy, who has been contacted 4 times.</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/r2.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/r2.png" alt="Two nodes" width="320" height="247" class="aligncenter size-full wp-image-571" /></a></p>
+
+<p>The array stored in the node representing Betsy gets merged with the parent node, Dave. Inserting another node:</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/r3.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/r3.png" alt="Three nodes" width="407" height="221" class="aligncenter size-full wp-image-574" /></a></p>
+
+<p>Once again, new nodes start out with only themselves in their array, and arrays are merged upwards from the node inserted.</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/r4.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/r4.png" alt="Four nodes" width="547" height="378" class="aligncenter size-full wp-image-572" /></a></p>
+
+<p>Another node:
+<a href="http://rmarcus.info/wp-content/uploads/2013/03/r5.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/r5.png" alt="Five nodes" width="696" height="392" class="aligncenter size-full wp-image-573" /></a></p>
+
+<p>From here, fetching the [latex]k[/latex] most contacted contacts can be done in constant time, because it simply requires the retrieval of the array from the root node.</p>
+
+<p>Note that in order to maintain [latex]O(k \log n)[/latex] time, the tree must be kept balanced. In my implementation, I use an <a href="http://en.wikipedia.org/wiki/AVL_tree">AVL tree</a>. For others seeking to use an AVL tree, make sure that, after any rotation, you properly update each node rotated. The simplest solution is to clear the arrays of merged nodes, and recalculate them by merging their immediate children.</p>
+
+<p>In case the similarity to merge sort is not clear, here is some pseudo-code for the merging:</p>
+
+<div class="highlight"><pre><code class="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+   <span class="kt">int</span> <span class="n">myPos</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+   <span class="kt">int</span> <span class="n">theirPos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+                
+   <span class="n">Entry</span><span class="o">[]</span> <span class="n">newObjs</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Entry</span><span class="o">[];</span>
+   <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
+             <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
+             <span class="n">myPos</span><span class="o">--;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
+             <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
+             <span class="n">myPos</span><span class="o">--;</span>
+             <span class="n">theirPos</span><span class="o">--;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+             <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">];</span>
+             <span class="n">theirPos</span><span class="o">--;</span>
+        <span class="o">}</span>
+   <span class="o">}</span>
+<span class="o">}</span></code></pre></div>
+
+<p>This process, ran on arrays of size 5, is depicted below. Initially, the new array is empty.
+<a href="http://rmarcus.info/wp-content/uploads/2013/03/m1.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/m1.png" alt="m1" width="656" height="234" class="aligncenter size-full wp-image-580" /></a></p>
+
+<p>The largest value from both the parent’s old array and the child’s array are selected on each iteration, ensuring that the new array is properly ordered.
+<a href="http://rmarcus.info/wp-content/uploads/2013/03/m2.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/m2.png" alt="m2" width="656" height="244" class="aligncenter size-full wp-image-581" /></a></p>
+
+<p>Note that the pointer variable (represented by the diamond) moves every time for the top array, but only moves for one of the bottom arrays or the other, except in the case where both bottom arrays have an equal value.</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/m3.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/m3.png" alt="m3" width="667" height="236" class="aligncenter size-full wp-image-582" /></a></p>
+
+<p>In each iteration, the value to be placed in the top array at the diamond is determined in constant time by simply picking the larger of the two values pointed to in the lower arrays. This means that the merge operation runs in [latex]O(k)[/latex] time.</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/m4.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/m4.png" alt="m4" width="656" height="239" class="aligncenter size-full wp-image-578" /></a></p>
+
+<p>Unlike in a traditional merge sort, the merge process can be halted when the top array is full, because we only care about the largest [latex]k[/latex] entries.</p>
+
+<p><a href="http://rmarcus.info/wp-content/uploads/2013/03/m5.png"><img src="http://rmarcus.info/wp-content/uploads/2013/03/m5.png" alt="m5" width="656" height="246" class="aligncenter size-full wp-image-579" /></a></p>
+
+<p>While the TopNTree provides, in my opinion, a clean solution to this particular problem, there are other possible solutions. The first thing I thought of was to simply maintain a tree of contacts sorted by name and a heap of the contacts sorted by how frequently they are contacted. In the case where the most frequently contacted contacts only needs to be calculated once, this might save some time, but if a contact’s frequency must be updated (a common event in a communication application), one would have to iterate over the entire heap. The following table shows the differences in upper bounds for different techniques. Note that in all cases [latex]k \leq n[/latex] and in most cases [latex]k &lt; n[/latex] and in my case [latex]k \ll n[/latex].</p>
+
+<table class="table">
+<thead>
+	<tr><th>Method</th>       <th>Insert</th>                    <th>Search</th>                   <th>Getting most contacted</th>    <th>Update</th></tr>
+		</thead>
+<tbody>
+<tr><td>TopNTree</td>     <td>[latex]O(k \log n)[/latex]</td><td>[latex]O(\log n)[/latex]</td> <td>[latex]O(1)[/latex]</td>       <td>[latex]O(k \log n)[/latex]</td></tr>
+<tr><td>Tree and heap</td><td>[latex]O(\log n)[/latex]</td>  <td>[latex]O(\log n)[/latex]</td> <td>[latex]O(k)[/latex]</td>       <td>[latex]O(n)[/latex]</td></tr>
+<tr><td>Tree</td>         <td>[latex]O(\log n)[/latex]</td>  <td>[latex]O(\log n)[/latex]</td> <td>[latex]O(n \log n)[/latex]</td><td>[latex]O(n)[/latex]</td></tr>
+<tr><td>Heap</td>         <td>[latex]O(\log n)[/latex]</td>  <td>[latex]O(n)[/latex]</td>      <td>[latex]O(k)[/latex]</td>       <td>[latex]O(\log n)[/latex]</td></tr>
+</tbody>
+</table>
+
+<p>For me, the search time of the heap and the “getting most contacted” time of the tree made those solutions impractical, so I compared the TopNTree to a tree and a heap. Since the size of [latex]k[/latex] was both constant and very low (5, for my listing of most popular contacts), I decided to use the TopNTree.</p>
+
+<p>Because big-O analysis, in general, is not to be trusted, I created a synthetic benchmark that emphasized the operations I was concerned with. The results are graphed below.</p>
+
+<p><img src="/blog/assets/topn/chart.png" alt="chart" /></p>
+
+<p>Obviously, no synthetic beats real-world testing. I hope the TopNTree performs well!</p>
+
+<p>Reddit user JustSomeBadAdvice <a href="http://www.reddit.com/r/compsci/comments/19zxjg/topntree_a_mergesort_inspired_data_structure/c8syj0n">points out</a> that using a heap and a tree where the nodes of each are the same (or contain pointers to each other) would produce similar, and possibly faster times, with the cost of more space.</p>
+
+  </div>
+  
 </div>
 
 <div class="pagination">
   
-    <a class="pagination-item older" href="/blog/page2">Older</a>
+    <span class="pagination-item older">Older</span>
   
   
     <span class="pagination-item newer">Newer</span>
