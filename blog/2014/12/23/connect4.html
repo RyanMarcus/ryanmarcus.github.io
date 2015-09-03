@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 
   <head>
   <link href="http://gmpg.org/xfn/11" rel="profile">
@@ -53,12 +53,19 @@
 	  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script>
 
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>
+  <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
+  <script src="/blog/assets/angular-apps.js"></script>
+  <script type="text/javascript" src="/blog/assets/conn4/conn4ctrl.js"></script>
+  <script src="/blog/assets/vulcan/vulcan.js"></script>
+  <script src="/blog/assets/vulcan/app.js"></script>
+
 
 </head>
 
 
-  <body>
+  <body ng-app="angularApps">
 
     <div class="sidebar">
   <div class="container sidebar-sticky">
@@ -96,6 +103,10 @@
           
         
       
+        
+          
+        
+      
 
             <a class="sidebar-nav-item" href="/blog"></a>
 
@@ -117,36 +128,36 @@
   <span class="post-date">23 Dec 2014</span>
   <p>Might I interest you in a rousing game of <a href="http://en.wikipedia.org/wiki/Connect_Four">Connect Four</a>? You and the computer take turns dropping discs into one of the seven colums below. The goal is to get four pieces of your color in a row (vertically, diagonally, or horizontally).</p>
 
-<script type="text/javascript" src="/blog/assets/conn4/conn4ctrl.js"></script>
-
 <link rel="stylesheet" href="/blog/assets/conn4/conn4.css" />
 
-<div class="conn4" ng-controller="ConnFourCtrl">
-   <div class="info">
-     <div>Winner: <span ng-hide="winner">none yet...</span><span ng-show="winner">Player {{winner}}</span></div>
-     <div>Draw: <span ng-hide="draw">no</span><span ng-show="draw">yes</span></div>
-   </div>
-   <div class="thinking">
-     <img src="/blog/assets/conn4/ajax-loader.gif" ng-show="thinking" />
-   </div>
-   
-   <svg width="240" height="180">
-     <rect width="100%" height="100%" style="fill: yellow;" />
-     <g ng-repeat="row in board" transform="translate(30, {{ ($index + 1) * 25 }})">
-       <circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="11" class="hlc" ng-show="isOver[$index]" />
-       <circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="10" stroke="black" ng-class="col" ng-click="move($index)" ng-mouseover="over($index)" ng-mouseleave="leave($index)" />
-     </g>
-   </svg>
-   
-   
-   <div class="ai">
-     <form class="form-horizontal" role="form">
-       <label for="movesAhead">Moves to to think ahead</label>
-       <input type="integer" class="movesAhead" id="movesAhead" ng-model="look_ahead" />
-     </form>
-   </div>
-   
- </div>
+<div>
+  <div class="conn4" ng-controller="ConnFourCtrl">
+    <div class="info">
+      <div>Winner: <span ng-hide="winner">none yet...</span><span ng-show="winner">Player {{winner}}</span></div>
+      <div>Draw: <span ng-hide="draw">no</span><span ng-show="draw">yes</span></div>
+    </div>
+    <div class="thinking">
+      <img src="/blog/assets/conn4/ajax-loader.gif" ng-show="thinking" />
+    </div>
+    
+    <svg width="240" height="180">
+      <rect width="100%" height="100%" style="fill: yellow;" />
+      <g ng-repeat="row in board" transform="translate(30, {{ ($index + 1) * 25 }})">
+	<circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="11" class="hlc" ng-show="isOver[$index]" />
+	<circle ng-repeat="col in row track by $index" cx="{{ $index * 30 }}" cy="0" r="10" stroke="black" ng-class="col" ng-click="move($index)" ng-mouseover="over($index)" ng-mouseleave="leave($index)" />
+      </g>
+    </svg>
+    
+    
+    <div class="ai">
+      <form class="form-horizontal" role="form">
+	<label for="movesAhead">Moves to to think ahead</label>
+	<input type="integer" class="movesAhead" id="movesAhead" ng-model="look_ahead" />
+      </form>
+    </div>
+    
+  </div>
+</div>
 
 <p>That’s an <a href="https://angularjs.org">AngularJS</a> powered Connect Four AI that was originally written in C and then compiled to JavaScript using <a href="https://github.com/kripken/emscripten/wiki">Emscripten</a>. It runs the actual AI in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/basic_usage">web worker</a> to prevent your browser from locking up.</p>
 
@@ -189,6 +200,15 @@
     
       <li>
         <h3>
+          <a href="/blog//2015/09/02/vulcan.html">
+            Vulcan: A JavaScript Automated Proof System
+            <small>02 Sep 2015</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
           <a href="/blog//2014/10/05/dirty-json-parser.html">
             A Dirty JSON Parser
             <small>05 Oct 2014</small>
@@ -201,15 +221,6 @@
           <a href="/blog//2014/05/09/rdtheory.html">
             rdtheory.js: relational database algorithms in JavaScript
             <small>09 May 2014</small>
-          </a>
-        </h3>
-      </li>
-    
-      <li>
-        <h3>
-          <a href="/blog//2013/07/01/fallthrough-sort.html">
-            Fallthrough Sort: Quickly Sorting Small Sets
-            <small>01 Jul 2013</small>
           </a>
         </h3>
       </li>

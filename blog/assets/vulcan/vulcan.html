@@ -1,0 +1,43 @@
+<div ng-controller="vulcanDemoCtrl">
+  <h2>Knowledge Base</h2>
+  <table>
+    <tr>
+      <th></th>
+      <th>Fact</th>
+      <th></th>
+    </tr>
+    <tr ng-repeat="r in rules">
+      <td>{{ $index + 1 }}</td>
+      <td>{{ r }} </td>
+      <td ng-click="removeRule($index)" align="center"><i class="fa fa-trash-o"></i></td>
+    </tr>
+    <tr>
+      <td>{{ rules.length + 1 }}</td>
+      <td><input type="text" ng-model="ruleInput" style="width: 100%;" /></td>
+      <td ng-click="addRule()" align="center"><i class="fa fa-plus-circle"></i></td>
+    </tr>
+  </table>
+
+
+<h2>Query</h2>
+    <input type="text" ng-model="query" /> 
+    <button type="button" ng-click="prove()">Prove</button>
+
+
+<h2 ng-show="proof.length != 0">Proof</h2>
+  <table ng-show="proof.length != 0">
+    <tr>
+      <th>Step</th>
+      <th>Sentence</th>
+      <th>Action</th>
+    </tr>
+    <tr ng-repeat="ax in proof">
+      <td>{{ ax.idx }}</td><td>{{ ax.tree }}</td><td>{{ ax.label }}</td>
+    </tr>
+
+    <tr ng-show="proofValid"><td colspan="3"><strong>By assuming the negation of the query, we are able to derive a contradiction. Therefore, the knowledge base combined with the negation of the query is unsatisfiable, so the query follows from the axioms of the knowledge base.</strong></td></tr>
+    <tr ng-show="proofValid"><td>{{ qedNumber }}</td><td>{{ query }}</td><td>by resolutional inference</td></tr>
+
+    <tr ng-hide="proofValid"><td colspan="3"><strong>No application of resolution could find a contradiction with the query. Because resolution is sound and complete, we know that the query is not a theorem of the knowledge base.</strong></td></tr>
+  </table>
+</div>

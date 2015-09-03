@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+
+  <head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  <!-- Enable responsiveness on mobile devices-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>
+    
+      Vulcan: A JavaScript Automated Proof System &middot; RMarcus
+    
+  </title>
+
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    
+    ga('create', 'UA-53336646-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+    
+  </script>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/blog//public/css/poole.css">
+  <link rel="stylesheet" href="/blog//public/css/syntax.css">
+  <link rel="stylesheet" href="/blog//public/css/hyde.css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700|Abril+Fatface">
+  <link rel="stylesheet" href="/blog//public/css/rmarcus.css">
+
+  <!-- Icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/blog//public/apple-touch-icon-144-precomposed.png">
+                                 <link rel="shortcut icon" href="/blog//public/favicon.ico">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/blog//atom.xml">
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+    inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    }
+    });
+  </script>
+  <script type="text/javascript"
+	  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script>
+
+  <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.10/angular.min.js"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+
+  <script src="/blog/assets/angular-apps.js"></script>
+  <script type="text/javascript" src="/blog/assets/conn4/conn4ctrl.js"></script>
+  <script src="/blog/assets/vulcan/vulcan.js"></script>
+  <script src="/blog/assets/vulcan/app.js"></script>
+
+
+</head>
+
+
+  <body ng-app="angularApps">
+
+    <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <h1>
+        <a href="/blog/">
+          RMarcus
+        </a>
+      </h1>
+      <p class="lead">The musings and work of Ryan Marcus, a graduate student at Brandeis University and the Los Alamos National Laboratory.</p>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="sidebar-nav-item" href="/blog/">Home</a>
+
+      
+
+      
+      
+        
+          
+        
+      
+        
+          
+            <a class="sidebar-nav-item" href="/blog/pubs/">Portfolio</a>
+          
+        
+      
+        
+      
+        
+      
+        
+          
+        
+      
+        
+          
+        
+      
+
+            <a class="sidebar-nav-item" href="/blog"></a>
+
+      <!-- <a class="sidebar-nav-item" href="/archive/v2.0.0.zip">Download</a>
+      <a class="sidebar-nav-item" href="">GitHub project</a>
+      <span class="sidebar-nav-item">Currently v2.0.0</span> -->
+      <a class="sidebar-nav-item" href="http://twitter.com/RyanMarcus">Twitter</a>
+      <a class="sidebar-nav-item" href="https://keybase.io/rmarcus">Keybase</a>
+    </nav>
+
+    <p>&copy; 2015. All rights reserved.</p>
+  </div>
+</div>
+
+
+    <div class="content container">
+      <div class="post">
+  <h1 class="post-title">Vulcan: A JavaScript Automated Proof System</h1>
+  <span class="post-date">02 Sep 2015</span>
+  <p>Mathematicians have been trying to figure out how to <a href="https://en.wikipedia.org/wiki/Automated_theorem_proving">get computers to write proofs for a long time</a>. One of the earliest (dating back to the 1960s) attempts to do so was a logical rule called <a href="https://en.wikipedia.org/wiki/Resolution_%28logic%29">resolution</a>.</p>
+
+<p>I created <a href="https://www.npmjs.com/package/vulcan">Vulcan, an NPM package</a> that implements a resolution-based automated proof system. Below is a in-browser demo I created with <a href="https://angularjs.org/">AngularJS</a> and <a href="http://browserify.org/">Browserify</a>. You can use symbols <code>A-Z</code> as variables that can be either true or false, and any of the following operations: <code>-&gt;</code> (implication), <code>&lt;-&gt;</code> (equivalence), <code>!</code> (negation), <code>&amp;</code> (conjunction), and <code>|</code> (disjunction).</p>
+
+<p>Enter some information into the knowledge base, enter a query, and click “prove” to see a proof (if one exists).</p>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<div>
+  <ng-include src="'/blog/assets/vulcan/vulcan.html'"></ng-include>
+</div>
+
+<hr />
+
+<p>This certainly <a href="http://blog.metawrap.com/2008/07/21/javascript-finite-state-machinetheorem-prover/">isn’t the first JavaScript implementation of a theorem prover</a>, nor is it even <a href="https://github.com/leanprover/lean.js">the most powerful</a>. It does, however, demonstrate the ability of a very simple system to come up with (in exponential time), a proof of <em>any provable statement in propositional calculus</em>.</p>
+
+<p>But how does it work? Once again, you can find an excellent introduction in <a href="http://www.cs.berkeley.edu/~russell/">Stuart Russell</a> and <a href="http://norvig.com">Peter Norvig’s</a> <a href="http://www.amazon.com/Artificial-Intelligence-Modern-Approach-Edition/dp/0136042597">book</a>. But understanding the system really only requires two fundamental ideas about symbolic logic:</p>
+
+<ol>
+  <li>That any expression in propositional logic can be written in <strong>conjunctive normal form</strong></li>
+  <li>That logical resolution is <strong>sound and complete</strong>.</li>
+</ol>
+
+<h3 id="conjunctive-normal-form">Conjunctive normal form</h3>
+
+<p>The first point is the simplest. We say that a sentence of propositional logic is in conjunctive normal form if it is a series of other sentences combined via conjunction, such that each of the combined sentences is a disjunction of sentence symbols or negations of sentence symbols. In other words, a sentence is in conjunctive normal form if it is an AND of ORs. For example,</p>
+
+<script type="math/tex; mode=display">A \land (B \lor D) \land C</script>
+
+<p>… is in conjunctive normal form, as is:</p>
+
+<script type="math/tex; mode=display">A \land (B \lor \lnot C \lor D) \land C</script>
+
+<p>However, this sentence is not in conjunctive normal form:</p>
+
+<script type="math/tex; mode=display">A \land (B \lor C \land E) \lor D</script>
+
+<p>Nor is this one:</p>
+
+<script type="math/tex; mode=display"> (A \to B) \land C</script>
+
+<p>The fact that <script type="math/tex">(A \to B) \land C</script> is not in CNF (conjunctive normal form) seems problematic. Surely, any sufficiently powerful proof system should be able to handle implications. However, we can transform this expression into one that is in CNF using a simple trick: we replace the implication <script type="math/tex">A \to B</script> with <script type="math/tex">\lnot A \lor B</script>.</p>
+
+<script type="math/tex; mode=display"> (A \to B) \land C \Rightarrow (\lnot A \lor B) \land C</script>
+
+<p>Our new expression, <script type="math/tex">(\lnot A \lor B) \land C</script>, is in CNF. In fact, there is a sequence of logical rules that can be applied to any expression to convert it into CNF. Norvig and Russell give an excellent description that can be found in other places on the Internet, and I’ll produce my own explanation here.</p>
+
+<ol>
+  <li>Remove bijections: <script type="math/tex">A \leftrightarrow B \Rightarrow (A \to B) \land (B \to A)</script>.</li>
+  <li>Replace any implications: <script type="math/tex">A \to B \Rightarrow \lnot A \lor B</script></li>
+  <li>Move nots inwards via DeMorgan’s rule:
+    <ul>
+      <li>Not over and: <script type="math/tex"> \lnot (A \land B) \Rightarrow (\lnot A \lor \lnot B) </script></li>
+      <li>Not over or: <script type="math/tex"> \lnot (A \lor B) \Rightarrow (\lnot A \land \lnot B) </script></li>
+    </ul>
+  </li>
+  <li>Eliminate double negation: <script type="math/tex"> \lnot \lnot A \Rightarrow A </script></li>
+  <li>Distribute ors over ands: <script type="math/tex"> (A \land B) \lor C \Rightarrow (C \lor A) \land (C \lor B)</script></li>
+</ol>
+
+<p>If you don’t believe that this simple algorithm will convert any sentence into CNF, try out a few examples. But this algorithm is not the easiest way to understand why any sentence in propositional logic can be converted into CNF. It’s helpful to remember that two sentences are equivalent if and only if they agree in every model. In other words, imagine you have two sentences, <script type="math/tex"> \alpha </script> and <script type="math/tex"> \beta </script>, composed of the symbols A, B, and C. You can say that <script type="math/tex"> \alpha = \beta </script> if you can plug in any value for A, B, and C and get the same final result for both <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script>.</p>
+
+<p>Let’s take <script type="math/tex"> \alpha = (A \to (B \lor C)) </script>, and <script type="math/tex"> \beta = \lnot (A \land \lnot B \land \lnot C)</script> and test to see if they are equivalent by building a truth table.</p>
+
+<table>
+<tr>
+<th>A</th><th>B</th><th>C</th><th>$$\alpha$$</th><th>$$\beta$$</th>
+</tr>
+<tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td></tr>
+
+</table>
+
+<p>Quite an exhausting process, but it works. We can see that <script type="math/tex"> \alpha = \beta </script>. The important consequence here is this: if we can construct a sentence with the same truth table as <script type="math/tex"> \alpha </script>, we can construct a sentence that is equivalent to <script type="math/tex">\alpha</script>.</p>
+
+<p>So let’s think about how to construct a new sentence <script type="math/tex"> \gamma </script> that will be equivalent to <script type="math/tex"> \alpha </script> but also in CNF. Think of <script type="math/tex"> \gamma </script> as a bunch of clauses linked together by conjunctions. So, whenever <script type="math/tex"> \alpha </script> is false, we need to make sure that at least one of the clauses in <script type="math/tex"> \gamma </script> is false – that’ll make sure that all of <script type="math/tex"> \gamma </script> is false.</p>
+
+<p>For every row in the truth table that ends in false, add a clause to <script type="math/tex"> \gamma </script> that is a conjunction of each sentence symbol, but negate the sentence symbol if that symbol is “false” in the table. For <script type="math/tex"> \alpha </script>, we have only one row in the truth table where the result is false. So we’ll have only one clause in <script type="math/tex"> \gamma </script>. That clause will be a disjunction of:</p>
+
+<ul>
+  <li>the negation of A, because A is false in that row of the truth table</li>
+  <li>B, because B is true in that row</li>
+  <li>C, because C is true in that row.</li>
+</ul>
+
+<p>So finally, we get <script type="math/tex"> \gamma = \lnot A \lor B \lor C </script>, which is equivalent to <script type="math/tex"> \alpha </script> and in CNF. If you don’t believe me, try a truth table or <a href="http://www.wolframalpha.com/input/?i=CNF+of+%28A+implies+%28B+or+C%29%29+">try WolframAlpha</a>. Now we have an algorithm for taking a truth table to a new sentence that will be in CNF.</p>
+
+<p>Let’s try another example. Let <script type="math/tex"> \sigma = A \leftrightarrow B </script>. We’ll write out a truth table for <script type="math/tex"> \sigma </script> and then convert it to CNF.</p>
+
+<table>
+<tr>
+<th>A</th><th>B</th><th>$$\sigma$$</th>
+</tr>
+
+<tr><td>T</td><td>T</td><td>T</td></tr>
+<tr><td>T</td><td>F</td><td>F</td></tr>
+<tr><td>F</td><td>T</td><td>F</td></tr>
+<tr><td>F</td><td>F</td><td>T</td></tr>
+
+</table>
+
+<p>Since <script type="math/tex">\sigma</script> is false in two rows, we’ll have to build clauses from both of them. For the seoncd row, we get the clause <script type="math/tex"> A \lor \lnot B </script>. From the third row, we get <script type="math/tex"> \lnot A \lor B </script>. Putting the clauses together gives us <script type="math/tex"> (A \lor \lnot B) \land (\lnot A \lor B)</script>. That’s equivalent to <script type="math/tex"> \sigma </script>, which you can verify with a truth table or with <a href="http://www.wolframalpha.com/input/?i=CNF+of++%28A+equivalent+B%29">WolframAlpha</a>.</p>
+
+<p>Hopefully you’re now significantly convinced that, given any sentence in propositional logic, there’s an equivalent sentence in CNF. The next critical component is <a href="https://en.wikipedia.org/wiki/Resolution_%28logic%29"><strong>logical resolution</strong></a>.</p>
+
+<h3 id="resolution">Resolution</h3>
+
+<p>Resolution is an interesting trick with some very useful properties. It can be stated as follows:</p>
+
+<script type="math/tex; mode=display">\frac{A \lor B \lor C, \quad E \lor \lnot B \lor F}{A \lor C \lor E \lor F}</script>
+
+<p>If you’ve never seen this notation before, it just means that if you are given the two sentences on top as true, then you can deduce that the sentence on the bottom is true as well. For resolution specifically, if you have two disjunctions with a complementary symbol (a symbol that is negated in one disjunction but not in the other), you can remove that symbol from both sentences and combine the two sentences with another disjunction.</p>
+
+<p>It possible to prove that resolution is both sound (meaning that a deduction made by resolution will always be correct) and complete (meaning that any sentence that can be deduced can be deduced by resolution). The second property – completeness – is rather amazing. You might find it interesting to <a href="http://www.mathcs.duq.edu/simon/Fall04/notes-6-20/node3.html">read through a proof that explains why</a>.</p>
+
+<p>So how do we take advantage of resolution to create a proof system? Notice that the inputs and the output of resolution are conjunctions – meaning a string of (possibly negated) symbols linked together by ORs. Since we can convert every statement in our knowledge base to CNF, we can separate out each of the disjunctions into different statements and combine them in different ways with resolution. Since resolution is sound, we know that any combination of two clauses in our knowledge base will be valid. Since resolution is complete, we know that any fact that can be inferred from our knowledge base can be inferred via resolution.</p>
+
+<p>Now, given a knowledge base <script type="math/tex">KB</script> and a query <script type="math/tex">Q</script>, how do we find out if <script type="math/tex">Q</script> is true, given <script type="math/tex">KB</script>? To be more specific, we want to know if <script type="math/tex">Q</script> is semantically entailed by <script type="math/tex">KB</script>. Written formally: <script type="math/tex">KB \vDash Q</script>. By the <a href="https://en.wikipedia.org/wiki/G%C3%B6del's_completeness_theorem">completeness theorem</a>, we know that <script type="math/tex">KB \vDash Q</script> if and only if <script type="math/tex">Q</script> can be syntactically generated from <script type="math/tex">KB</script> using some sound method <script type="math/tex">m</script>: <script type="math/tex">KB \vdash_m Q</script>.</p>
+
+<script type="math/tex; mode=display">KB \vDash Q \leftrightarrow \exists m (KB \vdash_m Q)</script>
+
+<p>Let’s call our resolution method <script type="math/tex">r</script>. Since resolution is complete, we know that any semantically true sentence entailed by <script type="math/tex">KB</script> can be syntactically derived via <script type="math/tex">r</script>. In other words, we know that:</p>
+
+<script type="math/tex; mode=display">KB \vDash Q \to KB \vdash_r Q</script>
+
+<p>And, since <script type="math/tex">r</script> is sound, we know that any sentence derived via <script type="math/tex">r</script> from <script type="math/tex">KB</script> will also be entailed by <script type="math/tex">KB</script>. In other words, we have:</p>
+
+<script type="math/tex; mode=display">KB \vdash_r Q \to KB \vDash Q</script>
+
+<p>Combining these two gives us:</p>
+
+<script type="math/tex; mode=display">KB \vDash Q \leftrightarrow KB \vdash_r Q</script>
+
+<p>At this point, you might think an acceptable algorithm would be to take your knowledge base and apply resolution over and over again until you either find all possible sentences or you find <script type="math/tex">Q</script>. The problem here is that all sentences of propositional logic can be stated in infinitely many finite ways (there are infinitely many ways to express any sentence using only finitely many symbols). You might think you could solve this problem by simply converting each step into CNF. The problem with that is that CNF representations are not unique. Example:</p>
+
+<script type="math/tex; mode=display">P \land (Q \lor A) == (A \lor Q) \land P</script>
+
+<p>Even if you were to generate unique CNF statements by deriving the CNF from the truth table at each step, such an approach would require the proof system to build larger and larger clauses (until reaching <script type="math/tex">Q</script>). Ideally, we want to make things smaller and smaller. So instead of searching for <script type="math/tex">Q</script>, we’ll add <script type="math/tex">\lnot Q</script> to the knowledge base and then search for <code>false</code>. If you think about it, this is equivalent to <a href="https://en.wikipedia.org/wiki/Reductio_ad_absurdum"><em>reductio ad absurdum</em></a>, or proof by contradiction. If by assuming that our query is false we can produce a contradiction, then it must be the case that our query is true.</p>
+
+<p>Let’s formalize that a little bit. Essentially, our statement is:</p>
+
+<script type="math/tex; mode=display">KB \vDash Q \leftrightarrow (KB \cup \lnot Q) \mbox{ is unsatisfiable}</script>
+
+<p>This is equivalent to the <a href="https://en.wikipedia.org/wiki/Deduction_theorem">deduction theorem</a>. A nice way to think of this is:</p>
+
+<blockquote>
+  <p>A statement can be proven from a knowledge base if and only if the negation of that statement combined with the knowledge base produces a contradiction. In other words, a statement is provable from a knowledge base only if the union of the knowledge base and the negation of the statement is unsatisfiable.</p>
+</blockquote>
+
+<p>So, if we show that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, we’ve shown that <script type="math/tex">KB \vDash Q</script>. This gives us the following algorithm:</p>
+
+<ol>
+  <li>Convert <script type="math/tex">KB</script> into CNF, and split up each sentence into clauses</li>
+  <li>Assume <script type="math/tex">\lnot Q</script></li>
+  <li>Apply resolution to every pair of clauses until either…
+    <ul>
+      <li>(a) no more clauses can be derived, meaning that there is no proof of <script type="math/tex">Q</script> from <script type="math/tex">KB</script>. If there were a proof, that would imply that there existed some <script type="math/tex">m</script> such that <script type="math/tex">KB \vdash_m Q</script>, but since we know resolution is complete and sound, it must be the case that such an <script type="math/tex">m</script> is not sound.</li>
+      <li>(b) we derive an “empty clause”, or false. In other words, we find a contradiction. The existence of a contradiction is enough to prove that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, since it proves that you’ll always get <code>false</code> no matter what model you use. You’ve proven <script type="math/tex">Q</script> by contradiction.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The correctness of this algorithm has some interesting consequences. For example, try a knowledge base of <script type="math/tex">P</script> and <script type="math/tex">\lnot P</script>. That’s a contradiction. Then, ask the system to prove <script type="math/tex">A</script>, a symbol we know absolutely nothing about. The system will resolve <script type="math/tex">P</script> and <script type="math/tex">\lnot P</script> to false, and suggest that a contradiction has been reached from the knowledge base <script type="math/tex">P \land \lnot P \land A</script>. So have we proven <script type="math/tex">A</script> from <script type="math/tex">P \land \lnot P</script>?</p>
+
+<p>Well, it turns out that we have! In fact, any conclusion follows from a contradiction. This is called <a href="https://en.wikipedia.org/wiki/Principle_of_explosion">the principle of explosion</a>, which can be stated as:</p>
+
+<script type="math/tex; mode=display">\{ \nu, \lnot \nu \} \vdash \psi</script>
+
+<p>Think of it this way. Consider a true statement like “the sky is blue.” We’ll call that <script type="math/tex">B</script>. Consider another statement, “the Easter Bunny is real.” We’ll call that <script type="math/tex">E</script>. We know that the statement <script type="math/tex">B \lor E</script> is true because <script type="math/tex">B</script> is true. However, let’s say for some reason we knew that the sky was blue and not blue, in other words, we know that <script type="math/tex">B \land \lnot B</script> was somehow true. Since we know <script type="math/tex">B \lor E</script> is true, and we know <script type="math/tex">\lnot B</script> is true, we can use resolution to deduce <script type="math/tex">E</script>:</p>
+
+<script type="math/tex; mode=display">\frac{B \lor E, \quad \lnot B}{E}</script>
+
+<p>So we’ve shown that <script type="math/tex">\{ B \lor E, B \land \lnot B \} \vdash_r E</script>. Since resolution (<script type="math/tex">r</script>) is sound, we know that <script type="math/tex">\{ B \lor E, B \land \lnot B \} \vDash E</script>. This isn’t so ridiculous when we say it out loud:</p>
+
+<blockquote>
+  <p>If the sky isn’t blue, the Easter Bunny is real.</p>
+</blockquote>
+
+<p>So it’s a good thing that our system finds that <script type="math/tex">A</script> is entailed by <script type="math/tex">P \land \lnot P</script>. If it didn’t, it wouldn’t be complete!</p>
+
+<p>You might’ve noticed that the line numbers of each statement in the generated proofs aren’t sequential. That’s because the proof is generated via resolution, and only the relevant clauses are displayed at the end. Since what we’re trying to prove is that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, we’re essentially solving a limited case of the <a href="https://en.wikipedia.org/wiki/Boolean_satisfiability_problem">boolean satisfiability problem</a>, which is <code>NP-complete</code>. That means there could be quite a few steps! If you put a lot of data into the knowledge base and ask a tough question, it might take your browser quite a while to come with an answer!</p>
+
+<p>One more interesting tidbit: the initial state of the demo shows  how <a href="https://en.wikipedia.org/wiki/Modus_ponens">modus ponens</a> is really just a special case of resolution. Since we know that resolution is sound and complete, all sound logical inference rules are a special case of resolution. We also know that resolution is a subset of any complete inference rule, and we know that resolution is equivalent to any sound and complete inference rule. It’s reassuring to know that truth works the same way no matter what.</p>
+
+</div>
+
+<div class="related">
+  <h2>Related Posts</h2>
+  <ul class="related-posts">
+    
+      <li>
+        <h3>
+          <a href="/blog//2014/12/23/connect4.html">
+            A JavaScript Connect Four AI
+            <small>23 Dec 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog//2014/10/05/dirty-json-parser.html">
+            A Dirty JSON Parser
+            <small>05 Oct 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+      <li>
+        <h3>
+          <a href="/blog//2014/05/09/rdtheory.html">
+            rdtheory.js: relational database algorithms in JavaScript
+            <small>09 May 2014</small>
+          </a>
+        </h3>
+      </li>
+    
+  </ul>
+</div>
+
+    </div>
+
+  </body>
+</html>
