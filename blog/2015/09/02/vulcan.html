@@ -165,11 +165,11 @@
 
 <p>Nor is this one:</p>
 
-<script type="math/tex; mode=display"> (A \to B) \land C</script>
+<script type="math/tex; mode=display">(A \to B) \land C</script>
 
 <p>The fact that <script type="math/tex">(A \to B) \land C</script> is not in CNF (conjunctive normal form) seems problematic. Surely, any sufficiently powerful proof system should be able to handle implications. However, we can transform this expression into one that is in CNF using a simple trick: we replace the implication <script type="math/tex">A \to B</script> with <script type="math/tex">\lnot A \lor B</script>.</p>
 
-<script type="math/tex; mode=display"> (A \to B) \land C \Rightarrow (\lnot A \lor B) \land C</script>
+<script type="math/tex; mode=display">(A \to B) \land C \Rightarrow (\lnot A \lor B) \land C</script>
 
 <p>Our new expression, <script type="math/tex">(\lnot A \lor B) \land C</script>, is in CNF. In fact, there is a sequence of logical rules that can be applied to any expression to convert it into CNF. Norvig and Russell give an excellent description that can be found in other places on the Internet, and I’ll produce my own explanation here.</p>
 
@@ -178,17 +178,17 @@
   <li>Replace any implications: <script type="math/tex">A \to B \Rightarrow \lnot A \lor B</script></li>
   <li>Move nots inwards via DeMorgan’s rule:
     <ul>
-      <li>Not over and: <script type="math/tex"> \lnot (A \land B) \Rightarrow (\lnot A \lor \lnot B) </script></li>
-      <li>Not over or: <script type="math/tex"> \lnot (A \lor B) \Rightarrow (\lnot A \land \lnot B) </script></li>
+      <li>Not over and: <script type="math/tex">\lnot (A \land B) \Rightarrow (\lnot A \lor \lnot B)</script></li>
+      <li>Not over or: <script type="math/tex">\lnot (A \lor B) \Rightarrow (\lnot A \land \lnot B)</script></li>
     </ul>
   </li>
-  <li>Eliminate double negation: <script type="math/tex"> \lnot \lnot A \Rightarrow A </script></li>
-  <li>Distribute ors over ands: <script type="math/tex"> (A \land B) \lor C \Rightarrow (C \lor A) \land (C \lor B)</script></li>
+  <li>Eliminate double negation: <script type="math/tex">\lnot \lnot A \Rightarrow A</script></li>
+  <li>Distribute ors over ands: <script type="math/tex">(A \land B) \lor C \Rightarrow (C \lor A) \land (C \lor B)</script></li>
 </ol>
 
-<p>If you don’t believe that this simple algorithm will convert any sentence into CNF, try out a few examples. But this algorithm is not the easiest way to understand why any sentence in propositional logic can be converted into CNF. It’s helpful to remember that two sentences are equivalent if and only if they agree in every model. In other words, imagine you have two sentences, <script type="math/tex"> \alpha </script> and <script type="math/tex"> \beta </script>, composed of the symbols A, B, and C. You can say that <script type="math/tex"> \alpha = \beta </script> if you can plug in any value for A, B, and C and get the same final result for both <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script>.</p>
+<p>If you don’t believe that this simple algorithm will convert any sentence into CNF, try out a few examples. But this algorithm is not the easiest way to understand why any sentence in propositional logic can be converted into CNF. It’s helpful to remember that two sentences are equivalent if and only if they agree in every model. In other words, imagine you have two sentences, <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script>, composed of the symbols A, B, and C. You can say that <script type="math/tex">\alpha = \beta</script> if you can plug in any value for A, B, and C and get the same final result for both <script type="math/tex">\alpha</script> and <script type="math/tex">\beta</script>.</p>
 
-<p>Let’s take <script type="math/tex"> \alpha = (A \to (B \lor C)) </script>, and <script type="math/tex"> \beta = \lnot (A \land \lnot B \land \lnot C)</script> and test to see if they are equivalent by building a truth table.</p>
+<p>Let’s take <script type="math/tex">\alpha = (A \to (B \lor C))</script>, and <script type="math/tex">\beta = \lnot (A \land \lnot B \land \lnot C)</script> and test to see if they are equivalent by building a truth table.</p>
 
 <table>
 <tr>
@@ -205,11 +205,11 @@
 
 </table>
 
-<p>Quite an exhausting process, but it works. We can see that <script type="math/tex"> \alpha = \beta </script>. The important consequence here is this: if we can construct a sentence with the same truth table as <script type="math/tex"> \alpha </script>, we can construct a sentence that is equivalent to <script type="math/tex">\alpha</script>.</p>
+<p>Quite an exhausting process, but it works. We can see that <script type="math/tex">\alpha = \beta</script>. The important consequence here is this: if we can construct a sentence with the same truth table as <script type="math/tex">\alpha</script>, we can construct a sentence that is equivalent to <script type="math/tex">\alpha</script>.</p>
 
-<p>So let’s think about how to construct a new sentence <script type="math/tex"> \gamma </script> that will be equivalent to <script type="math/tex"> \alpha </script> but also in CNF. Think of <script type="math/tex"> \gamma </script> as a bunch of clauses linked together by conjunctions. So, whenever <script type="math/tex"> \alpha </script> is false, we need to make sure that at least one of the clauses in <script type="math/tex"> \gamma </script> is false – that’ll make sure that all of <script type="math/tex"> \gamma </script> is false.</p>
+<p>So let’s think about how to construct a new sentence <script type="math/tex">\gamma</script> that will be equivalent to <script type="math/tex">\alpha</script> but also in CNF. Think of <script type="math/tex">\gamma</script> as a bunch of clauses linked together by conjunctions. So, whenever <script type="math/tex">\alpha</script> is false, we need to make sure that at least one of the clauses in <script type="math/tex">\gamma</script> is false – that’ll make sure that all of <script type="math/tex">\gamma</script> is false.</p>
 
-<p>For every row in the truth table that ends in false, add a clause to <script type="math/tex"> \gamma </script> that is a conjunction of each sentence symbol, but negate the sentence symbol if that symbol is “false” in the table. For <script type="math/tex"> \alpha </script>, we have only one row in the truth table where the result is false. So we’ll have only one clause in <script type="math/tex"> \gamma </script>. That clause will be a disjunction of:</p>
+<p>For every row in the truth table that ends in false, add a clause to <script type="math/tex">\gamma</script> that is a conjunction of each sentence symbol, but negate the sentence symbol if that symbol is “false” in the table. For <script type="math/tex">\alpha</script>, we have only one row in the truth table where the result is false. So we’ll have only one clause in <script type="math/tex">\gamma</script>. That clause will be a disjunction of:</p>
 
 <ul>
   <li>the negation of A, because A is false in that row of the truth table</li>
@@ -217,9 +217,9 @@
   <li>C, because C is true in that row.</li>
 </ul>
 
-<p>So finally, we get <script type="math/tex"> \gamma = \lnot A \lor B \lor C </script>, which is equivalent to <script type="math/tex"> \alpha </script> and in CNF. If you don’t believe me, try a truth table or <a href="http://www.wolframalpha.com/input/?i=CNF+of+%28A+implies+%28B+or+C%29%29+">try WolframAlpha</a>. Now we have an algorithm for taking a truth table to a new sentence that will be in CNF.</p>
+<p>So finally, we get <script type="math/tex">\gamma = \lnot A \lor B \lor C</script>, which is equivalent to <script type="math/tex">\alpha</script> and in CNF. If you don’t believe me, try a truth table or <a href="http://www.wolframalpha.com/input/?i=CNF+of+%28A+implies+%28B+or+C%29%29+">try WolframAlpha</a>. Now we have an algorithm for taking a truth table to a new sentence that will be in CNF.</p>
 
-<p>Let’s try another example. Let <script type="math/tex"> \sigma = A \leftrightarrow B </script>. We’ll write out a truth table for <script type="math/tex"> \sigma </script> and then convert it to CNF.</p>
+<p>Let’s try another example. Let <script type="math/tex">\sigma = A \leftrightarrow B</script>. We’ll write out a truth table for <script type="math/tex">\sigma</script> and then convert it to CNF.</p>
 
 <table>
 <tr>
@@ -233,7 +233,7 @@
 
 </table>
 
-<p>Since <script type="math/tex">\sigma</script> is false in two rows, we’ll have to build clauses from both of them. For the seoncd row, we get the clause <script type="math/tex"> A \lor \lnot B </script>. From the third row, we get <script type="math/tex"> \lnot A \lor B </script>. Putting the clauses together gives us <script type="math/tex"> (A \lor \lnot B) \land (\lnot A \lor B)</script>. That’s equivalent to <script type="math/tex"> \sigma </script>, which you can verify with a truth table or with <a href="http://www.wolframalpha.com/input/?i=CNF+of++%28A+equivalent+B%29">WolframAlpha</a>.</p>
+<p>Since <script type="math/tex">\sigma</script> is false in two rows, we’ll have to build clauses from both of them. For the seoncd row, we get the clause <script type="math/tex">A \lor \lnot B</script>. From the third row, we get <script type="math/tex">\lnot A \lor B</script>. Putting the clauses together gives us <script type="math/tex">(A \lor \lnot B) \land (\lnot A \lor B)</script>. That’s equivalent to <script type="math/tex">\sigma</script>, which you can verify with a truth table or with <a href="http://www.wolframalpha.com/input/?i=CNF+of++%28A+equivalent+B%29">WolframAlpha</a>.</p>
 
 <p>Hopefully you’re now significantly convinced that, given any sentence in propositional logic, there’s an equivalent sentence in CNF. The next critical component is <a href="https://en.wikipedia.org/wiki/Resolution_%28logic%29"><strong>logical resolution</strong></a>.</p>
 
@@ -281,7 +281,7 @@
   <p>A statement can be proven from a knowledge base if and only if the negation of that statement combined with the knowledge base produces a contradiction. In other words, a statement is provable from a knowledge base only if the union of the knowledge base and the negation of the statement is unsatisfiable.</p>
 </blockquote>
 
-<p>So, if we show that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, we’ve shown that <script type="math/tex">KB \vDash Q</script>. This gives us the following algorithm:</p>
+<p>So, if we show that <script type="math/tex">KB \cup \lnot Q</script> is unsatisfiable, we’ve shown that <script type="math/tex">KB \vDash Q</script>. If you aren’t convinced, <a href="/blog/assets/vulcan/resolution_proof.pdf">here’s a proof</a>. This gives us the following algorithm:</p>
 
 <ol>
   <li>Convert <script type="math/tex">KB</script> into CNF, and split up each sentence into clauses</li>

@@ -134,13 +134,13 @@
 
     <span class="post-date">09 Mar 2013</span>
 
-    <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time. </p>
+    <p>Recently, I came across a problem in which I had to store contacts in an instant message application. I needed to be able to display the list of contacts to the user in alphabetical order, and I needed to be able to retrieve a contact object quickly. One data structure that accomplishes all this is a simple binary tree – an <a href="http://en.wikipedia.org/wiki/Tree_traversal#In-order">in-order traversal</a> of the tree will produce the list of contacts in alphabetical order, and a <a href="http://en.wikipedia.org/wiki/Binary_search_tree">balanced binary tree</a> provides [latex]O(\log n)[/latex] search time.</p>
 
 <p>However, I also needed to be able to query the [latex]k[/latex] most frequently contacted contacts. Since contacts are sorted by their names, finding the [latex]k[/latex] most frequently contacted contacts would require [latex]O(n \log n)[/latex] search time.</p>
 
 <p>To solve this problem, I created an <a href="http://www.cs.arizona.edu/classes/cs545/fall09/Augmented-DS.prn.pdf">augmented binary tree</a> which provides an insertion time of [latex]O(k \log n)[/latex], a search time of [latex]O( \log n)[/latex], and can find the top [latex]k[/latex] contacts in [latex]O(1)[/latex]. You can view a Java implementation of the code <a href="https://bitbucket.org/RyanMarcus/topntree/overview">here</a>. The code is license free, and ought to be considered public domain.</p>
 
-<p>In order to accomplish this, each node is augmented with an array of size [latex]k[/latex] that stores, in sorted order, the [latex]k[/latex] largest keys in it’s left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value. </p>
+<p>In order to accomplish this, each node is augmented with an array of size [latex]k[/latex] that stores, in sorted order, the [latex]k[/latex] largest keys in it’s left and right sub-trees, including itself. Leaf nodes (nodes with no children) thus contain an array with only their own value.</p>
 
 <p>When a node [latex]\alpha[/latex] is inserted and becomes the left or right child of [latex]\beta[/latex], [latex]\beta[/latex]’s array is merged with [latex]\alpha[/latex]’s array, with the result stored into [latex]\beta[/latex]’s array. This merging can be done in <a href="http://en.wikipedia.org/wiki/Merge_sort">linear time</a>, since both arrays are already sorted. After this, [latex]\beta[/latex]’s parent is updated, and then the parent’s parent, all the way up to the root of the tree.</p>
 
@@ -169,7 +169,7 @@
 
 <p>In case the similarity to merge sort is not clear, here is some pseudo-code for the merging:</p>
 
-<div class="highlight"><pre><code class="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="n">function</span> <span class="nf">merge</span><span class="o">(</span><span class="n">ParentArray</span> <span class="n">a</span><span class="o">,</span> <span class="n">ChildArray</span> <span class="n">b</span><span class="o">)</span> <span class="o">{</span>
    <span class="kt">int</span> <span class="n">myPos</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
    <span class="kt">int</span> <span class="n">theirPos</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="na">size</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
                 
@@ -178,7 +178,7 @@
         <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">&gt;</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
              <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
              <span class="n">myPos</span><span class="o">--;</span>
-        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="nf">if</span> <span class="o">(</span><span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">]</span> <span class="o">==</span> <span class="n">b</span><span class="o">[</span><span class="n">theirPos</span><span class="o">])</span> <span class="o">{</span>
              <span class="n">newObjs</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">a</span><span class="o">[</span><span class="n">myPos</span><span class="o">];</span>
              <span class="n">myPos</span><span class="o">--;</span>
              <span class="n">theirPos</span><span class="o">--;</span>
